@@ -33,7 +33,7 @@ repos:
       - id: shfmt
       - id: shellcheck
   - repo: https://github.com/DavidAnson/markdownlint-cli2
-    rev: v0.4.0
+    rev: v0.5.0
     hooks:
       - id: markdownlint-cli2
   - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
@@ -45,11 +45,11 @@ repos:
     hooks:
       - id: actionlint
   - repo: https://github.com/zricethezav/gitleaks
-    rev: v8.8.12
+    rev: v8.9.0
     hooks:
       - id: gitleaks
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v2.29.0
+    rev: v2.29.2
     hooks:
       # https://github.com/conventional-commits/conventionalcommits.org
       - id: commitizen
