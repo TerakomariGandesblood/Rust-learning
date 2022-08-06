@@ -54,6 +54,7 @@ repos:
       # https://github.com/conventional-commits/conventionalcommits.org
       - id: commitizen
         stages: [commit-msg]
+
 # https://pre-commit.ci/#configuration
-# ci:
-# skip: [pretty-format-rust, actionlint]
+ci:
+  skip: [pretty-format-rust, actionlint]
