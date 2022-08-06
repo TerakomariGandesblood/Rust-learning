@@ -38,7 +38,7 @@ jobs:
 
       # https://github.com/Swatinem/rust-cache
       - name: Rust cache
-        uses: Swatinem/rust-cache@v1
+        uses: Swatinem/rust-cache@v2
         with:
           key: udeps
 
