@@ -28,7 +28,7 @@ repos:
     hooks:
       - id: prettier
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: 2.1.6
+    rev: 3.0.0
     hooks:
       - id: shfmt
       - id: shellcheck
@@ -45,11 +45,11 @@ repos:
     hooks:
       - id: actionlint
   - repo: https://github.com/zricethezav/gitleaks
-    rev: v8.9.0
+    rev: v8.10.1
     hooks:
       - id: gitleaks
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v2.29.2
+    rev: v2.29.5
     hooks:
       # https://github.com/conventional-commits/conventionalcommits.org
       - id: commitizen
