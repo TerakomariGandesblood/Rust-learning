@@ -3,7 +3,7 @@ fn main() {
         let mut s = String::from("Hello");
         s.push_str(", World!");
         println!("{}", s);
-        // 离开作用域, 调用 drop, 释放 String 的内存
+        // 离开作用域，调用 drop，释放 String 的内存
     }
 
     {
@@ -28,6 +28,7 @@ fn main() {
         println!("{}", arr2[0]);
     }
 
-    // 类型实现了 Copy trait, 默认将不是 move 而是 copy, 见
+    // Rust 不允许自身或其任何部分实现了 Drop trait 的类型使用 Copy trait
+    // 类型实现了 Copy trait，默认将不是 move 而是 copy，见
     // https://zhuanlan.zhihu.com/p/21730929
 }

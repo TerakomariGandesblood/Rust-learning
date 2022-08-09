@@ -1,8 +1,8 @@
 fn main() {
     let mut s = String::from("Hello");
-    // 引用, 使用值但不获取其所有权
-    // &s1 语法创建一个指向值 s 的引用, 默认不可变
-    // 创建一个引用的行为称为借用 (borrowing)
+    // 引用，使用值但不获取其所有权
+    // &s1 语法创建一个指向值 s 的引用，默认不可变
+    // 创建一个引用的行为称为借用（borrowing）
     println!("{}", calculate_length(&s));
 
     change(&mut s);
@@ -18,14 +18,14 @@ fn main() {
     // let r2 = &mut s;
     // println!("{}, {}", r1, r2);
 
-    // ok, 因为其使用范围没有重叠
-    // 编译器在作用域结束之前判断不再使用的引用的能力被称为 Non-Lexical Lifetimes
+    // ok，因为其使用范围没有重叠
+    // 编译器在作用域结束之前判断不再使用的引用的能力被称为非词法作用域生命周期（Non-Lexical Lifetimes）
     let r1 = &s;
     println!("{}", r1);
     let r2 = &mut s;
     println!("{}", r2);
 
-    // 在任意给定时间, 要么只能有一个可变引用, 要么只能有多个不可变引用
+    // 在任意给定时间, 要么只能有一个可变引用，要么只能有多个不可变引用
     // 引用必须总是有效的
 }
 
