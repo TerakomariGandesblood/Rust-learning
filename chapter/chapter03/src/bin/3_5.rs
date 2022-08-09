@@ -1,6 +1,7 @@
 fn main() {
     let condition = true;
     // if 表达式
+    // 两个块返回类型必须相同
     let _number = if condition { 3 } else { 4 };
 
     loop_label();
@@ -33,6 +34,7 @@ fn loop_return() {
     let result = loop {
         count += 1;
         if count == 10 {
+            // 从循环返回值
             break count * 2;
         }
     };
