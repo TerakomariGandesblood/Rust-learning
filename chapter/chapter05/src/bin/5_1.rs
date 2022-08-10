@@ -1,3 +1,4 @@
+// 不允许只将某个字段标记为可变的
 struct User {
     _active: bool,
     // TODO 在第十章前不要使用自身没有所有权的类型
@@ -14,31 +15,29 @@ fn main() {
 
     let _user2 = User {
         _email: String::from("another@example.com"),
-        // struct update syntax
+        // 结构体更新语法（struct update syntax）
         // 其他值来自 user1
-        // 注意这样做移动了数据, user1 不再有效
-        // 但是如果 username 也制定了值, 那么 user1 仍有效
+        // 注意这样做类似赋值，部分字段将会无效
         ..user1
     };
 
-    // tuple structs
-    // 两者类型不同, 其他和元组一致
+    // 元组结构体（tuple structs）
+    // 两者类型不同，其他和元组一致
     struct Color(i32, i32, i32);
     struct Point(i32, i32, i32);
     let _black = Color(0, 0, 0);
     let _origin = Point(0, 0, 0);
 
-    // unit-like structs
-    // 和 unit type 类似
-    // 常常在你想要在某个类型上实现 trait 但不需要在类型中存储数据的时候发挥作用
-    // TODO 第十章
+    // 类单元结构体（unit-like structs）
+    // 和 '()' 类似
+    // TODO 第十章，常常在你想要在某个类型上实现 trait 但不需要在类型中存储数据的时候发挥作用
     struct AlwaysEqual;
     let _subject = AlwaysEqual;
 }
 
 fn build_user(email: String, username: String) -> User {
     User {
-        // 参数名与字段名都完全相同时省略字段名, field init shorthand
+        // 参数名与字段名完全相同时可以省略字段名——字段初始化简写语（field init shorthand）
         _email: email,
         _username: username,
         _active: true,
