@@ -13,6 +13,8 @@ enum Coin {
 
 fn value_in_cents(coin: Coin) -> u8 {
     // match 后表达式值可以是任意类型
+    // 目标表达式的值将作为整个 match 表达式的返回值
+    // Rust 中的匹配是穷尽的（exhaustive）：必须穷举到最后的可能性来使代码有效
     match coin {
         Coin::_Penny => 1,
         Coin::_Nickel => 5,

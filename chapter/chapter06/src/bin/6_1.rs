@@ -1,9 +1,12 @@
 enum IpAddr {
     V4(u8, u8, u8, u8),
+    // 每一个我们定义的枚举成员的名字也变成了一个构建枚举的实例的函数
+    // 也就是说，IpAddr::V6() 是一个获取 String 参数并返回 IpAddr 类型实例的函数调用
     V6(String),
 }
 
 enum _Message {
+    // 和结构体定义语法类似
     Quit,
     // 包含命名字段
     Move { x: i32, y: i32 },
