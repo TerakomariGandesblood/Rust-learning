@@ -1,12 +1,12 @@
 fn main() {
     let mut v = Vec::new();
     let str = String::from("str");
-    // 注意, 移动
+    // 注意，移动
     v.push(str);
-    println!("{:?}", v);
+    println!("{:#?}", v);
 
     let v = vec![1, 2, 3];
-    println!("{:?}", v);
+    println!("{:#?}", v);
     // 当 vector 被丢弃时, 所有其内容也会被丢弃
 
     let v = vec![1, 2, 3, 4, 5];
@@ -30,9 +30,8 @@ fn main() {
     }
 
     let mut v = vec![1, 2, 3];
-
     for i in &mut v {
-        // TODO 第十五章
+        // TODO 解引用运算符，第十五章
         *i *= 50;
     }
 

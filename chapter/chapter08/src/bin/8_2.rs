@@ -1,14 +1,14 @@
 fn main() {
     let data = "initial contents";
     // 同 String::from
-    // to_string 方法, 它能用于任何实现了 Display trait 的类型
+    // to_string 方法，它能用于任何实现了 Display trait 的类型
     let s1 = data.to_string();
     let mut s2 = data.to_string();
 
     s2.push_str("str");
 
     // + -> fn add(self, s: &str) -> String
-    // &String 可以被 强转 (coerced) 成 &str
+    // &String 可以被强转（coerced）成 &str
     // &s2 -> &s2[..]
     // TODO deref coercion 第十五章
     // 注意 s1 被移动了
@@ -21,11 +21,7 @@ fn main() {
 
     // 不支持索引
     // println!("{}", &s3[0]);
-
-    // panic
-    // let hello = "Здравствуйте";
-    // let s = &hello[0..1];
-    // println!("{}", s);
+    // println!("{}",&"str"[0]);
 
     let s = String::from("你好世界");
     for c in s.chars() {
