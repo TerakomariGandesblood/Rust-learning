@@ -41,7 +41,7 @@ repos:
     hooks:
       - id: pretty-format-rust
   - repo: https://github.com/rhysd/actionlint
-    rev: v1.6.19
+    rev: v1.6.20
     hooks:
       - id: actionlint
   - repo: https://github.com/zricethezav/gitleaks
