@@ -3,6 +3,10 @@
 version = 3
 
 [[package]]
+name = "base"
+version = "0.1.0"
+
+[[package]]
 name = "cfg-if"
 version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -89,26 +93,6 @@ dependencies = [
 
 [[package]]
 name = "chapter20"
-version = "0.1.0"
-
-[[package]]
-name = "exercise01"
-version = "0.1.0"
-
-[[package]]
-name = "exercise02"
-version = "0.1.0"
-
-[[package]]
-name = "exercise03"
-version = "0.1.0"
-
-[[package]]
-name = "exercise04"
-version = "0.1.0"
-
-[[package]]
-name = "exercise05"
 version = "0.1.0"
 
 [[package]]

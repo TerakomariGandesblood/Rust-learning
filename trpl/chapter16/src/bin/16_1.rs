@@ -1,0 +1,31 @@
+use std::{thread, time::Duration};
+
+fn main() {
+    // 创建一个新线程
+    // JoinHandle 是一个拥有所有权的值，当对其调用 join 方法时，它会等待其线程结束
+    let handle = thread::spawn(|| {
+        for i in 1..10 {
+            println!("hi number {} from the spawned thread!", i);
+            // 强制线程停止执行一小段时间
+            thread::sleep(Duration::from_millis(1));
+        }
+    });
+
+    for i in 1..5 {
+        println!("hi number {} from the main thread!", i);
+        thread::sleep(Duration::from_millis(1));
+    }
+
+    // 阻塞（Blocking）当前线程直到 handle 所代表的线程结束
+    // 阻塞线程意味着阻止该线程执行工作或退出
+    handle.join().unwrap();
+
+    let v = vec![1, 2, 3];
+    // Rust 不知道这个新建线程会执行多久，所以无法知晓 v 的引用是否一直有效
+    // 通过增加 move 关键字，强制闭包获取其使用的值的所有权
+    let handle = thread::spawn(move || {
+        println!("Here's a vector: {:?}", v);
+    });
+
+    handle.join().unwrap();
+}

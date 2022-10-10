@@ -1,8 +1,0 @@
-[package]
-name = "simd"
-version = "0.1.0"
-edition = "2021"
-
-[dependencies]
-memchr = "2.5.0"
-simdutf8 = "0.1.4"

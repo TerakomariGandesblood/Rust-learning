@@ -12,7 +12,6 @@ Rust learning notes
 ## Reference
 
 - [trpl](https://github.com/KaiserY/trpl-zh-cn)
-- [async-book](https://github.com/chinanf-boy/async-book-zh)
+- [rust-course](https://github.com/sunface/rust-course)
 - [cli](https://github.com/rust-lang-nursery/cli-wg)
-- [rust-cookbook](https://github.com/rust-lang-nursery/rust-cookbook)
 - [API guidelines](https://github.com/rust-lang/api-guidelines)
