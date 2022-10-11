@@ -13,5 +13,7 @@ Rust learning notes
 
 - [trpl](https://github.com/KaiserY/trpl-zh-cn)
 - [rust-course](https://github.com/sunface/rust-course)
-- [cli](https://github.com/rust-lang-nursery/cli-wg)
-- [API guidelines](https://github.com/rust-lang/api-guidelines)
+- [cli-wg](https://github.com/rust-lang-nursery/cli-wg)
+- [min-sized-rust](https://github.com/johnthagen/min-sized-rust)
+- [rustlings](https://github.com/rust-lang/rustlings)
+- [api-guidelines](https://github.com/rust-lang/api-guidelines)
