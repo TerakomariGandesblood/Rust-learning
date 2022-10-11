@@ -11,9 +11,8 @@ Rust learning notes
 
 ## Reference
 
-- [trpl](https://github.com/KaiserY/trpl-zh-cn)
-- [rust-course](https://github.com/sunface/rust-course)
-- [cli-wg](https://github.com/rust-lang-nursery/cli-wg)
-- [min-sized-rust](https://github.com/johnthagen/min-sized-rust)
+- [trpl](https://kaisery.github.io/trpl-zh-cn/)
+- [async](https://course.rs/async-rust/tokio/intro.html)
+- [cli](https://rust-cli.github.io/book/index.html)
 - [rustlings](https://github.com/rust-lang/rustlings)
-- [api-guidelines](https://github.com/rust-lang/api-guidelines)
+- [api-guidelines](https://rust-lang.github.io/api-guidelines/)
