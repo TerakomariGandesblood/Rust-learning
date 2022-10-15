@@ -16,6 +16,7 @@ Rust learning notes
 - [cli](https://suibianxiedianer.github.io/rust-cli-book-zh_CN/)
 - [rustlings](https://github.com/rust-lang/rustlings)
 - [api-guidelines](https://rust-chinese-translation.github.io/api-guidelines/)
+- [github-cheat-sheet](https://github.com/tiimgreen/github-cheat-sheet/blob/master/README.zh-cn.md)
 
 ## Libraries
 
