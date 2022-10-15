@@ -49,6 +49,7 @@ Rust learning notes
 - [indicatif](https://github.com/console-rs/indicatif)
 - [scraper](https://github.com/causal-agent/scraper)
 - [quick-xml](https://github.com/tafia/quick-xml)
+- [toml](https://github.com/toml-rs/toml)
 - [zip](https://github.com/zip-rs/zip)
 - [criterion](https://github.com/bheisler/criterion.rs)
 
