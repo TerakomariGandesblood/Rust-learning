@@ -45,7 +45,6 @@ Rust learning notes
 - [simdutf8](https://github.com/rusticstuff/simdutf8)
 - [libwebp-sys](https://github.com/NoXF/libwebp-sys)
 - [image](https://github.com/image-rs/image)
-- [opencc-rust](https://github.com/magiclen/opencc-rust)
 - [rust-url](https://github.com/servo/rust-url)
 - [indicatif](https://github.com/console-rs/indicatif)
 - [scraper](https://github.com/causal-agent/scraper)
