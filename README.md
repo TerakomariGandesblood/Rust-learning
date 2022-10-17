@@ -43,7 +43,6 @@ Rust learning notes
 - [json](https://github.com/serde-rs/json)
 - [rayon](https://github.com/rayon-rs/rayon)
 - [simdutf8](https://github.com/rusticstuff/simdutf8)
-- [libwebp-sys](https://github.com/NoXF/libwebp-sys)
 - [image](https://github.com/image-rs/image)
 - [rust-url](https://github.com/servo/rust-url)
 - [indicatif](https://github.com/console-rs/indicatif)
