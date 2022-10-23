@@ -11,13 +11,11 @@ Rust learning notes
 
 ## Reference
 
-- [trpl](https://kaisery.github.io/trpl-zh-cn/)
-- [async](https://course.rs/async-rust/tokio/intro.html)
-- [cli](https://suibianxiedianer.github.io/rust-cli-book-zh_CN/)
+- [trpl](https://github.com/KaiserY/trpl-zh-cn)
 - [rustlings](https://github.com/rust-lang/rustlings)
-- [api-guidelines](https://rust-chinese-translation.github.io/api-guidelines/)
-- [markdown](https://markdown.tw)
-- [github-cheat-sheet](https://github.com/tiimgreen/github-cheat-sheet/blob/master/README.zh-cn.md)
+- [cli](https://github.com/rust-cli/book)
+- [async](https://github.com/rust-lang/async-book)
+- [api-guidelines](https://github.com/rust-lang/api-guidelines)
 
 ## Libraries
 
@@ -55,9 +53,10 @@ Rust learning notes
 
 ## Theories
 
+- [how-web-works](https://github.com/vasanthk/how-web-works)
+- [http2-explained](https://github.com/bagder/http2-explained)
+- [http3-explained](https://github.com/bagder/http3-explained)
 - [Algorithms](https://github.com/TheAlgorithms/Rust)
-- [http2-explained](https://http2-explained.haxx.se/zh)
-- [http3-explained](https://http3-explained.haxx.se/zh)
-- [system-design](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md)
-- [blog_os](https://github.com/rustcc/writing-an-os-in-rust)
+- [system-design-primer](https://github.com/donnemartin/system-design-primer)
+- [blog_os](https://github.com/phil-opp/blog_os)
 - [zCore](https://github.com/rcore-os/zCore)
