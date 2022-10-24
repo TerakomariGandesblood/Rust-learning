@@ -9,7 +9,7 @@
 
 Rust learning notes
 
-## Reference
+## Books
 
 - [trpl](https://github.com/KaiserY/trpl-zh-cn)
 - [rustlings](https://github.com/rust-lang/rustlings)
