@@ -15,6 +15,7 @@ Rust learning notes
 - [rustlings](https://github.com/rust-lang/rustlings)
 - [cli](https://github.com/rust-cli/book)
 - [async](https://github.com/rust-lang/async-book)
+- [WebAssembly](https://github.com/rustwasm/book)
 - [api-guidelines](https://github.com/rust-lang/api-guidelines)
 
 ## Libraries
@@ -50,6 +51,7 @@ Rust learning notes
 - [toml](https://github.com/toml-rs/toml)
 - [zip](https://github.com/zip-rs/zip)
 - [criterion](https://github.com/bheisler/criterion.rs)
+- [wasm-bindgen](https://github.com/rustwasm/wasm-bindgen)
 
 ## Theories
 
