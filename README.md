@@ -52,6 +52,8 @@ Rust learning notes
 - [zip](https://github.com/zip-rs/zip)
 - [criterion](https://github.com/bheisler/criterion.rs)
 - [wasm-bindgen](https://github.com/rustwasm/wasm-bindgen)
+- [futures-rs](https://github.com/rust-lang/futures-rs)
+- [crossbeam](https://github.com/crossbeam-rs/crossbeam)
 
 ## Theories
 
@@ -60,5 +62,6 @@ Rust learning notes
 - [http3-explained](https://github.com/bagder/http3-explained)
 - [Algorithms](https://github.com/TheAlgorithms/Rust)
 - [system-design-primer](https://github.com/donnemartin/system-design-primer)
+- [database](https://github.com/pingcap/talent-plan)
 - [blog_os](https://github.com/phil-opp/blog_os)
 - [zCore](https://github.com/rcore-os/zCore)
