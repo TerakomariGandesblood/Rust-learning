@@ -15,6 +15,7 @@ Rust learning notes
 - [rustlings](https://github.com/rust-lang/rustlings)
 - [cli](https://github.com/rust-cli/book)
 - [async](https://github.com/rust-lang/async-book)
+- [concurrency](https://github.com/smallnest/concurrency-programming-via-rust)
 - [WebAssembly](https://github.com/rustwasm/book)
 - [api-guidelines](https://github.com/rust-lang/api-guidelines)
 
