@@ -2,7 +2,7 @@
 use rand::Rng;
 use std::cmp::Ordering;
 // 默认情况下，Rust 设定了若干会自动导入到每个程序作用域中的标准库内容
-// 这组内容被称为预导入内容（preclude），如果需要的类型不在预导入内容中则需要使用 use 显式引入
+// 这组内容被称为预导入内容（preclude），如果需要的类型不在预导入内容中则需要使用 use 显式引入（也可以写全称）
 use std::io;
 
 fn main() {
@@ -23,7 +23,7 @@ fn main() {
 
         // stdin 函数返回一个 std::io::Stdin 的实例，这代表终端标准输入句柄的类型
         io::stdin()
-            // 读一行，追加到 guess，会保存换行符
+            // 读一行，追加到 guess，会保存 \n 或者 \r\n
             // & 表示一个引用，默认不可变
             // 该函数返回值类型为 io::Result（枚举）
             .read_line(&mut guess)
@@ -39,6 +39,7 @@ fn main() {
             Err(_) => continue,
         };
 
+        // 也会推断 secret_number 的类型
         match guess.cmp(&secret_number) {
             // 分支（arms）：模式（pattern）+ 代码
             Ordering::Less => println!("Too small!"),

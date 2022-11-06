@@ -18,6 +18,8 @@ Rust learning notes
 - [concurrency](https://github.com/smallnest/concurrency-programming-via-rust)
 - [WebAssembly](https://github.com/rustwasm/book)
 - [api-guidelines](https://github.com/rust-lang/api-guidelines)
+- [cargo book](https://doc.rust-lang.org/cargo/index.html)
+- [rustc book](https://doc.rust-lang.org/rustc/what-is-rustc.html)
 
 ## Libraries
 

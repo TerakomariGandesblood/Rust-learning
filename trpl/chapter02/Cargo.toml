@@ -2,7 +2,7 @@
 [package]
 name = "chapter02"
 version = "0.1.0"
-# 见 https://kaisery.github.io/trpl-zh-cn/appendix-05-editions.html
+# 见 https://doc.rust-lang.org/nightly/edition-guide/introduction.html
 edition = "2021"
 license = "MIT OR Apache-2.0"
 

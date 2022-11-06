@@ -8,5 +8,5 @@ license = "MIT OR Apache-2.0"
 proc-macro = true
 
 [dependencies]
-syn = "1.0.102"
+syn = "1.0.103"
 quote = "1.0.21"
