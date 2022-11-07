@@ -3,3 +3,4 @@
 # cargo run / cargo test 可以通过 -p 来运行特定的 crate
 [workspace]
 members = ["trpl/*", "async"]
+exclude = ["rustlings"]

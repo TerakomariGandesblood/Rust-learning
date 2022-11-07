@@ -1,6 +1,6 @@
 fn main() {
     let condition = true;
-    // if 表达式
+    // if 表达式，条件必须是 bool 类型
     // 两个块返回类型必须相同
     let _number = if condition { 3 } else { 4 };
 
@@ -22,6 +22,7 @@ fn loop_label() {
         loop {
             count += 1;
             if count == 10 {
+                // 跳出多层循环
                 break 'exit;
             }
         }
