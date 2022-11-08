@@ -1,3 +1,5 @@
+// crate 是 Rust 在编译时最小的代码单位
+
 // crate 是一个二进制项或者库
 // crate root 是一个源文件，Rust 编译器以它为起始点，并构成你的 crate 的根模块
 // src/main.rs 就是一个与包同名的二进制 crate 的 crate root

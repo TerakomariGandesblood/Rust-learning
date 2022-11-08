@@ -1,6 +1,7 @@
 fn main() {
     // slice 允许引用集合中一段连续的元素序列，见
-    // https://stackoverflow.com/questions/24158114/what-are-the-differences-between-rusts-string-and-str
+    // https://doc.rust-lang.org/std/primitive.slice.html
+    // https://doc.rust-lang.org/std/primitive.str.html
 
     let /*mut*/ s = String::from("Hello World");
     let word = first_word(&s);
@@ -23,11 +24,9 @@ fn main() {
     assert_eq!(slice, &[2, 3]);
 }
 
-// TODO &str，第十五章
 fn first_word(s: &str) -> &str {
     let bytes = s.as_bytes();
 
-    // TODO &item，第六章
     for (i, &item) in bytes.iter().enumerate() {
         if item == b' ' {
             return &s[..i];

@@ -5,7 +5,7 @@ fn main() {
     // 创建一个引用的行为称为借用（borrowing）
     println!("{}", calculate_length(&s));
 
-    // https://doc.rust-lang.org/nightly/reference/destructors.html#temporary-lifetime-extension
+    // 见 https://doc.rust-lang.org/reference/destructors.html#temporary-lifetime-extension
     let _str = &String::from("string");
 
     change(&mut s);
@@ -23,6 +23,7 @@ fn main() {
 
     // ok，因为其使用范围没有重叠
     // 编译器在作用域结束之前判断不再使用的引用的能力被称为非词法作用域生命周期（Non-Lexical Lifetimes）
+    // https://blog.rust-lang.org/2018/12/06/Rust-1.31-and-rust-2018.html#non-lexical-lifetimes
     let r1 = &s;
     println!("{}", r1);
     let r2 = &mut s;

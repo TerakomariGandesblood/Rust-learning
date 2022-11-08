@@ -35,7 +35,9 @@ fn value_in_cents(coin: Coin) -> u8 {
 
 fn add_fancy_hat() {}
 fn remove_fancy_hat() {}
-fn move_player(_num_spaces: u8) {}
+fn move_player(num_spaces: u8) {
+    println!("{}", num_spaces);
+}
 
 fn main() {
     println!("{}", value_in_cents(Coin::Quarter(UsState::_Alabama)));

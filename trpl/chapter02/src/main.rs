@@ -11,6 +11,7 @@ fn main() {
     // rand::thread_rng() 获取随机数生成器：它位于当前执行线程的本地环境中，并从操作系统获取 seed
     // 1..=100：范围表达式（range expression）
     let secret_number = rand::thread_rng().gen_range(1..=100);
+    // https://blog.rust-lang.org/2022/01/13/Rust-1.58.0.html#captured-identifiers-in-format-strings
     println!("The secret number is: {secret_number}");
 
     loop {
