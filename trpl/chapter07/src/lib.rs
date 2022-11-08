@@ -1,69 +1,60 @@
-// crate 是 Rust 在编译时最小的代码单位
+// 父模块中的项不能使用子模块中的私有项，但是子模块中的项可以使用他们父模块中的项
+mod front_of_house {
+    pub mod hosting {
+        pub fn add_to_waitlist() {}
+    }
+}
 
-// crate 是一个二进制项或者库
-// crate root 是一个源文件，Rust 编译器以它为起始点，并构成你的 crate 的根模块
-// src/main.rs 就是一个与包同名的二进制 crate 的 crate root
-// src/lib.rs 就是一个与包同名的库 crate 的 crate root
+fn _serve_order() {}
 
-// 包（package）是提供一系列功能的一个或者多个 crate
-// 包中可以包含至多一个库 crate，可以包含任意多个二进制 crate
-//（每个 src/bin 下的文件都会被编译成一个独立的二进制 crate），但是必须至少包含一个 crate
-
-// 在另一个与模块同名的文件中加载模块的内容
-mod front_of_house;
-
-// 重导出（re-exporting）
-// 允许外部代码使用这个新路径
-pub use crate::front_of_house::hosting;
-
-// 默认都是私有的
-// 子模块中的项可以使用他们父模块中的项
 mod back_of_house {
+    fn _fix_incorrect_order() {
+        // 从父模块开始的相对路径
+        super::_serve_order();
+        // 从当前模块开始的相对路径
+        self::_serve_order();
+    }
+
+    fn _serve_order() {}
+
+    // 结构体是公有的，但是其字段还默认是私有的
     pub struct _Breakfast {
-        // 默认还是私有的
         pub toast: String,
         // 注意因为无法设置 seasonal_fruit 的直，所有无法直接创建 _Breakfast 类型的变量
         seasonal_fruit: String,
     }
 
+    // 枚举是公有的则所有成员都是公有的
     pub enum _Appetizer {
-        // 默认公有
         Soup,
         Salad,
     }
-
-    impl _Breakfast {
-        pub fn _summer(toast: &str) -> _Breakfast {
-            _Breakfast {
-                toast: String::from(toast),
-                seasonal_fruit: String::from("peaches"),
-            }
-        }
-    }
 }
+
+// 使用 use 将模块引入作用域，按照惯例想引入函数引入其父模块，引入结构体、枚举则直接引入（除非冲突）
+// use front_of_house::hosting;
+// 使用 as 关键字重命名引入作用域的类型
+use std::io::Result as IoResult;
+// 重导出（re-exporting），使外部代码也可以直接使用 hosting
+pub use front_of_house::hosting;
 
 // 嵌套路径
 // use std::io::{self, Write};
 
-// 所有公有项引入当前作用域, 常用于测试
-// use std::collections::*;
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        // 更倾向于使用绝对路径
-        // 同一模块, 尽管 front_of_house 是私有的, 也可以访问
-        // crate root 在 crate 模块结构的根组成了一个名为 crate 的模块
-        // 整个模块树都植根于名为 crate 的隐式模块下
-        crate::front_of_house::hosting::_add_to_waitlist();
-        super::front_of_house::hosting::_add_to_waitlist();
+// 使用 glob 运算符引入所有公有项，常用于测试模块
+//use std::collections::*;
 
-        // 对于函数, 指定到父模块
-        // 对于结构体, 枚举等指定完整路径 (除非冲突)
-        use super::front_of_house::hosting;
-        hosting::_add_to_waitlist();
+fn _func() -> IoResult<()> {
+    Ok(())
+}
 
-        // use std::fmt::Result;
-        // use std::io::Result as IoResult;
-    }
+pub fn eat_at_restaurant() {
+    // 绝对路径，更倾向于使用绝对路径
+    // crate root 在 crate 模块结构的根组成了一个名为 crate 的模块
+    // 整个模块树都植根于名为 crate 的隐式模块下
+    crate::front_of_house::hosting::add_to_waitlist();
+    // 相对路径
+    front_of_house::hosting::add_to_waitlist();
+
+    hosting::add_to_waitlist();
 }
