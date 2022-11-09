@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 
 fn main() {
-    // 使用 SipHash
+    // HashMap 默认使用一种叫做 SipHash 的哈希函数，它可以抵御涉及哈希表（hash table）的拒绝服务（Denial of Service, DoS）攻击
     // https://en.wikipedia.org/wiki/SipHash
     let mut map = HashMap::new();
     map.insert(String::from("123"), 123);
@@ -16,7 +16,6 @@ fn main() {
     let field_value = String::from("Blue");
     let mut map = HashMap::new();
     // 注意，移动
-    // TODO 也可以将将值的引用插入哈希 map，第十章
     map.insert(field_name, field_value);
     println!("{:#?}", map);
 

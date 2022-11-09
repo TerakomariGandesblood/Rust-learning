@@ -25,13 +25,13 @@ fn main() {
     // v.push(1);
     // println!("{}", first);
 
+    // 注意使用 v，则 v 会被移动
     for i in &v {
         println!("{}", i);
     }
 
     let mut v = vec![1, 2, 3];
     for i in &mut v {
-        // TODO 解引用运算符，第十五章
         *i *= 50;
     }
 

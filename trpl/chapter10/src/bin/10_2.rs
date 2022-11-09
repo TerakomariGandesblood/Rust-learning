@@ -60,12 +60,39 @@ where
 }
 
 // 返回实现了 trait 的类型
+// 注意只能返回单一类型
 fn _returns_summarizable() -> impl Summary {
     Tweet {
         username: String::from("horse_ebooks"),
         content: String::from("of course, as you probably already know, people"),
     }
 }
+
+struct Pair<T> {
+    x: T,
+    y: T,
+}
+
+impl<T> Pair<T> {
+    fn new(x: T, y: T) -> Self {
+        Self { x, y }
+    }
+}
+
+// 使用 trait bound 有条件地实现方法
+impl<T: Display + PartialOrd> Pair<T> {
+    fn cmp_display(&self) {
+        if self.x >= self.y {
+            println!("The largest member is x = {}", self.x);
+        } else {
+            println!("The largest member is y = {}", self.y);
+        }
+    }
+}
+
+// NOTE blanket implementations
+// 对实现了特定 trait 的类型有条件地实现 trait
+// impl<T: Display> ToString for T {}
 
 fn main() {
     let tweet = Tweet {
@@ -74,4 +101,7 @@ fn main() {
     };
 
     println!("1 new tweet: {}", tweet.summarize());
+
+    let pair = Pair::new(1, 2);
+    pair.cmp_display();
 }

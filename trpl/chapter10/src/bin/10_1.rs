@@ -30,6 +30,7 @@ impl<T> Point<T> {
     }
 }
 
+// 为特定类型实现
 impl Point<f32> {
     fn _distance_from_origin(&self) -> f32 {
         (self._x.powi(2) + self._y.powi(2)).sqrt()

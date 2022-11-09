@@ -2,7 +2,6 @@ use std::fs::{self, File};
 use std::io::{self, ErrorKind, Read};
 
 fn main() {
-    // TODO unwrap_or_else 第十三章
     let _file = match File::open("hello.txt") {
         Ok(file) => file,
         Err(error) => match error.kind() {
@@ -10,7 +9,7 @@ fn main() {
                 Ok(file) => file,
                 Err(error) => panic!("Problem creating the file: {:?}", error),
             },
-            other_error => panic!("Problem opening the file: {:?}", other_error),
+            _ => panic!("Problem opening the file: {:?}", error),
         },
     };
 
@@ -62,9 +61,7 @@ fn _last_char_of_first_line(text: &str) -> Option<char> {
     text.lines().next()?.chars().last()
 }
 
-// TODO 第十七章
 // Box<dyn Error> 类型是一个 trait 对象（trait object）
-// 可以理解为任何类型的错误
 // 如果 main 返回 Ok(()) 可执行程序会以 0 值退出, 而如果 main 返回 Err 值则会以非零值退出
 // fn main() -> Result<(), Box<dyn Error>> {
 //     let f = File::open("hello.txt")?;
@@ -72,4 +69,4 @@ fn _last_char_of_first_line(text: &str) -> Option<char> {
 // }
 
 // main 函数也可以返回任何实现了 std::process::Termination trait 的类型
-// Termination trait 是一个不稳定功能（unstable feature）
+// https://doc.rust-lang.org/std/process/trait.Termination.html
