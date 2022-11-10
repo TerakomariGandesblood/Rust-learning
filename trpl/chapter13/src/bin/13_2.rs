@@ -6,7 +6,6 @@ fn main() {
     let iter = v.iter();
 
     // for 循环会获取 v1_iter 的所有权并在后台使 v1_iter 可变
-    // 从 next 调用中得到的值是 vector 的不可变引用
     for val in iter {
         println!("{}", val);
     }

@@ -1,3 +1,4 @@
+// 不并行运行测试
 // cargo test -- --test-threads=1
 // 显示通过的测试中打印的内容
 // cargo test -- --show-output
@@ -19,12 +20,12 @@ pub fn add(left: usize, right: usize) -> usize {
 
 // 单元测试（unit tests）
 // #[cfg(test)] 注解告诉 Rust 只在执行 cargo test 时才编译和运行测试代码
+// cfg -> configuration
 #[cfg(test)]
 mod tests {
     use super::*;
 
     // Rust 中的测试就是带有 test 属性（attribute）注解的函数
-    // TODO 性能测试 https://doc.rust-lang.org/unstable-book/library-features/test.html
     #[test]
     // 忽略测试
     #[ignore]
@@ -36,6 +37,7 @@ mod tests {
     }
 
     #[test]
+    // 在 #[test] 之后
     #[should_panic(expected = "a test panic")]
     fn it_will_panic() {
         panic!("a test panic");

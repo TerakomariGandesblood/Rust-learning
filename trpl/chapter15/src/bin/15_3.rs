@@ -9,7 +9,6 @@ use List::{Cons, Nil};
 
 fn main() {
     // 引用计数（reference counting）智能指针
-    // TODO 第十六章
     // 注意 Rc<T> 只能用于单线程场景
     let a = Rc::new(Cons(5, Rc::new(Cons(10, Rc::new(Nil)))));
     println!("count after creating a = {}", Rc::strong_count(&a));

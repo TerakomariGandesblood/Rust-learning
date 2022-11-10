@@ -7,12 +7,14 @@
 // pass! Make the test fail!
 // Execute `rustlings hint tests1` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
-
 #[cfg(test)]
 mod tests {
+    fn add_two(val: i32) -> i32 {
+        val + 2
+    }
+
     #[test]
     fn you_can_assert() {
-        assert!();
+        assert!(add_two(2) == 4);
     }
 }

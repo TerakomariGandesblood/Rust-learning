@@ -12,7 +12,14 @@ fn main() {
     assert!(equal_to_x(y));
 
     let x = vec![1, 2, 3];
-    // 强制闭包获取其使用的环境值的所有权，可以在参数列表前使用 move 关键字
+    // 所有的闭包都实现了 trait Fn、FnMut 或 FnOnce 中的一个（函数都实现了这三个 trait）
+    // 由于所有闭包都可以被调用至少一次，所以所有闭包都实现了 FnOnce
+    // 那些并没有移动被捕获变量的所有权到闭包内的闭包也实现了 FnMut
+    // 而不需要对被捕获的变量进行可变访问的闭包则也实现了 Fn
+
+    // https://zhuanlan.zhihu.com/p/23710601
+
+    // 强制闭包获取其使用的环境值的所有权，可以在参数列表前使用 move 关键字，如将数据移动到新线程
     let equal_to_x = move |z| z == x;
     // println!("can't use x here: {:?}", x);
     let y = vec![1, 2, 3];
@@ -31,8 +38,8 @@ impl<T> Cacher<T>
 where
     T: Fn(u32) -> u32,
 {
-    fn new(calculation: T) -> Cacher<T> {
-        Cacher {
+    fn new(calculation: T) -> Self {
+        Self {
             calculation,
             value: HashMap::new(),
         }
@@ -54,7 +61,6 @@ fn generate_workout(intensity: u32, random_number: u32) {
     // 可以选择注明类型，不注明则需要调用
     // 如果闭包体只有一行则大括号可以省略
     // 每个闭包的类型都是不同的
-    // 所有的闭包都实现了 trait Fn、FnMut 或 FnOnce 中的一个（函数也都实现了这几个 trait）
     let mut expensive_result = Cacher::new(|num| {
         println!("calculating slowly...");
         thread::sleep(Duration::from_secs(1));

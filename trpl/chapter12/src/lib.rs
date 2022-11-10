@@ -70,6 +70,7 @@ mod tests {
     #[test]
     fn case_sensitive() {
         let query = "duct";
+        // 开头的 \ 表明不在开头不添加换行符
         let contents = "\
 Rust:
 safe, fast, productive.

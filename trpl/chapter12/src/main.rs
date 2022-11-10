@@ -1,9 +1,15 @@
 use chapter12::Config;
 use std::{env, process};
 
+// main 函数中的责任应该被限制为：
+// 1、使用参数值调用命令行解析逻辑
+// 2、设置任何其他的配置
+// 3、调用 lib.rs 中的 run 函数
+// 4、如果 run 返回错误，则处理这个错误
 fn main() {
     // 第一个值是二进制文件名
     // 使用 unwrap_or_else 可以进行一些自定义的非 panic! 的错误处理
+    // 注意 std::env::args 在其任何参数包含无效 Unicode 字符时会 panic
     let config = Config::new(env::args()).unwrap_or_else(|err| {
         eprintln!("Problem parsing arguments: {}", err);
         process::exit(1);
