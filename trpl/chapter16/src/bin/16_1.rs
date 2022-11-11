@@ -2,7 +2,7 @@ use std::{thread, time::Duration};
 
 fn main() {
     // 创建一个新线程
-    // JoinHandle 是一个拥有所有权的值，当对其调用 join 方法时，它会等待其线程结束
+    // 执行顺序依赖操作系统如何调度线程
     let handle = thread::spawn(|| {
         for i in 1..10 {
             println!("hi number {} from the spawned thread!", i);
@@ -16,7 +16,8 @@ fn main() {
         thread::sleep(Duration::from_millis(1));
     }
 
-    // 阻塞（Blocking）当前线程直到 handle 所代表的线程结束
+    // JoinHandle 是一个拥有所有权的值
+    // 当对其调用 join 方法时，它会阻塞（Blocking）当前线程直到 handle 所代表的线程结束
     // 阻塞线程意味着阻止该线程执行工作或退出
     handle.join().unwrap();
 

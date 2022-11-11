@@ -1,4 +1,5 @@
 // 父模块中的项不能使用子模块中的私有项，但是子模块中的项可以使用他们父模块中的项
+// pub 控制的是否跨模块可见
 mod front_of_house {
     pub mod hosting {
         pub fn add_to_waitlist() {}
@@ -18,6 +19,7 @@ mod back_of_house {
     fn _serve_order() {}
 
     // 结构体是公有的，但是其字段还默认是私有的
+    // 注意同一模块可以访问私有字段
     pub struct _Breakfast {
         pub toast: String,
         // 注意因为无法设置 seasonal_fruit 的直，所有无法直接创建 _Breakfast 类型的变量

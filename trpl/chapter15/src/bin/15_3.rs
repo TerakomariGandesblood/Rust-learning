@@ -1,25 +1,24 @@
-use std::rc::Rc;
-
-enum List {
-    Cons(i32, Rc<List>),
-    Nil,
+struct CustomSmartPointer {
+    data: String,
 }
 
-use List::{Cons, Nil};
+// Drop trait 包含在 prelude 中
+impl Drop for CustomSmartPointer {
+    fn drop(&mut self) {
+        println!("Dropping CustomSmartPointer with data `{}`!", self.data);
+    }
+}
 
 fn main() {
-    // 引用计数（reference counting）智能指针
-    // 注意 Rc<T> 只能用于单线程场景
-    let a = Rc::new(Cons(5, Rc::new(Cons(10, Rc::new(Nil)))));
-    println!("count after creating a = {}", Rc::strong_count(&a));
-
-    // 每次调用 Rc::clone，引用计数都会增加
-    let _b = Cons(3, Rc::clone(&a));
-    println!("count after creating a = {}", Rc::strong_count(&a));
-
-    {
-        let _c = Cons(4, Rc::clone(&a));
-        println!("count after creating a = {}", Rc::strong_count(&a));
-    }
-    println!("count after creating a = {}", Rc::strong_count(&a));
+    let _c = CustomSmartPointer {
+        data: String::from("c: my stuff"),
+    };
+    let _d = CustomSmartPointer {
+        data: String::from("d: other stuff"),
+    };
+    println!("CustomSmartPointers created.");
+    // 提早清理
+    // 不允许显式调用析构函数
+    drop(_c);
+    println!("CustomSmartPointer dropped before the end of main.");
 }

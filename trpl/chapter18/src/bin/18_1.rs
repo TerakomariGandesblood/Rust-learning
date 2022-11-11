@@ -29,9 +29,11 @@ fn main() {
         println!("{} is at index {}", value, index);
     }
 
-    // _x / (_x, _y, _) 也是模式
+    // 下面的也是模式
     let _x = 5;
     let (_x, _y, _) = (1, 2, 3);
+    let (_x, ..) = (1, 2, 3);
+    let &_x = &_x;
 
     // &(3, 5) 会匹配模式 &(x, y)
     let point = (3, 5);

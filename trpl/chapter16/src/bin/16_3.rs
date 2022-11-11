@@ -7,7 +7,7 @@ use std::{
 // 互斥器为通过锁系统保护（guarding）其数据，线程首先需要通过获取互斥器的锁（lock）来表明其希望访问数据
 fn main() {
     // 原子引用计数（atomically reference counted），可以安全的在线程间共享
-    // Mutex<T> 有造成死锁（deadlock）的风险
+    // Mutex<T> 提供了内部可变性，有造成死锁（deadlock）的风险
     let counter = Arc::new(Mutex::new(0));
     let mut handles = vec![];
 
