@@ -1,7 +1,8 @@
 use std::slice;
 
 // 静态（static）变量，必须标注类型，静态变量只能储存拥有 'static 生命周期的引用
-// 访问和修改可变静态变量都是不安全的
+// 访问和修改可变静态变量都需要 unsafe
+// 与 const 的区别见：https://github.com/rust-lang/rfcs/blob/master/text/0246-const-vs-static.md
 static HELLO_WORLD: &str = "hello, world!";
 
 static mut COUNTER: u32 = 0;
@@ -10,7 +11,6 @@ fn main() {
     let mut num = 5;
 
     // 裸指针（raw pointers）
-    // 不能在不安全块之外解引用裸指针
     let r1 = &num as *const i32;
     let r2 = &mut num as *mut i32;
 
@@ -51,7 +51,7 @@ fn main() {
     }
 }
 
-// 关键字unsafe表示该函数具有调用时需要满足的要求，而 Rust 不会保证满足这些要求
+// 关键字 unsafe 表示该函数具有调用时需要满足的要求，而 Rust 不会保证满足这些要求
 // 不安全函数体也是有效的 unsafe 块，不需要再使用 unsafe
 unsafe fn dangerous() {}
 
@@ -72,6 +72,7 @@ fn split_at_mut(slice: &mut [i32], mid: usize) -> (&mut [i32], &mut [i32]) {
 // extern，创建和使用外部函数接口（Foreign Function Interface，FFI）
 // extern 块中声明的函数在 Rust 代码中总是不安全的
 // "C" 部分定义了外部函数所使用的应用二进制接口（application binary interface，ABI）
+// ABI 定义了如何在汇编语言层面调用此函数。"C" ABI 是最常见的，并遵循 C 编程语言的 ABI
 extern "C" {
     fn abs(input: i32) -> i32;
 }
@@ -81,3 +82,11 @@ fn add_to_count(inc: u32) {
         COUNTER += inc;
     }
 }
+
+// 比如，如果实现了一个包含一些不是 Send 或 Sync 的类型，比如裸指针，并希望将此类型标记为 Send 或 Sync，则必须使用 unsafe
+// Rust 不能验证我们的类型保证可以安全的跨线程发送或在多线程间访问，所以需要我们自己进行检查并通过 unsafe 表明
+#[allow(clippy::missing_safety_doc)]
+unsafe trait Foo {}
+unsafe impl Foo for i32 {}
+
+// 访问 union 中的字段需要 unsafe，主要用于和 C 代码中的 union 交互

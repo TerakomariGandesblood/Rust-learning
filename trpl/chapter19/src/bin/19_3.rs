@@ -1,5 +1,5 @@
 fn main() {
-    // 类型别名（type alias）
+    // 类型别名（type alias），用来减少重读
     type Kilometers = i32;
     type _Result<T> = std::result::Result<T, std::io::Error>;
 
@@ -15,6 +15,7 @@ fn main() {
 // !（never type）：在函数从不返回的时候充当返回值
 // never type 可以强转为任何其他类型
 // continue 的返回类型是 !
+// 不结束的 loop 的类型也是 !
 // 从不返回的函数被称为发散函数（diverging functions）
 fn _bar() -> ! {
     panic!("panic");

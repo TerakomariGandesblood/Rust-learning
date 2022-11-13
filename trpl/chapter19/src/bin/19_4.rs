@@ -15,6 +15,10 @@ fn _returns_closure() -> Box<dyn Fn(i32) -> i32> {
     Box::new(|x| x + 1)
 }
 
+fn _return_fn() -> fn(i32) -> i32 {
+    add_one
+}
+
 fn main() {
     let answer = do_twice(add_one, 5);
     println!("The answer is: {}", answer);
@@ -24,6 +28,7 @@ fn main() {
 
     let _list_of_string: Vec<String> = list_of_numbers.iter().map(ToString::to_string).collect();
 
+    // 这些项使用 () 作为初始化语法，这看起来就像函数调用，同时它们确实被实现为返回由参数构造的实例的函数
     enum Status {
         Value(u32),
     }

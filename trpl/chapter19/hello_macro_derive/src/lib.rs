@@ -16,13 +16,14 @@ fn impl_hello_macro(ast: &syn::DeriveInput) -> TokenStream {
     let name = &ast.ident;
     // quote! 宏能让我们编写希望返回的 Rust 代码
     let gen = quote! {
-        // 使用 #name quote! 会以名为 name 的变量值来替换它
+        // 使用 #name，quote! 会以名为 name 的变量值来替换它
         impl HelloMacro for #name {
             fn hello_macro() {
-                // stringify! 接收一个 Rust 表达式，然后在编译时将表达式转换为一个字符串常量
+                // stringify! 接收一个 Rust 表达式，然后在编译时将表达式转换为一个字符串字面量
                 println!("Hello, Macro! My name is {}!", stringify!(#name));
             }
         }
     };
+    // 转换类型
     gen.into()
 }

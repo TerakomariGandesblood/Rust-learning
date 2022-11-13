@@ -1,5 +1,5 @@
 use std::fmt::Display;
-use std::ops::Add;
+use std::ops::{Add, Deref};
 
 trait Iterator {
     // 关联类型（associated types）是一个将类型占位符与 trait 相关联的方式
@@ -19,8 +19,8 @@ struct Point {
 impl Add for Point {
     type Output = Point;
 
-    fn add(self, rhs: Self) -> Point {
-        Point {
+    fn add(self, rhs: Self) -> Self {
+        Self {
             x: self.x + rhs.x,
             y: self.y + rhs.y,
         }
@@ -93,12 +93,21 @@ impl Display for Point {
 
 impl OutlinePrint for Point {}
 
-// newtype 模式（newtype pattern）
+// newtype 模式（newtype pattern），绕开孤儿规则（orphan rule）的限制
 struct Wrapper(Vec<String>);
 
 impl Display for Wrapper {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "[{}]", self.0.join(", "))
+    }
+}
+
+// 暴露内部类型的每一个方法
+impl Deref for Wrapper {
+    type Target = Vec<String>;
+
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 
