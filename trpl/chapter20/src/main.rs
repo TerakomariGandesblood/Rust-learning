@@ -16,11 +16,11 @@ fn main() {
     // incoming 提供了一系列的流（更准确的说是 TcpStream 类型的流）
     // 流（stream）代表一个客户端和服务端之间打开的连接
     // 连接（connection）代表客户端连接服务端、服务端生成响应以及服务端关闭连接的全部请求 / 响应过程
-    for stream in listener.incoming().take(2) {
+    for stream in listener.incoming() {
         // 连接可能不成功，如系统限制同时打开的连接数
         let stream = stream.unwrap();
-        // 当 stream 在循环的结尾离开作用域并被丢弃，其连接将被关闭
         thread_pool.execute(|| handle_connection(stream));
+        // 当 stream 在循环的结尾离开作用域并被丢弃，其连接将被关闭
     }
 }
 

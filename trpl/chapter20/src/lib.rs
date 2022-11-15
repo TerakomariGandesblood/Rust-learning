@@ -42,7 +42,7 @@ impl ThreadPool {
 
     pub fn execute<F>(&self, f: F)
     where
-        // 由'static 限定的类型不能包含非static的引用类型
+        // 由 'static 限定的类型不能包含非 static 的引用类型
         F: FnOnce() + Send + 'static,
     {
         let job = Box::new(f);
