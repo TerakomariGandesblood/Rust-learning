@@ -2,7 +2,7 @@ use std::slice;
 
 // 静态（static）变量，必须标注类型，静态变量只能储存拥有 'static 生命周期的引用
 // 访问和修改可变静态变量都需要 unsafe
-// 与 const 的区别见：https://github.com/rust-lang/rfcs/blob/master/text/0246-const-vs-static.md
+// NOTE 与 const 的区别见：https://github.com/rust-lang/rfcs/blob/master/text/0246-const-vs-static.md
 static HELLO_WORLD: &str = "hello, world!";
 
 static mut COUNTER: u32 = 0;

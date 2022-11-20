@@ -17,7 +17,7 @@ fn main() {
     // 那些并没有移动被捕获变量的所有权到闭包内的闭包也实现了 FnMut
     // 而不需要对被捕获的变量进行可变访问的闭包则也实现了 Fn
 
-    // https://zhuanlan.zhihu.com/p/23710601
+    // NOTE https://zhuanlan.zhihu.com/p/23710601
 
     // 强制闭包获取其使用的环境值的所有权，可以在参数列表前使用 move 关键字，如将数据移动到新线程
     let equal_to_x = move |z| z == x;

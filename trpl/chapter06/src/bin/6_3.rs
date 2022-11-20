@@ -15,7 +15,9 @@ fn func(config_max: Option<u8>) {
     println!("{}", max);
 
     // 同上
+    // NOTE https://blog.rust-lang.org/2022/11/03/Rust-1.65.0.html#let-else-statements
     let Some(max) = config_max else {
+        // 只能是 panic!、return、break 等
         panic!("No maximum");
     };
     println!("{}", max);

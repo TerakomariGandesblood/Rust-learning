@@ -11,7 +11,7 @@ fn main() {
 
     // NOTE 发生移动
     match y {
-        // https://doc.rust-lang.org/std/keyword.ref.html
+        // NOTE https://doc.rust-lang.org/std/keyword.ref.html
         Some(ref p) => println!("Co-ordinates are {},{} ", p.x, p.y),
         _ => println!("no match"),
     }

@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 fn main() {
     // HashMap 默认使用一种叫做 SipHash 的哈希函数，它可以抵御涉及哈希表（hash table）的拒绝服务（Denial of Service, DoS）攻击
-    // https://en.wikipedia.org/wiki/SipHash
+    // NOTE https://en.wikipedia.org/wiki/SipHash
     let mut map = HashMap::new();
     map.insert(String::from("123"), 123);
     println!("{:#?}", map);

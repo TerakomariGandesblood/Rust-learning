@@ -1,4 +1,4 @@
-// 1、Rust 中的每一个值都有一个 所有者（owner）
+// 1、Rust 中的每一个值都有一个所有者（owner）
 // 2、值在任一时刻有且只有一个所有者
 // 3、当所有者（变量）离开作用域，这个值将被丢弃
 
@@ -36,6 +36,6 @@ fn main() {
     }
 
     // Rust 不允许自身或其任何部分实现了 Drop trait 的类型使用 Copy trait
-    // 类型实现了 Copy trait，默认将不是 move 而是 copy，见
-    // https://zhuanlan.zhihu.com/p/21730929
+    // 类型实现了 Copy trait，默认将不是 move 而是 copy
+    // NOTE https://zhuanlan.zhihu.com/p/21730929
 }

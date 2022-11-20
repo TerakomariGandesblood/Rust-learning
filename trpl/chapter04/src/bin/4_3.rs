@@ -1,7 +1,7 @@
 fn main() {
     // slice 允许引用集合中一段连续的元素序列，见
-    // https://doc.rust-lang.org/std/primitive.slice.html
-    // https://doc.rust-lang.org/std/primitive.str.html
+    // NOTE https://doc.rust-lang.org/std/primitive.slice.html
+    // NOTE https://doc.rust-lang.org/std/primitive.str.html
 
     let /*mut*/ s = String::from("Hello World");
     let word = first_word(&s);

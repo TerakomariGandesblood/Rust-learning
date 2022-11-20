@@ -69,4 +69,4 @@ fn _last_char_of_first_line(text: &str) -> Option<char> {
 // }
 
 // main 函数也可以返回任何实现了 std::process::Termination trait 的类型
-// https://doc.rust-lang.org/std/process/trait.Termination.html
+// NOTE https://doc.rust-lang.org/std/process/trait.Termination.html

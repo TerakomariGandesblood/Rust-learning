@@ -63,6 +63,7 @@ impl Drop for ThreadPool {
         for worker in &mut self.workers {
             println!("Shutting down worker {}", worker.id);
 
+            // take 会获取所有权
             if let Some(thread) = worker.thread.take() {
                 thread.join().unwrap();
             }
