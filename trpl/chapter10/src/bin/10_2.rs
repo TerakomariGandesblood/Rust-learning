@@ -90,9 +90,11 @@ impl<T: Display + PartialOrd> Pair<T> {
     }
 }
 
-// NOTE blanket implementations
+// blanket implementations
 // 对实现了特定 trait 的类型有条件地实现 trait
-// impl<T: Display> ToString for T {}
+trait MyTrait {}
+
+impl<T> MyTrait for T where T: Display {}
 
 fn main() {
     let tweet = Tweet {

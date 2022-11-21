@@ -44,7 +44,6 @@ mod tests {
     }
 
     // 不能使用 should_panic
-    // 为了断言一个操作返回 Err 成员，不要使用对 Result<T, E> 值使用问号表达式（?）。而是使用 assert!(value.is_err())
     #[test]
     fn result() -> Result<(), String> {
         // 测试成功时不显示
