@@ -12,4 +12,6 @@ license = "MIT OR Apache-2.0"
 # cargo add 添加 crate
 # cargo doc 构建文档（包括依赖）
 # cargo update 忽略 Cargo.lock，并计算出所有符合 Cargo.toml 声明的最新版本并写入 Cargo.lock
+
+# https://github.com/rust-random/rand
 rand = "0.8.5"
