@@ -81,7 +81,6 @@ impl Animal for Dog {
 trait OutlinePrint: Display {
     fn outline_print(&self) {
         let _output = self.to_string();
-        // ...
     }
 }
 

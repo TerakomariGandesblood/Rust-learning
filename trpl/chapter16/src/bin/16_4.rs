@@ -9,4 +9,5 @@
 // 智能指针 Rc<T> 也不是 Sync 的
 // RefCell<T> 和 Cell<T> 系列类型不是 Sync 的。
 // RefCell<T> 在运行时所进行的借用检查也不是线程安全的
+// Mutex<T> 是 Sync 的
 fn main() {}

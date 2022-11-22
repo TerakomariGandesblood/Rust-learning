@@ -11,14 +11,25 @@ Rust learning notes
 
 ## Books
 
-- [trpl](https://github.com/KaiserY/trpl-zh-cn)
-- [rustlings](https://github.com/rust-lang/rustlings)
-- [cli](https://github.com/rust-cli/book)
-- [async](https://github.com/rust-lang/async-book)
-- [WebAssembly](https://github.com/rustwasm/book)
-- [api-guidelines](https://github.com/rust-lang/api-guidelines)
-- [cargo book](https://doc.rust-lang.org/cargo/index.html)
-- [rustc book](https://doc.rust-lang.org/rustc/what-is-rustc.html)
+- [x] [trpl](https://github.com/KaiserY/trpl-zh-cn)
+- [x] [rustlings](https://github.com/rust-lang/rustlings)
+- [ ] [cli](https://github.com/rust-cli/book)
+- [ ] [async](https://github.com/rust-lang/async-book)
+- [ ] [WebAssembly](https://github.com/rustwasm/book)
+- [ ] [api-guidelines](https://github.com/rust-lang/api-guidelines)
+- [ ] [cargo book](https://doc.rust-lang.org/cargo/index.html)
+- [ ] [rustc book](https://doc.rust-lang.org/rustc/what-is-rustc.html)
+
+## Theories
+
+- [ ] [how-web-works](https://github.com/vasanthk/how-web-works)
+- [ ] [http2-explained](https://github.com/bagder/http2-explained)
+- [ ] [http3-explained](https://github.com/bagder/http3-explained)
+- [ ] [Algorithms](https://github.com/TheAlgorithms/Rust)
+- [ ] [system-design-primer](https://github.com/donnemartin/system-design-primer)
+- [ ] [database](https://github.com/pingcap/talent-plan)
+- [ ] [blog_os](https://github.com/phil-opp/blog_os)
+- [ ] [zCore](https://github.com/rcore-os/zCore)
 
 ## Libraries
 
@@ -56,14 +67,3 @@ Rust learning notes
 - [wasm-bindgen](https://github.com/rustwasm/wasm-bindgen)
 - [futures-rs](https://github.com/rust-lang/futures-rs)
 - [crossbeam](https://github.com/crossbeam-rs/crossbeam)
-
-## Theories
-
-- [how-web-works](https://github.com/vasanthk/how-web-works)
-- [http2-explained](https://github.com/bagder/http2-explained)
-- [http3-explained](https://github.com/bagder/http3-explained)
-- [Algorithms](https://github.com/TheAlgorithms/Rust)
-- [system-design-primer](https://github.com/donnemartin/system-design-primer)
-- [database](https://github.com/pingcap/talent-plan)
-- [blog_os](https://github.com/phil-opp/blog_os)
-- [zCore](https://github.com/rcore-os/zCore)

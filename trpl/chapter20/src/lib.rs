@@ -4,7 +4,6 @@ use std::{
 };
 
 pub struct ThreadPool {
-    // 传入的闭包不返回任何值
     workers: Vec<Worker>,
     sender: mpsc::Sender<Message>,
 }

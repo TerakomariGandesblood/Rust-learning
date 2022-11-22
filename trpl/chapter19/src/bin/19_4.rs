@@ -5,7 +5,6 @@ fn add_one(x: i32) -> i32 {
 // 函数指针（function pointer）
 // 函数指针实现了所有三个闭包 trait（Fn、FnMut 和 FnOnce），所以总是可以在调用期望闭包的函数时传递函数指针作为参数
 // 倾向于编写使用泛型和闭包 trait 的函数，这样它就能接受函数或闭包作为参数
-// 不允许使用函数指针 fn 作为返回值类型
 fn do_twice(f: fn(i32) -> i32, arg: i32) -> i32 {
     f(arg) + f(arg)
 }

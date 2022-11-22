@@ -136,6 +136,7 @@ fn main() {
         match msg {
             Message::Hello {
                 // at 运算符（@）允许我们在创建一个存放值的变量的同时测试其值是否匹配模式
+                // 同样只能是闭区间
                 id: id_variable @ 3..=7,
             } => println!("Found an id in range: {}", id_variable),
             Message::Hello { id: 10..=12 } => {
