@@ -1,64 +1,95 @@
 // CLI (command line interface)
 
-use std::{fs, path::PathBuf, thread, time::Duration};
+use std::fmt::Write;
+use std::thread;
+use std::time::Duration;
+use std::{env, fs, path::PathBuf};
 
-use anyhow::{Context, Ok, Result};
+use anyhow::{Context, Result};
 use clap::Parser;
-use indicatif::ProgressBar;
-use tracing::{debug, info, trace};
+use clap_verbosity_flag::Verbosity;
+use human_panic::setup_panic;
+use indicatif::{ProgressBar, ProgressState, ProgressStyle};
+use serde::{Deserialize, Serialize};
+use tracing::info;
+use tracing_log::log;
+use tracing_subscriber::filter::LevelFilter;
+use tracing_subscriber::fmt::time::LocalTime;
 
 /// Search for a pattern in a file and display the lines that contain it.
-#[derive(Parser)]
+#[derive(Debug, Parser)]
 struct Cli {
     /// The pattern to look for
     pattern: String,
     /// The path to the file to read
     path: PathBuf,
+
+    #[clap(flatten)]
+    verbose: Verbosity,
 }
 
-fn find_matches(content: &str, pattern: &str) {
-    for line in content.lines() {
-        if line.contains(pattern) {
-            println!("{}", line);
-        }
-    }
+#[derive(Default, Debug, Serialize, Deserialize)]
+struct Config {
+    version: u8,
+}
+
+fn app_name() -> String {
+    let path = env::current_exe().unwrap();
+    path.file_name().unwrap().to_str().unwrap().to_string()
 }
 
 fn main() -> Result<()> {
-    // 应该在 main 函数中使用，遇到错误时，将打印错误信息并退出
+    setup_panic!(Metadata {
+        name: env!("CARGO_PKG_NAME").into(),
+        version: env!("CARGO_PKG_VERSION").into(),
+        authors: env!("CARGO_PKG_AUTHORS").into(),
+        homepage: env!("CARGO_PKG_HOMEPAGE").into(),
+    });
+
     let args = Cli::parse();
 
-    let pb = ProgressBar::new(5);
-    for i in 0..5 {
-        thread::sleep(Duration::from_millis(200));
-        pb.println(format!("[+] finished #{}", i));
-        pb.inc(1);
-    }
-    pb.finish_with_message("done");
+    tracing_subscriber::fmt()
+        .with_timer(LocalTime::rfc_3339())
+        .with_max_level(convert_filter(args.verbose.log_level_filter()))
+        .init();
 
-    tracing_subscriber::fmt::init();
-    let number_of_yaks = 3;
-    info!("preparing to shave yaks: {}", number_of_yaks);
+    info!("info");
+    tracing::debug!("debug");
+    tracing::trace!("trace");
+    tracing::error!("error");
+    tracing::warn!("warn");
 
-    debug!("debug");
-    trace!("trace");
+    let app_name = app_name();
+    let cfg: Config = confy::load(&app_name, None)?;
+    confy::store(&app_name, None, cfg)?;
 
-    // TODO use https://doc.rust-lang.org/std/io/struct.BufReader.html#examples
     let content = fs::read_to_string(&args.path)
         .with_context(|| format!("could not read file `{}`", &args.path.to_str().unwrap()))?;
 
-    find_matches(&content, &args.pattern);
+    let pb = ProgressBar::new(5);
+    pb.set_style(ProgressStyle::with_template("{spinner:.green} [{elapsed_precise}] [{wide_bar:.cyan/blue}] {bytes}/{total_bytes} ({eta})")
+        .unwrap()
+        .with_key("eta", |state: &ProgressState, w: &mut dyn Write| write!(w, "{:.1}s", state.eta().as_secs_f64()).unwrap())
+        .progress_chars("#>-"));
+
+    for _ in 0..5 {
+        pb.inc(1);
+        thread::sleep(Duration::from_millis(200));
+    }
+    pb.finish_with_message("done");
+
+    cli::find_matches(&content, &args.pattern, &mut std::io::stdout())?;
 
     Ok(())
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn find_a_match() {
-        find_matches("lorem ipsum\ndolor sit amet", "lorem");
-        // assert_eq!()
+fn convert_filter(filter: log::LevelFilter) -> LevelFilter {
+    match filter {
+        log::LevelFilter::Off => LevelFilter::OFF,
+        log::LevelFilter::Error => LevelFilter::ERROR,
+        log::LevelFilter::Warn => LevelFilter::WARN,
+        log::LevelFilter::Info => LevelFilter::INFO,
+        log::LevelFilter::Debug => LevelFilter::DEBUG,
+        log::LevelFilter::Trace => LevelFilter::TRACE,
     }
 }
