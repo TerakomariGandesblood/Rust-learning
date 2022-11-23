@@ -39,22 +39,3 @@ Another test",
 
     Ok(())
 }
-
-#[test]
-fn find_no_content_in_file() -> Result<()> {
-    let file = assert_fs::NamedTempFile::new("sample.txt")?;
-    file.write_str(
-        "\
-A test
-Actual content
-More content
-Another test
-",
-    )?;
-
-    let mut cmd = Command::cargo_bin("cli")?;
-    cmd.arg("is").arg(file.path());
-    cmd.assert().success().stdout(predicate::str::is_empty());
-
-    Ok(())
-}
