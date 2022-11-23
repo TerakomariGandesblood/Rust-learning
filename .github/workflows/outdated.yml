@@ -8,38 +8,35 @@ on:
     paths-ignore:
       - "**.md"
 
-jobs:
-  build:
-    strategy:
-      matrix:
-        platform:
-          - { os: "macos-latest", target: "x86_64-apple-darwin" }
+permissions:
+  contents: read
 
-    runs-on: ${{ matrix.platform.os }}
+jobs:
+  outdated:
+    name: Outdated
+    runs-on: macos-latest
 
     steps:
       # https://github.com/actions/checkout
       - name: Checkout
         uses: actions/checkout@v3
 
-      # https://github.com/actions-rs/toolchain
-      - name: Install stable toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          default: true
-          override: true
-          toolchain: stable
-          profile: minimal
-          target: ${{ matrix.platform.target }}
-
       # https://github.com/Swatinem/rust-cache
-      - name: Rust cache
+      - name: Cache
         uses: Swatinem/rust-cache@v2
+
+      # https://github.com/dtolnay/rust-toolchain
+      - name: Install stable Rust toolchain
+        uses: dtolnay/rust-toolchain@master
         with:
-          key: outdated
+          toolchain: stable
+
+      # https://github.com/taiki-e/install-action
+      - name: Install cargo-outdated
+        uses: taiki-e/install-action@v1
+        with:
+          tool: cargo-outdated
 
       # https://github.com/kbknapp/cargo-outdated
       - name: Run cargo outdated
-        run: |
-          cargo install cargo-outdated
-          cargo outdated --workspace --exit-code 1
+        run: cargo outdated --workspace --exit-code 1

@@ -8,40 +8,29 @@ on:
     paths-ignore:
       - "**.md"
 
-jobs:
-  build:
-    strategy:
-      matrix:
-        platform:
-          - { os: "ubuntu-latest", target: "x86_64-unknown-linux-gnu" }
-          - { os: "ubuntu-latest", target: "x86_64-unknown-linux-musl" }
-          - { os: "macos-latest", target: "aarch64-apple-darwin" }
-          - { os: "macos-latest", target: "x86_64-apple-darwin" }
-          - { os: "windows-latest", target: "x86_64-pc-windows-msvc" }
+permissions:
+  contents: read
 
-    runs-on: ${{ matrix.platform.os }}
+jobs:
+  clippy:
+    name: Clippy
+    runs-on: macos-latest
 
     steps:
       # https://github.com/actions/checkout
       - name: Checkout
         uses: actions/checkout@v3
 
-      # https://github.com/actions-rs/toolchain
-      - name: Install stable toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          default: true
-          override: true
-          toolchain: stable
-          profile: minimal
-          components: clippy
-          target: ${{ matrix.platform.target }}
-
       # https://github.com/Swatinem/rust-cache
-      - name: Rust cache
+      - name: Cache
         uses: Swatinem/rust-cache@v2
-        with:
-          key: clippy
 
-      - name: Run cargo clippy
-        run: cargo clippy --target ${{ matrix.platform.target }} --workspace --locked --all-targets -- --deny clippy::all
+      # https://github.com/dtolnay/rust-toolchain
+      - name: Install Clippy
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: stable
+          components: clippy
+
+      - name: Run Clippy
+        run: cargo clippy --workspace --locked --all-targets -- --deny clippy::all

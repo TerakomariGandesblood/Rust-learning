@@ -8,42 +8,30 @@ on:
     paths-ignore:
       - "**.md"
 
-jobs:
-  build:
-    strategy:
-      matrix:
-        platform:
-          - { os: "ubuntu-latest", target: "x86_64-unknown-linux-gnu" }
-          - { os: "ubuntu-latest", target: "x86_64-unknown-linux-musl" }
-          - { os: "macos-latest", target: "aarch64-apple-darwin" }
-          - { os: "macos-latest", target: "x86_64-apple-darwin" }
-          - { os: "windows-latest", target: "x86_64-pc-windows-msvc" }
+permissions:
+  contents: read
 
-    runs-on: ${{ matrix.platform.os }}
+jobs:
+  miri:
+    name: Miri
+    runs-on: macos-latest
 
     steps:
       # https://github.com/actions/checkout
       - name: Checkout
         uses: actions/checkout@v3
 
-      # https://github.com/actions-rs/toolchain
-      - name: Install nightly toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          default: true
-          override: true
-          toolchain: nightly
-          profile: minimal
-          components: miri
-          target: ${{ matrix.platform.target }}
-
       # https://github.com/Swatinem/rust-cache
-      - name: Rust cache
+      - name: Cache
         uses: Swatinem/rust-cache@v2
+
+      # https://github.com/dtolnay/rust-toolchain
+      - name: Install nightly Rust toolchain
+        uses: dtolnay/rust-toolchain@master
         with:
-          key: miri
+          toolchain: nightly
+          components: miri
 
       # https://github.com/rust-lang/miri
-      - name: Run cargo miri
-        if: ${{ startsWith(matrix.platform.target, 'x86_64') }}
-        run: cargo +nightly miri test --target ${{ matrix.platform.target }} --workspace --locked --all-targets
+      - name: Run miri
+        run: cargo +nightly miri test --workspace --locked --all-targets

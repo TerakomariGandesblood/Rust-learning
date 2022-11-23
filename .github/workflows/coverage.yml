@@ -8,48 +8,40 @@ on:
     paths-ignore:
       - "**.md"
 
+permissions:
+  contents: read
+
 env:
-  RUSTFLAGS: "-D warnings -C instrument-coverage"
+  RUSTFLAGS: "-C instrument-coverage"
 
 jobs:
-  build:
-    strategy:
-      matrix:
-        platform:
-          - { os: "macos-latest", target: "x86_64-apple-darwin" }
-
-    runs-on: ${{ matrix.platform.os }}
+  coverage:
+    name: Coverage
+    runs-on: macos-latest
 
     steps:
       # https://github.com/actions/checkout
       - name: Checkout
         uses: actions/checkout@v3
 
-      # https://github.com/actions-rs/toolchain
-      - name: Install stable toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          default: true
-          override: true
-          toolchain: stable
-          profile: minimal
-          components: llvm-tools-preview
-          target: ${{ matrix.platform.target }}
-
       # https://github.com/Swatinem/rust-cache
-      - name: Rust cache
+      - name: Cache
         uses: Swatinem/rust-cache@v2
+
+      # https://github.com/dtolnay/rust-toolchain
+      - name: Install stable Rust toolchain
+        uses: dtolnay/rust-toolchain@master
         with:
-          key: coverage
+          toolchain: stable
 
       - name: Run cargo test
-        run: cargo test --target ${{ matrix.platform.target }} --workspace --locked --all-targets
+        run: cargo test --workspace --locked --all-targets
 
       # https://github.com/mozilla/grcov
       - name: Generate lcov
         run: |
           curl -fsSL https://github.com/mozilla/grcov/releases/latest/download/grcov-x86_64-apple-darwin.tar.bz2 | tar jxf -
-          ./grcov . --binary-path ./target/${{ matrix.platform.target }}/debug/ -s . -t lcov --branch --ignore-not-existing --ignore "/*" -o lcov.info
+          ./grcov . --binary-path ./target/debug/ -s . -t lcov --branch --ignore-not-existing --ignore "/*" -o lcov.info
 
       # https://github.com/codecov/codecov-action
       - name: Upload to codecov

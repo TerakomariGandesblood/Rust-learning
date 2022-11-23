@@ -8,36 +8,35 @@ on:
     paths-ignore:
       - "**.md"
 
-jobs:
-  build:
-    strategy:
-      matrix:
-        platform:
-          - { os: "macos-latest", target: "x86_64-apple-darwin" }
+permissions:
+  contents: read
 
-    runs-on: ${{ matrix.platform.os }}
+jobs:
+  fmt:
+    name: Fmt
+    runs-on: macos-latest
 
     steps:
       # https://github.com/actions/checkout
       - name: Checkout
         uses: actions/checkout@v3
 
-      # https://github.com/actions-rs/toolchain
-      - name: Install nightly toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          default: true
-          override: true
-          toolchain: nightly
-          profile: minimal
-          components: rustfmt
-          target: ${{ matrix.platform.target }}
-
       # https://github.com/Swatinem/rust-cache
-      - name: Rust cache
+      - name: Cache
         uses: Swatinem/rust-cache@v2
-        with:
-          key: fmt
 
-      - name: Run cargo fmt
+      # https://github.com/dtolnay/rust-toolchain
+      - name: Install nightly Rust toolchain
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: nightly
+          components: rustfmt
+
+      - name: Run rustfmt
         run: cargo +nightly fmt --check --all
+
+      - name: Install prettier
+        run: npm install -g prettier
+
+      - name: Run prettier
+        run: prettier --check .

@@ -7,42 +7,36 @@ on:
   pull_request:
     paths-ignore:
       - "**.md"
-  schedule:
-    # At the end of every day
-    - cron: "0 0 * * *"
+
+permissions:
+  contents: read
 
 jobs:
-  build:
-    strategy:
-      matrix:
-        platform:
-          - { os: "macos-latest", target: "x86_64-apple-darwin" }
-
-    runs-on: ${{ matrix.platform.os }}
+  deny:
+    name: Deny
+    runs-on: macos-latest
 
     steps:
       # https://github.com/actions/checkout
       - name: Checkout
         uses: actions/checkout@v3
 
-      # https://github.com/actions-rs/toolchain
-      - name: Install stable toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          default: true
-          override: true
-          toolchain: stable
-          profile: minimal
-          target: ${{ matrix.platform.target }}
-
       # https://github.com/Swatinem/rust-cache
-      - name: Rust cache
+      - name: Cache
         uses: Swatinem/rust-cache@v2
+
+      # https://github.com/dtolnay/rust-toolchain
+      - name: Install stable Rust toolchain
+        uses: dtolnay/rust-toolchain@master
         with:
-          key: deny
+          toolchain: stable
+
+      # https://github.com/taiki-e/install-action
+      - name: Install cargo-deny
+        uses: taiki-e/install-action@v1
+        with:
+          tool: cargo-deny
 
       # https://github.com/EmbarkStudios/cargo-deny
-      - name: Run cargo deny
-        run: |
-          cargo install cargo-deny
-          cargo deny check
+      - name: Run cargo-deny
+        run: cargo deny --workspace --locked check
