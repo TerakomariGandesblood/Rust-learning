@@ -7,6 +7,9 @@ on:
   pull_request:
     paths-ignore:
       - "**.md"
+  schedule:
+    # every week
+    - cron: "0 0 * * 0"
 
 permissions:
   contents: read
