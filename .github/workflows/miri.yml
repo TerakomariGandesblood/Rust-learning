@@ -11,6 +11,9 @@ on:
 permissions:
   contents: read
 
+env:
+  RUSTFLAGS: -Zmiri-disable-isolation
+
 jobs:
   miri:
     strategy:
