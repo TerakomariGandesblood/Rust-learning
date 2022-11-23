@@ -8,7 +8,7 @@ permissions:
 jobs:
   commitlint:
     name: Commitlint
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       # https://github.com/actions/checkout

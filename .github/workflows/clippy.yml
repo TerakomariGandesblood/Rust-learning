@@ -14,7 +14,7 @@ permissions:
 jobs:
   clippy:
     name: Clippy
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       # https://github.com/actions/checkout

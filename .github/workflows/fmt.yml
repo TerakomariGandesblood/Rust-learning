@@ -14,7 +14,7 @@ permissions:
 jobs:
   fmt:
     name: Fmt
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       # https://github.com/actions/checkout
@@ -26,7 +26,7 @@ jobs:
         uses: Swatinem/rust-cache@v2
 
       # https://github.com/dtolnay/rust-toolchain
-      - name: Install nightly Rust toolchain
+      - name: Install rustfmt
         uses: dtolnay/rust-toolchain@master
         with:
           toolchain: nightly

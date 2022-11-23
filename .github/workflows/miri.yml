@@ -13,8 +13,15 @@ permissions:
 
 jobs:
   miri:
+    strategy:
+      matrix:
+        platform:
+          - { os: "ubuntu-latest", target: "x86_64-unknown-linux-gnu" }
+          - { os: "macos-latest", target: "x86_64-apple-darwin" }
+          - { os: "windows-latest", target: "x86_64-pc-windows-msvc" }
+
     name: Miri
-    runs-on: macos-latest
+    runs-on: ${{ matrix.platform.os }}
 
     steps:
       # https://github.com/actions/checkout
@@ -26,12 +33,13 @@ jobs:
         uses: Swatinem/rust-cache@v2
 
       # https://github.com/dtolnay/rust-toolchain
-      - name: Install nightly Rust toolchain
+      - name: Install miri
         uses: dtolnay/rust-toolchain@master
         with:
           toolchain: nightly
+          targets: ${{ matrix.platform.target }}
           components: miri
 
       # https://github.com/rust-lang/miri
       - name: Run miri
-        run: cargo +nightly miri test --workspace --locked --all-targets
+        run: cargo +nightly miri test --target ${{ matrix.platform.target }} --workspace --locked --all-targets
