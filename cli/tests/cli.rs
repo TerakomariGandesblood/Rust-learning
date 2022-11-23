@@ -1,10 +1,15 @@
+#[allow(unused_imports)]
+use anyhow::{Ok, Result};
+#[allow(unused_imports)]
+use assert_cmd::prelude::*;
+#[allow(unused_imports)]
+use assert_fs::prelude::*;
+#[allow(unused_imports)]
+use predicates::prelude::*;
+#[allow(unused_imports)]
 use std::process::Command;
 
-use anyhow::{Ok, Result};
-use assert_cmd::prelude::*;
-use assert_fs::prelude::*;
-use predicates::prelude::*;
-
+#[cfg(not(miri))]
 #[test]
 fn file_does_not_exist() -> Result<()> {
     let mut cmd = Command::cargo_bin("cli")?;
@@ -17,6 +22,7 @@ fn file_does_not_exist() -> Result<()> {
     Ok(())
 }
 
+#[cfg(not(miri))]
 #[test]
 fn find_content_in_file() -> Result<()> {
     let file = assert_fs::NamedTempFile::new("sample.txt")?;
