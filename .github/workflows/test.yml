@@ -14,6 +14,7 @@ permissions:
 jobs:
   test:
     strategy:
+      fail-fast: false
       matrix:
         platform:
           - { os: "ubuntu-latest", target: "x86_64-unknown-linux-gnu" }
