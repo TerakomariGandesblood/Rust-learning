@@ -28,6 +28,7 @@ fn main() {
     // 对于基本类型都实现了 Copy trait
     // 对于数组和 tuple 类型，如果内部元素类型都实现了 Copy trait，那么它也会自动实现 Copy trait
     // 对于 struct 和 enum 类型，不会自动实现 Copy trait
+    // 注意 &T 实现了 Copy trait，但是 &mut T 没有实现
     {
         let arr1 = [1; 10];
         let arr2 = arr1;
