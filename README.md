@@ -9,16 +9,16 @@
 
 Rust learning notes
 
-## Books
+## Books and exercises
 
-- [x] [trpl](https://github.com/KaiserY/trpl-zh-cn)
+- [x] [trpl](https://kaisery.github.io/trpl-zh-cn/)
 - [x] [rustlings](https://github.com/rust-lang/rustlings)
-- [x] [cli](https://github.com/rust-cli/book)
-- [ ] [async](https://github.com/rust-lang/async-book)
-- [ ] [WebAssembly](https://github.com/rustwasm/book)
-- [ ] [api-guidelines](https://github.com/rust-lang/api-guidelines)
-- [ ] [cargo book](https://doc.rust-lang.org/cargo/index.html)
+- [x] [cli](https://rust-cli.github.io/book/index.html)
+- [ ] [async](https://tokio.rs/tokio/tutorial)
+- [ ] [WebAssembly](https://rustwasm.github.io/docs/book/)
+- [ ] [api-guidelines](https://rust-lang.github.io/api-guidelines/)
 - [ ] [rustc book](https://doc.rust-lang.org/rustc/what-is-rustc.html)
+- [ ] [cargo book](https://doc.rust-lang.org/cargo/index.html)
 
 ## Theories
 

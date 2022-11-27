@@ -1,0 +1,21 @@
+[package]
+name = "tokio_learning"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+# https://github.com/tokio-rs/bytes
+bytes = "1.3.0"
+# https://github.com/xacrimon/dashmap
+dashmap = "5.4.0"
+# https://github.com/rust-lang/futures-rs
+futures = "0.3.25"
+# https://github.com/tokio-rs/mini-redis
+mini-redis = "0.4.1"
+# https://github.com/Amanieu/parking_lot
+parking_lot = "0.12.1"
+# https://github.com/SchrodingerZhu/snmalloc-rs
+snmalloc-rs = "0.3.3"
+# https://github.com/tokio-rs/tokio
+tokio = { version = "1.22.0", features = ["full"] }
