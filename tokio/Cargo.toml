@@ -7,10 +7,12 @@ license = "MIT OR Apache-2.0"
 [dependencies]
 # https://github.com/tokio-rs/bytes
 bytes = "1.3.0"
+# https://github.com/crossbeam-rs/crossbeam
+crossbeam = "0.8.2"
 # https://github.com/xacrimon/dashmap
 dashmap = "5.4.0"
 # https://github.com/rust-lang/futures-rs
-# futures = "0.3.25"
+futures = "0.3.25"
 # https://github.com/tokio-rs/mini-redis
 mini-redis = "0.4.1"
 # https://github.com/Amanieu/parking_lot

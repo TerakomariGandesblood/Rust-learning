@@ -6,7 +6,7 @@
 // Sync 标记 trait 表明一个实现了 Sync 的类型可以安全的在多个线程中拥有其值的引用
 // 对于任意类型 T，如果 &T 是 Send 的话 T 就是 Sync 的
 // 基本类型是 Sync 的，完全由 Sync 的类型组成的类型也是 Sync 的
-// 智能指针 Rc<T> 也不是 Sync 的
+// 智能指针 Rc<T> 不是 Sync 的
 // RefCell<T> 和 Cell<T> 系列类型不是 Sync 的。
 // RefCell<T> 在运行时所进行的借用检查也不是线程安全的
 // Mutex<T> 是 Sync 的
