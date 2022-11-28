@@ -1,6 +1,7 @@
 use snmalloc_rs::SnMalloc;
 use tokio::{io, net::TcpListener};
 
+#[cfg(not(miri))]
 #[global_allocator]
 static ALLOC: SnMalloc = SnMalloc;
 

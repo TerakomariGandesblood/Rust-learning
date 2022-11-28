@@ -6,6 +6,7 @@ use tokio::sync::{
     oneshot::{self, Sender},
 };
 
+#[cfg(not(miri))]
 #[global_allocator]
 static ALLOC: SnMalloc = SnMalloc;
 

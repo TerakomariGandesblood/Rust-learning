@@ -4,6 +4,7 @@ use tokio::{
     net::TcpStream,
 };
 
+#[cfg(not(miri))]
 #[global_allocator]
 static ALLOC: SnMalloc = SnMalloc;
 

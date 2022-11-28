@@ -17,6 +17,7 @@ use tokio::net::{TcpListener, TcpStream};
 // type Db = Arc<Mutex<HashMap<String, Bytes>>>;
 type Db = Arc<DashMap<String, Bytes>>;
 
+#[cfg(not(miri))]
 #[global_allocator]
 static ALLOC: SnMalloc = SnMalloc;
 
