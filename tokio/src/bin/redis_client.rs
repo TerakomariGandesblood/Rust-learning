@@ -31,7 +31,7 @@ async fn main() {
     let (tx, mut rx) = mpsc::channel(32);
     let tx2 = tx.clone();
 
-    tokio::spawn(async move {
+    let t1 = tokio::spawn(async move {
         let (resp_tx, resp_rx) = oneshot::channel();
 
         tx.send(Command::Set {
@@ -44,11 +44,9 @@ async fn main() {
 
         let res = resp_rx.await;
         println!("GOT = {:?}", res);
-    })
-    .await
-    .unwrap();
+    });
 
-    tokio::spawn(async move {
+    let t2 = tokio::spawn(async move {
         let (resp_tx, resp_rx) = oneshot::channel();
 
         tx2.send(Command::Get {
@@ -60,11 +58,9 @@ async fn main() {
 
         let res = resp_rx.await;
         println!("GOT = {:?}", res);
-    })
-    .await
-    .unwrap();
+    });
 
-    tokio::spawn(async move {
+    let manager = tokio::spawn(async move {
         let mut client = client::connect("127.0.0.1:6379").await.unwrap();
 
         // 不存在发送者时，recv 将返回 None
@@ -81,7 +77,9 @@ async fn main() {
                 }
             }
         }
-    })
-    .await
-    .unwrap();
+    });
+
+    t1.await.unwrap();
+    t2.await.unwrap();
+    manager.await.unwrap();
 }
