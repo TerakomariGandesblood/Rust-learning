@@ -11,7 +11,7 @@ Rust learning notes
 - [x] [trpl](https://kaisery.github.io/trpl-zh-cn/)
 - [x] [rustlings](https://github.com/rust-lang/rustlings)
 - [x] [cli](https://rust-cli.github.io/book/index.html)
-- [ ] [async](https://tokio.rs/tokio/tutorial)
+- [x] [async](https://tokio.rs/tokio/tutorial)
 - [ ] [WebAssembly](https://rustwasm.github.io/docs/book/)
 - [ ] [api-guidelines](https://rust-lang.github.io/api-guidelines/)
 - [ ] [rustc book](https://doc.rust-lang.org/rustc/what-is-rustc.html)
