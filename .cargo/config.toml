@@ -17,16 +17,10 @@ codegen-units = 1
 # https://doc.rust-lang.org/cargo/reference/profiles.html#panic
 # panic = 'abort'
 
-# https://doc.rust-lang.org/rustc/platform-support.html
-# https://doc.rust-lang.org/reference/linkage.html#static-and-dynamic-c-runtimes
-[target.x86_64-unknown-linux-gnu]
+[build]
 rustflags = ["-Dwarnings"]
 
-[target.aarch64-apple-darwin]
-rustflags = ["-Dwarnings", "-Ctarget-feature=+crt-static"]
-
-[target.x86_64-apple-darwin]
-rustflags = ["-Dwarnings", "-Ctarget-feature=+crt-static"]
-
+# https://doc.rust-lang.org/rustc/platform-support.html
+# https://doc.rust-lang.org/reference/linkage.html#static-and-dynamic-c-runtimes
 [target.x86_64-pc-windows-msvc]
 rustflags = ["-Dwarnings", "-Ctarget-feature=+crt-static"]

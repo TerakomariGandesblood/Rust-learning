@@ -1,4 +1,4 @@
-name: Miri
+name: Build
 
 on:
   push:
@@ -12,7 +12,7 @@ permissions:
   contents: read
 
 jobs:
-  miri:
+  build:
     strategy:
       fail-fast: false
       matrix:
@@ -21,7 +21,7 @@ jobs:
           - os: macos-latest
           - os: windows-latest
 
-    name: Miri
+    name: Build
     runs-on: ${{ matrix.platform.os }}
 
     steps:
@@ -34,12 +34,10 @@ jobs:
         uses: Swatinem/rust-cache@v2
 
       # https://github.com/dtolnay/rust-toolchain
-      - name: Install miri
+      - name: Install toolchain
         uses: dtolnay/rust-toolchain@master
         with:
-          toolchain: nightly
-          components: miri
+          toolchain: stable
 
-      # https://github.com/rust-lang/miri
-      - name: Run miri
-        run: cargo +nightly miri test --workspace --locked --all-targets
+      - name: Run cargo test
+        run: cargo test --workspace --locked --all-targets
