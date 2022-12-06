@@ -2,9 +2,15 @@ name: Fmt
 
 on:
   push:
+    branches:
+      - main
+    tags-ignore:
+      - "**"
     paths-ignore:
       - "**.md"
   pull_request:
+    branches:
+      - main
     paths-ignore:
       - "**.md"
 

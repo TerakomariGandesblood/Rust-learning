@@ -2,7 +2,13 @@ name: Commitlint
 
 on:
   push:
+    branches:
+      - main
+    tags-ignore:
+      - "**"
   pull_request:
+    branches:
+      - main
 
 permissions:
   contents: read
