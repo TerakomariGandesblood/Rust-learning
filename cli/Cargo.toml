@@ -13,7 +13,7 @@ categories = ["command-line-utilities"]
 
 [dependencies]
 # https://github.com/dtolnay/anyhow
-anyhow = "1.0.66"
+anyhow = "1.0.68"
 # https://github.com/clap-rs/clap
 clap = { version = "4.0.29", features = ["derive"] }
 # https://github.com/clap-rs/clap-verbosity-flag
@@ -25,7 +25,7 @@ human-panic = "1.0.3"
 # https://github.com/console-rs/indicatif
 indicatif = "0.17.2"
 # https://github.com/serde-rs/serde
-serde = { version = "1.0.150", features = ["derive"] }
+serde = { version = "1.0.151", features = ["derive"] }
 # https://github.com/tokio-rs/tracing
 tracing = "0.1.37"
 tracing-log = "0.1.3"
