@@ -12,6 +12,7 @@ Rust learning notes
 - [x] [rustlings](https://github.com/rust-lang/rustlings)
 - [x] [cli](https://rust-cli.github.io/book/index.html)
 - [x] [async](https://tokio.rs/tokio/tutorial)
+- [ ] [Concurrency](https://marabos.nl/atomics/)
 - [ ] [rust-quiz](https://dtolnay.github.io/rust-quiz/)
 - [ ] [WebAssembly](https://rustwasm.github.io/docs/book/)
 - [ ] [api-guidelines](https://rust-lang.github.io/api-guidelines/)
