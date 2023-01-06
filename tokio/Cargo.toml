@@ -18,7 +18,7 @@ parking_lot = "0.12.1"
 # https://github.com/SchrodingerZhu/snmalloc-rs
 snmalloc-rs = "0.3.3"
 # https://github.com/tokio-rs/tokio
-tokio = { version = "1.23.0", features = ["full"] }
+tokio = { version = "1.23.1", features = ["full"] }
 tokio-stream = "0.1.11"
 # https://github.com/tokio-rs/tracing
 # 用来生成 traces
