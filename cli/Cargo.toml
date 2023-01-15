@@ -15,7 +15,7 @@ categories = ["command-line-utilities"]
 # https://github.com/dtolnay/anyhow
 anyhow = "1.0.68"
 # https://github.com/clap-rs/clap
-clap = { version = "4.0.32", features = ["derive"] }
+clap = { version = "4.1.1", features = ["derive"] }
 # https://github.com/clap-rs/clap-verbosity-flag
 clap-verbosity-flag = "2.0.0"
 # https://github.com/rust-cli/confy
@@ -23,7 +23,7 @@ confy = "0.5.1"
 # https://github.com/rust-cli/human-panic
 human-panic = "1.0.3"
 # https://github.com/console-rs/indicatif
-indicatif = "0.17.2"
+indicatif = "0.17.3"
 # https://github.com/serde-rs/serde
 serde = { version = "1.0.152", features = ["derive"] }
 # https://github.com/tokio-rs/tracing
