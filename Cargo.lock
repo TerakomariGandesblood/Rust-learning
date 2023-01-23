@@ -298,9 +298,9 @@ dependencies = [
 
 [[package]]
 name = "clap"
-version = "4.1.1"
+version = "4.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4ec7a4128863c188deefe750ac1d1dfe66c236909f845af04beed823638dc1b2"
+checksum = "0e638668a62aced2c9fb72b5135a33b4a500485ccf2a0e402e09aa04ab2fc115"
 dependencies = [
  "bitflags",
  "clap_derive",
@@ -317,7 +317,7 @@ version = "2.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "23e2b6c3dcdb73299f48ae05b294da14e2f560b3ed2c09e742269eb1b22af231"
 dependencies = [
- "clap 4.1.1",
+ "clap 4.1.2",
  "log",
 ]
 
@@ -350,7 +350,7 @@ dependencies = [
  "anyhow",
  "assert_cmd",
  "assert_fs",
- "clap 4.1.1",
+ "clap 4.1.2",
  "clap-verbosity-flag",
  "confy",
  "human-panic",
