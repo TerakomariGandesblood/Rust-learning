@@ -15,7 +15,7 @@ categories = ["command-line-utilities"]
 # https://github.com/dtolnay/anyhow
 anyhow = "1.0.68"
 # https://github.com/clap-rs/clap
-clap = { version = "4.1.3", features = ["derive"] }
+clap = { version = "4.1.4", features = ["derive"] }
 # https://github.com/clap-rs/clap-verbosity-flag
 clap-verbosity-flag = "2.0.0"
 # https://github.com/rust-cli/confy
