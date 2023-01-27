@@ -9,7 +9,7 @@ fn main() {
     let _str = &String::from("string");
 
     change(&mut s);
-    println!("{}", s);
+    println!("{s}");
 
     // error: cannot borrow `s` as mutable more than once at a time
     // let r1 = &mut s;
@@ -25,9 +25,9 @@ fn main() {
     // 编译器在作用域结束之前判断不再使用的引用的能力被称为非词法作用域生命周期（Non-Lexical Lifetimes）
     // NOTE https://blog.rust-lang.org/2018/12/06/Rust-1.31-and-rust-2018.html#non-lexical-lifetimes
     let r1 = &s;
-    println!("{}", r1);
+    println!("{r1}");
     let r2 = &mut s;
-    println!("{}", r2);
+    println!("{r2}");
 
     // 在任意给定时间, 要么只能有一个可变引用，要么只能有多个不可变引用
     // 引用必须总是有效的

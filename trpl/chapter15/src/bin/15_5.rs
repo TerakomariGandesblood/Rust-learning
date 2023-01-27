@@ -19,7 +19,7 @@ impl Email {
 
 impl Messenger for Email {
     fn send(&self, msg: &str) {
-        println!("sent email: {}", msg);
+        println!("sent email: {msg}");
     }
 }
 
@@ -117,7 +117,7 @@ fn main() {
 
     *value.borrow_mut() += 10;
 
-    println!("a after = {:?}", a);
-    println!("b after = {:?}", b);
-    println!("c after = {:?}", c);
+    println!("a after = {a:?}");
+    println!("b after = {b:?}");
+    println!("c after = {c:?}");
 }

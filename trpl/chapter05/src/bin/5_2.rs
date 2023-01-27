@@ -14,7 +14,7 @@ fn main() {
 
     // :? -> Debug 输出格式
     // :#? -> 更易读的输出
-    println!("{:?}", rect);
+    println!("{rect:?}");
     // 另一种方式, 但是打印到 stderr
     // dbg! 宏接收并返回一个表达式的所有权
     dbg!(&rect);

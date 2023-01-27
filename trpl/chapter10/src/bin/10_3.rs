@@ -8,7 +8,7 @@ fn main() {
     let str2 = "ab";
 
     let result = longest(str1.as_str(), str2);
-    println!("{}", result);
+    println!("{result}");
 
     let novel = String::from("Call me Ishmael. Some years ago...");
     let first_sentence = novel.split('.').next().expect("Could not find a '.'");
@@ -42,7 +42,7 @@ struct ImportantExcerpt<'a> {
 // 如果编译器检查完这三条规则后仍然存在没有计算出生命周期的引用，编译器将会停止并生成错误
 impl<'a> ImportantExcerpt<'a> {
     fn _announce_and_return_part(&self, announcement: &str) -> &str {
-        println!("{}", announcement);
+        println!("{announcement}");
         self._part
     }
 }
@@ -51,7 +51,7 @@ fn _longest_with_an_announcement<'a, T>(x: &'a str, y: &'a str, ann: T) -> &'a s
 where
     T: Display,
 {
-    println!("Announcement! {}", ann);
+    println!("Announcement! {ann}");
     if x.len() > y.len() {
         x
     } else {

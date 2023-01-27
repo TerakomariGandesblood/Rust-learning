@@ -18,7 +18,7 @@ fn func(a: i32) -> i32 {
     // error，赋值表达式值的类型是 '()'
     // _a = _b = 3;
 
-    println!("The value of y is: {}", y);
+    println!("The value of y is: {y}");
 
     a + 1
 }

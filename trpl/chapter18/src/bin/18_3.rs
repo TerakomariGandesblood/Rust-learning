@@ -6,11 +6,11 @@ fn main() {
         match x {
             Some(50) => println!("Got 50"),
             // 注意隐藏了外部的 y
-            Some(y) => println!("Matched, y = {:?}", y),
-            _ => println!("Default case, x = {:?}", x),
+            Some(y) => println!("Matched, y = {y:?}"),
+            _ => println!("Default case, x = {x:?}"),
         }
 
-        println!("at the end: x = {:?}, y = {:?}", x, y);
+        println!("at the end: x = {x:?}, y = {y:?}");
     }
 
     {
@@ -55,9 +55,9 @@ fn main() {
 
         match p {
             // 使用字面值作为结构体模式的一部分进行解构，而不是为所有的字段创建变量
-            Point { x, y: 0 } => println!("On the x axis at {}", x),
-            Point { x: 0, y } => println!("On the y axis at {}", y),
-            Point { x, y } => println!("On neither axis: ({}, {})", x, y),
+            Point { x, y: 0 } => println!("On the x axis at {x}"),
+            Point { x: 0, y } => println!("On the y axis at {y}"),
+            Point { x, y } => println!("On neither axis: ({x}, {y})"),
         }
     }
 
@@ -69,11 +69,11 @@ fn main() {
                 println!("The Quit variant has no data to destructure.")
             }
             Message::_Move { x, y } => {
-                println!("Move in the x direction {} and in the y direction {}", x, y);
+                println!("Move in the x direction {x} and in the y direction {y}");
             }
-            Message::_Write(text) => println!("Text message: {}", text),
+            Message::_Write(text) => println!("Text message: {text}"),
             Message::_ChangeColor(r, g, b) => {
-                println!("Change the color to red {}, green {}, and blue {}", r, g, b)
+                println!("Change the color to red {r}, green {g}, and blue {b}")
             }
         }
     }
@@ -94,7 +94,7 @@ fn main() {
         // 使用 .. 忽略剩余值
         // let Point { _x, _y: _, _z: _ } = origin;
         let Point { _x, .. } = origin;
-        println!("{}", _x);
+        println!("{_x}");
     }
 
     {
@@ -109,8 +109,8 @@ fn main() {
         match num {
             // 匹配守卫（match guard）是一个指定于 match 分支模式之后的额外 if 条件，它也必须被满足才能选择此分支
             // 当涉及匹配守卫表达式时编译器不会尝试检查穷尽性
-            Some(x) if x < 5 => println!("less than five: {}", x),
-            Some(x) => println!("{}", x),
+            Some(x) if x < 5 => println!("less than five: {x}"),
+            Some(x) => println!("{x}"),
             None => (),
         }
     }
@@ -138,15 +138,15 @@ fn main() {
                 // at 运算符（@）允许我们在创建一个存放值的变量的同时测试其值是否匹配模式
                 // 同样只能是闭区间
                 id: id_variable @ 3..=7,
-            } => println!("Found an id in range: {}", id_variable),
+            } => println!("Found an id in range: {id_variable}"),
             Message::Hello { id: 10..=12 } => {
                 println!("Found an id in another range")
             }
-            Message::Hello { id } => println!("Found some other id: {}", id),
+            Message::Hello { id } => println!("Found some other id: {id}"),
         }
 
         if let Some(x @ 1..=5) = Some(30) {
-            println!("{}", x);
+            println!("{x}");
         } else {
             println!("no");
         }
@@ -168,5 +168,5 @@ enum Message {
 
 // 使用 _ 模式忽略整个值
 fn _foo(_: i32, y: i32) {
-    println!("This code only uses the y parameter: {}", y);
+    println!("This code only uses the y parameter: {y}");
 }

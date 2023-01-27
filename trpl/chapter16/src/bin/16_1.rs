@@ -5,14 +5,14 @@ fn main() {
     // 执行顺序依赖操作系统如何调度线程
     let handle = thread::spawn(|| {
         for i in 1..10 {
-            println!("hi number {} from the spawned thread!", i);
+            println!("hi number {i} from the spawned thread!");
             // 强制线程停止执行一小段时间
             thread::sleep(Duration::from_millis(1));
         }
     });
 
     for i in 1..5 {
-        println!("hi number {} from the main thread!", i);
+        println!("hi number {i} from the main thread!");
         thread::sleep(Duration::from_millis(1));
     }
 
@@ -25,7 +25,7 @@ fn main() {
     // Rust 不知道这个新建线程会执行多久，所以无法知晓 v 的引用是否一直有效
     // 通过增加 move 关键字，强制闭包获取其使用的值的所有权
     let handle = thread::spawn(move || {
-        println!("Here's a vector: {:?}", v);
+        println!("Here's a vector: {v:?}");
     });
 
     handle.join().unwrap();

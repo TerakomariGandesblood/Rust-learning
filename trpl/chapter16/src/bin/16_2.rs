@@ -46,6 +46,6 @@ fn main() {
 
     // 当信道被关闭时，迭代器也将结束
     for received in rx {
-        println!("Got: {}", received);
+        println!("Got: {received}");
     }
 }

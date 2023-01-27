@@ -43,7 +43,7 @@ async fn main() {
         .unwrap();
 
         let res = resp_rx.await;
-        println!("GOT = {:?}", res);
+        println!("GOT = {res:?}");
     });
 
     let t2 = tokio::spawn(async move {
@@ -57,7 +57,7 @@ async fn main() {
         .unwrap();
 
         let res = resp_rx.await;
-        println!("GOT = {:?}", res);
+        println!("GOT = {res:?}");
     });
 
     let manager = tokio::spawn(async move {

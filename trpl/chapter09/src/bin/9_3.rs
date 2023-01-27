@@ -17,7 +17,7 @@ struct Guess {
 impl Guess {
     fn new(value: i32) -> Guess {
         if !(1..=100).contains(&value) {
-            panic!("Guess value must be between 1 and 100, got {}.", value);
+            panic!("Guess value must be between 1 and 100, got {value}.");
         }
 
         Guess { value }

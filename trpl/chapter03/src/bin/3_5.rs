@@ -17,7 +17,7 @@ fn loop_label() {
     let mut count = 0;
 
     'exit: loop {
-        println!("{}", count);
+        println!("{count}");
 
         loop {
             count += 1;
@@ -40,14 +40,14 @@ fn loop_return() {
         }
     };
 
-    println!("{}", result);
+    println!("{result}");
 }
 
 fn while_func() {
     let mut i = 3;
 
     while i > 0 {
-        println!("{}", i);
+        println!("{i}");
         i -= 1;
     }
 }
@@ -56,10 +56,10 @@ fn for_func() {
     let a = [1, 2, 3, 4, 5];
 
     for ele in a {
-        println!("{}", ele);
+        println!("{ele}");
     }
 
     for i in (1..4).rev() {
-        println!("{}", i);
+        println!("{i}");
     }
 }

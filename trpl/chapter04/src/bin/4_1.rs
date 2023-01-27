@@ -6,7 +6,7 @@ fn main() {
     {
         let mut s = String::from("Hello");
         s.push_str(", World!");
-        println!("{}", s);
+        println!("{s}");
         // 离开作用域，调用 drop，释放 String 的内存
     }
 
@@ -22,7 +22,7 @@ fn main() {
         let s1 = String::from("Hello");
         // copy
         let s2 = s1.clone();
-        println!("{}, {}", s1, s2);
+        println!("{s1}, {s2}");
     }
 
     // 对于基本类型都实现了 Copy trait

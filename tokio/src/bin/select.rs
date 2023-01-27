@@ -46,10 +46,10 @@ async fn main() {
     // 在 <handler> 中借用，视为不同作用域
     tokio::select! {
         val = rx1 => {
-            println!("rx1 completed first with {:?}", val);
+            println!("rx1 completed first with {val:?}");
         }
         val = rx2 => {
-            println!("rx2 completed first with {:?}", val);
+            println!("rx2 completed first with {val:?}");
         }
     }
 }
@@ -91,10 +91,10 @@ async fn _func2() {
 
     tokio::select! {
         Some(v) = rx1.recv() => {
-            println!("Got {:?} from rx1", v);
+            println!("Got {v:?} from rx1");
         }
         Some(v) = rx2.recv() => {
-            println!("Got {:?} from rx2", v);
+            println!("Got {v:?} from rx2");
         }
         // 其他都无法匹配时 else 分支将执行
         else => {
@@ -122,7 +122,7 @@ async fn _func3() {
             else => { break }
         };
 
-        println!("Got {:?}", msg);
+        println!("Got {msg:?}");
     }
 
     println!("All channels have been closed.");
@@ -152,7 +152,7 @@ async fn _func4() {
                 done = true;
 
                 if let Some(v) = res {
-                    println!("GOT = {}", v);
+                    println!("GOT = {v}");
                     return;
                 }
             }

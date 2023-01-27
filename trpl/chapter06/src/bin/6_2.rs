@@ -20,7 +20,7 @@ fn value_in_cents(coin: Coin) -> u8 {
         Coin::_Nickel => 5,
         Coin::_Dime => 10,
         Coin::Quarter(state) => {
-            println!("State quarter from {:?}!", state);
+            println!("State quarter from {state:?}!");
             25
         }
     }
@@ -36,7 +36,7 @@ fn value_in_cents(coin: Coin) -> u8 {
 fn add_fancy_hat() {}
 fn remove_fancy_hat() {}
 fn move_player(num_spaces: u8) {
-    println!("{}", num_spaces);
+    println!("{num_spaces}");
 }
 
 fn main() {

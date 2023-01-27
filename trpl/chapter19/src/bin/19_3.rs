@@ -4,7 +4,7 @@ fn main() {
     type _Result<T> = std::result::Result<T, std::io::Error>;
 
     let y: Kilometers = 5;
-    println!("y = {}", y);
+    println!("y = {y}");
 
     // 动态大小类型（dynamically sized types）
     // 有时被称为 “DST” 或 “unsized types”，这些类型允许我们处理只有在运行时才知道大小的类型

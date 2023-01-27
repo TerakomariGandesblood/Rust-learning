@@ -5,7 +5,7 @@ use anyhow::{Ok, Result};
 pub fn find_matches(content: &str, pattern: &str, writer: &mut impl Write) -> Result<()> {
     for line in content.lines() {
         if line.contains(pattern) {
-            writeln!(writer, "{}", line)?;
+            writeln!(writer, "{line}")?;
         }
     }
     Ok(())

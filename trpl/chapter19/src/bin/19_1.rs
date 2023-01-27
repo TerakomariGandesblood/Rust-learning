@@ -43,11 +43,11 @@ fn main() {
         println!("Absolute value of -3 according to C: {}", abs(-3));
     }
 
-    println!("name is: {}", HELLO_WORLD);
+    println!("name is: {HELLO_WORLD}");
 
     add_to_count(3);
     unsafe {
-        println!("COUNTER: {}", COUNTER);
+        println!("COUNTER: {COUNTER}");
     }
 }
 

@@ -12,7 +12,7 @@ async fn main() -> mini_redis::Result<()> {
     let mut stream = tokio_stream::iter(&[1, 2, 3]);
 
     while let Some(v) = stream.next().await {
-        println!("GOT = {:?}", v);
+        println!("GOT = {v:?}");
     }
 
     Ok(())
@@ -40,7 +40,7 @@ async fn subscribe() -> mini_redis::Result<()> {
     tokio::pin!(messages);
 
     while let Some(msg) = messages.next().await {
-        println!("got = {:?}", msg);
+        println!("got = {msg:?}");
     }
 
     Ok(())

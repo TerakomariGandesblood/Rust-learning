@@ -32,7 +32,7 @@ mod tests {
     fn it_works() {
         let result = _add(2, 2);
         // 自定义失败信息
-        assert_eq!(result, 4, "{} not equal 4", result);
+        assert_eq!(result, 4, "{result} not equal 4");
         assert!(result == 4);
     }
 

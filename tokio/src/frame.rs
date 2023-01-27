@@ -78,7 +78,7 @@ impl Connection {
     async fn write_decimal(&mut self, val: u64) -> io::Result<()> {
         let mut buf = [0u8; 12];
         let mut buf = Cursor::new(&mut buf[..]);
-        write!(&mut buf, "{}", val)?;
+        write!(&mut buf, "{val}")?;
 
         let pos = buf.position() as usize;
         self.stream.write_all(&buf.get_ref()[..pos]).await?;

@@ -11,12 +11,12 @@ fn main() {
     // 使用 unwrap_or_else 可以进行一些自定义的非 panic! 的错误处理
     // 注意 std::env::args 在其任何参数包含无效 Unicode 字符时会 panic
     let config = Config::new(env::args()).unwrap_or_else(|err| {
-        eprintln!("Problem parsing arguments: {}", err);
+        eprintln!("Problem parsing arguments: {err}");
         process::exit(1);
     });
 
     if let Err(err) = chapter12::run(&config) {
-        eprintln!("Application error: {}", err);
+        eprintln!("Application error: {err}");
         process::exit(1);
     }
 }

@@ -31,7 +31,7 @@ struct Point {
 
 fn main() {
     let p1 = Point { x: 4, y: 2 };
-    println!("{:#?}", p1);
+    println!("{p1:#?}");
     println!("x = {}, y = {}", p1.x, p1.y);
 
     let p2 = Point { x: 4, y: 2 };
@@ -40,5 +40,5 @@ fn main() {
 
     let mut hash_map = HashMap::new();
     hash_map.insert(p1, 2);
-    println!("{:#?}", hash_map)
+    println!("{hash_map:#?}")
 }

@@ -7,7 +7,7 @@ fn main() {
     let word = first_word(&s);
     // error: cannot borrow `s` as mutable because it is also borrowed as immutable
     // s.clear();
-    println!("{}", word);
+    println!("{word}");
 
     // 0 可以省略
     let _hello = &s[0..5];

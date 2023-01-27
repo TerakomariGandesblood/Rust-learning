@@ -5,25 +5,25 @@ fn main() {
     // NOTE https://en.wikipedia.org/wiki/SipHash
     let mut map = HashMap::new();
     map.insert(String::from("123"), 123);
-    println!("{:#?}", map);
+    println!("{map:#?}");
 
     let teams = vec![String::from("Blue"), String::from("Yellow")];
     let initial_scores = vec![10, 50];
     let map: HashMap<_, _> = teams.into_iter().zip(initial_scores.into_iter()).collect();
-    println!("{:#?}", map);
+    println!("{map:#?}");
 
     let field_name = String::from("Favorite color");
     let field_value = String::from("Blue");
     let mut map = HashMap::new();
     // 注意，移动
     map.insert(field_name, field_value);
-    println!("{:#?}", map);
+    println!("{map:#?}");
 
     if let Some(value) = map.get("Favorite color") {
-        println!("{}", value);
+        println!("{value}");
     };
     for (key, value) in &map {
-        println!("{}: {}", key, value);
+        println!("{key}: {value}");
     }
 
     let mut scores = HashMap::new();
@@ -41,5 +41,5 @@ fn main() {
         let count = map.entry(word).or_insert(0);
         *count += 1;
     }
-    println!("{:?}", map);
+    println!("{map:?}");
 }

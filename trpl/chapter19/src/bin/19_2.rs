@@ -130,5 +130,5 @@ fn main() {
     println!("A baby dog is called a {}", <Dog as Animal>::baby_name());
 
     let w = Wrapper(vec![String::from("hello"), String::from("world")]);
-    println!("{}", w);
+    println!("{w}");
 }

@@ -7,20 +7,20 @@ fn main() {
 
     // for 循环会获取 v1_iter 的所有权并在后台使 v1_iter 可变
     for val in iter {
-        println!("{}", val);
+        println!("{val}");
     }
 
     // 消费适配器（consuming adaptors）
     // 注意 sum() 会获取所有权
     let sum: i32 = v.iter().sum();
-    println!("{}", sum);
+    println!("{sum}");
 
     // 迭代器适配器（iterator adaptors），他们允许我们将当前迭代器变为不同类型的迭代器
     let v2: Vec<_> = v.iter().map(|x| x + 1).collect();
-    println!("{:?}", v2);
+    println!("{v2:?}");
 
     let v2: Vec<_> = v.iter().filter(|x| *x % 2 == 0).collect();
-    println!("{:?}", v2);
+    println!("{v2:?}");
 
     // 注意 zip 只产生四对值，zip 在任一输入迭代器返回 None 时也返回 None
     let sum: u32 = Counter::new()
