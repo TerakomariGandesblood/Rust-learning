@@ -6,7 +6,7 @@ license = "MIT OR Apache-2.0"
 
 [dependencies]
 # https://github.com/tokio-rs/bytes
-bytes = "1.3.0"
+bytes = "1.4.0"
 # https://github.com/crossbeam-rs/crossbeam
 crossbeam = "0.8.2"
 # https://github.com/xacrimon/dashmap
