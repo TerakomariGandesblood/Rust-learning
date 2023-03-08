@@ -21,7 +21,7 @@ confy = "0.5.1"
 # https://github.com/console-rs/indicatif
 indicatif = "0.17.3"
 # https://github.com/serde-rs/serde
-serde = { version = "1.0.152", features = ["derive"] }
+serde = { version = "1.0.153", features = ["derive"] }
 # https://github.com/tokio-rs/tracing
 tracing = "0.1.37"
 tracing-log = "0.1.3"
