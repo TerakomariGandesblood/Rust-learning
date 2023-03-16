@@ -29,7 +29,7 @@ tracing-subscriber = { version = "0.3.16", features = ["local-time"] }
 
 [dev-dependencies]
 # https://github.com/assert-rs/assert_cmd
-assert_cmd = "2.0.8"
+assert_cmd = "2.0.10"
 # https://github.com/assert-rs/predicates-rs
 predicates = "2.1.5"
 # https://github.com/assert-rs/assert_fs
