@@ -13,7 +13,7 @@ categories = ["command-line-utilities"]
 
 [dependencies]
 # https://github.com/dtolnay/anyhow
-anyhow = "1.0.69"
+anyhow = "1.0.70"
 # https://github.com/clap-rs/clap
 clap = { version = "4.1.9", features = ["derive"] }
 # https://github.com/rust-cli/confy
