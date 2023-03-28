@@ -31,6 +31,6 @@ tracing-subscriber = { version = "0.3.16", features = ["local-time"] }
 # https://github.com/assert-rs/assert_cmd
 assert_cmd = "2.0.10"
 # https://github.com/assert-rs/predicates-rs
-predicates = "3.0.1"
+predicates = "3.0.2"
 # https://github.com/assert-rs/assert_fs
 assert_fs = "1.0.12"
