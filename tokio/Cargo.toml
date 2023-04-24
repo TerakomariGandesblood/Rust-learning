@@ -25,4 +25,4 @@ tokio-stream = "0.1.12"
 tracing = "0.1.37"
 # 用来将 traces 转发给外部监听器，如 STDOUT
 # 在编写二进制程序而不是库时使用
-tracing-subscriber = { version = "0.3.16", features = ["local-time"] }
+tracing-subscriber = { version = "0.3.17", features = ["local-time"] }
