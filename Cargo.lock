@@ -35,7 +35,7 @@ version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9e579a7752471abc2a8268df8b20005e3eadd975f585398f17efcfd8d4927371"
 dependencies = [
- "anstyle 1.0.0",
+ "anstyle",
  "anstyle-parse",
  "anstyle-query",
  "anstyle-wincon",
@@ -43,12 +43,6 @@ dependencies = [
  "is-terminal",
  "utf8parse",
 ]
-
-[[package]]
-name = "anstyle"
-version = "0.3.5"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "23ea9e81bd02e310c216d080f6223c179012256e5151c41db88d12c88a1684d2"
 
 [[package]]
 name = "anstyle"
@@ -80,7 +74,7 @@ version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4bcd8291a340dd8ac70e18878bc4501dd7b4ff970cfa21c207d36ece51ea88fd"
 dependencies = [
- "anstyle 1.0.0",
+ "anstyle",
  "windows-sys 0.48.0",
 ]
 
@@ -100,7 +94,7 @@ version = "2.0.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "86d6b683edf8d1119fe420a94f8a7e389239666aa72e65495d91c00462510151"
 dependencies = [
- "anstyle 1.0.0",
+ "anstyle",
  "bstr",
  "doc-comment",
  "predicates",
@@ -115,7 +109,7 @@ version = "1.0.13"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f070617a68e5c2ed5d06ee8dd620ee18fb72b99f6c094bed34cf8ab07c875b48"
 dependencies = [
- "anstyle 1.0.0",
+ "anstyle",
  "doc-comment",
  "globwalk",
  "predicates",
@@ -326,9 +320,9 @@ dependencies = [
 
 [[package]]
 name = "clap"
-version = "4.2.2"
+version = "4.2.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9b802d85aaf3a1cdb02b224ba472ebdea62014fccfcb269b95a4d76443b5ee5a"
+checksum = "8a1f23fa97e1d1641371b51f35535cb26959b8e27ab50d167a8b996b5bada819"
 dependencies = [
  "clap_builder",
  "clap_derive",
@@ -337,12 +331,12 @@ dependencies = [
 
 [[package]]
 name = "clap_builder"
-version = "4.2.2"
+version = "4.2.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "14a1a858f532119338887a4b8e1af9c60de8249cd7bafd68036a489e261e37b6"
+checksum = "0fdc5d93c358224b4d6867ef1356d740de2303e9892edc06c5340daeccd96bab"
 dependencies = [
  "anstream",
- "anstyle 1.0.0",
+ "anstyle",
  "bitflags",
  "clap_lex",
  "strsim 0.10.0",
@@ -373,7 +367,7 @@ dependencies = [
  "anyhow",
  "assert_cmd",
  "assert_fs",
- "clap 4.2.2",
+ "clap 4.2.5",
  "confy",
  "indicatif",
  "predicates",
@@ -1097,7 +1091,7 @@ version = "3.0.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "09963355b9f467184c04017ced4a2ba2d75cbcb4e7462690d388233253d4b1a9"
 dependencies = [
- "anstyle 1.0.0",
+ "anstyle",
  "difflib",
  "float-cmp",
  "itertools",
