@@ -18,11 +18,11 @@ parking_lot = "0.12.1"
 # https://github.com/SchrodingerZhu/snmalloc-rs
 snmalloc-rs = "0.3.3"
 # https://github.com/tokio-rs/tokio
-tokio = { version = "1.27.0", features = ["full"] }
-tokio-stream = "0.1.12"
+tokio = { version = "1.28.0", features = ["full"] }
+tokio-stream = "0.1.14"
 # https://github.com/tokio-rs/tracing
 # 用来生成 traces
 tracing = "0.1.37"
 # 用来将 traces 转发给外部监听器，如 STDOUT
 # 在编写二进制程序而不是库时使用
-tracing-subscriber = { version = "0.3.16", features = ["local-time"] }
+tracing-subscriber = { version = "0.3.17", features = ["local-time"] }

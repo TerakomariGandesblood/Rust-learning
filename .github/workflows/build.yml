@@ -46,4 +46,4 @@ jobs:
           toolchain: stable
 
       - name: Run cargo test
-        run: cargo test --workspace --locked --all-targets
+        run: cargo test --workspace --all-targets
