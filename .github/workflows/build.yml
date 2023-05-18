@@ -45,5 +45,8 @@ jobs:
         with:
           toolchain: stable
 
+      - name: Run cargo build
+        run: cargo build --workspace --all-targets
+
       - name: Run cargo test
         run: cargo test --workspace --all-targets

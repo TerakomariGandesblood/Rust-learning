@@ -7,15 +7,15 @@
 
 [profile.release]
 # https://doc.rust-lang.org/cargo/reference/profiles.html#debug
-debug = true
+# debug = true
 # https://doc.rust-lang.org/cargo/reference/profiles.html#strip
-# strip = true
+strip = true
 # https://doc.rust-lang.org/cargo/reference/profiles.html#lto
 lto = true
 # https://doc.rust-lang.org/cargo/reference/profiles.html#codegen-units
 codegen-units = 1
 # https://doc.rust-lang.org/cargo/reference/profiles.html#panic
-# panic = 'abort'
+panic = 'abort'
 
 [build]
 rustflags = ["-Dwarnings"]

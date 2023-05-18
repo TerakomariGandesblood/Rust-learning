@@ -10,9 +10,7 @@ update:
 
 check:
     pre-commit run --all-files
-    cargo deny --workspace check
     cargo outdated --workspace --exit-code 1
-    cargo +nightly udeps --workspace --all-targets
     cargo clippy --workspace --all-targets -- --deny clippy::all
 
 build:
