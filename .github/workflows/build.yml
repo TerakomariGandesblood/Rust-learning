@@ -46,7 +46,7 @@ jobs:
           toolchain: stable
 
       # https://github.com/taiki-e/install-action
-      - name: Install cargo-deny
+      - name: Install cargo-nextest
         uses: taiki-e/install-action@v2
         with:
           tool: cargo-nextest
