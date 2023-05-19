@@ -15,3 +15,6 @@ check:
 
 build:
     cargo build --workspace --all-targets
+
+test:
+    cargo nextest run --workspace --all-targets
