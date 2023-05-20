@@ -6,7 +6,6 @@ use std::cmp::Ordering;
 use std::io;
 
 fn main() {
-    // println! 会刷新缓冲区
     println!("Guess the number!");
 
     // rand::thread_rng() 获取随机数生成器：它位于当前执行线程的本地环境中，并从操作系统获取 seed
