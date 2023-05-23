@@ -62,7 +62,7 @@ fn _last_char_of_first_line(text: &str) -> Option<char> {
 }
 
 // Box<dyn Error> 类型是一个 trait 对象（trait object）
-// 如果 main 返回 Ok(()) 可执行程序会以 0 值退出, 而如果 main 返回 Err 值则会以非零值退出
+// 如果 main 返回 Ok(()) 可执行程序会以 0 值退出，而如果 main 返回 Err 值则会以非零值退出
 // fn main() -> Result<(), Box<dyn Error>> {
 //     let f = File::open("hello.txt")?;
 //     Ok(())

@@ -10,12 +10,12 @@
 // 使用 macro_rules! 来定义声明宏（declarative macros）
 #[macro_export]
 macro_rules! vec {
-    // $x:expr ，其匹配 Rust 的任意表达式，并将该表达式命名为 $x
+    // $x:expr，其匹配 Rust 的任意表达式，并将该表达式命名为 $x
     // 逗号说明一个可有可无的逗号分隔符可以出现在 $() 所匹配的代码之后
     // * 说明该模式匹配零个或更多个 * 之前的任何模式
     ($($x:expr),*) => {
         let mut temp_vec = Vec::new();
-        // 匹配到模式中的 $() 的每一部分，都会在（=>右侧）$()* 里生成temp_vec.push($x)
+        // 匹配到模式中的 $() 的每一部分，都会在（=>右侧）$()* 里生成 temp_vec.push($x)
         $(
             temp_vec.push($x);
         )*

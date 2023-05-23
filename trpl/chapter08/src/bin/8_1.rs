@@ -7,7 +7,7 @@ fn main() {
 
     let v = vec![1, 2, 3];
     println!("{v:#?}");
-    // 当 vector 被丢弃时, 所有其内容也会被丢弃
+    // 当 vector 被丢弃时，所有其内容也会被丢弃
 
     let v = vec![1, 2, 3, 4, 5];
     // 越界则 panic

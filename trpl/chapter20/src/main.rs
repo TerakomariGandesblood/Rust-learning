@@ -8,7 +8,7 @@ use std::time::Duration;
 use chapter20::ThreadPool;
 
 fn main() {
-    // 连接到监听端口被称为 “绑定到一个端口”（“binding to a port”）
+    // 连接到监听端口被称为“绑定到一个端口”（“binding to a port”）
     // 绑定可能不成功，如端口已被占用，非管理员用户只能监听大于 1024 的端口
     let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
     let thread_pool = ThreadPool::new(4);

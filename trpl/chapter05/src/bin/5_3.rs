@@ -40,7 +40,7 @@ fn main() {
     println!(
         "The area of the rectangle is {} square pixels.",
         // 自动引用和解引用（automatic referencing and dereferencing）
-        // 当使用 object.something() 调用方法时,
+        // 当使用 object.something() 调用方法时，
         // Rust 会自动为 object 添加 &，&mut 或 * 以便使 object 与方法签名匹配
         rect.area()
     );

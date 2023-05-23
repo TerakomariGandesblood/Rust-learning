@@ -23,7 +23,7 @@ fn main() {
     let _home = IpAddr::V4(127, 0, 0, 1);
     let _loopback = IpAddr::V6(String::from("::1"));
 
-    // Option<T> 包含在 prelude 中, 它的成员也是如此
+    // Option<T> 包含在 prelude 中，它的成员也是如此
     let _some_number = Some(5);
     let _some_string = Some("a string");
     let _absent_number: Option<i32> = None;

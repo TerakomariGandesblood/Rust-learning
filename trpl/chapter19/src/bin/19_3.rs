@@ -7,7 +7,7 @@ fn main() {
     println!("y = {y}");
 
     // 动态大小类型（dynamically sized types）
-    // 有时被称为 “DST” 或 “unsized types”，这些类型允许我们处理只有在运行时才知道大小的类型
+    // 有时被称为“DST”或“unsized types”，这些类型允许我们处理只有在运行时才知道大小的类型
     // 如 str 是一个 DST，不能创建 str 类型的变量
     // &str 不同与常规引用，它保存了两个值：str 的地址和其长度
 }
