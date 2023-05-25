@@ -10,7 +10,6 @@ update:
 
 check:
     pre-commit run --all-files
-    cargo outdated --workspace --exit-code 1
     cargo clippy --workspace --all-targets -- --deny clippy::all
     autocorrect --lint
 

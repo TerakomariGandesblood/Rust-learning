@@ -5,6 +5,7 @@ fn main() {
     // 创建一个引用的行为称为借用（borrowing）
     println!("{}", calculate_length(&s));
 
+    // Temporary lifetime extension
     // NOTE https://doc.rust-lang.org/reference/destructors.html#temporary-lifetime-extension
     let _str = &String::from("string");
 

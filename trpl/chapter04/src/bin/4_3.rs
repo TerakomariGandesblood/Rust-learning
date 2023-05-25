@@ -24,6 +24,7 @@ fn main() {
     assert_eq!(slice, &[2, 3]);
 }
 
+// function arguments must have a statically known size
 fn first_word(s: &str) -> &str {
     let bytes = s.as_bytes();
 
