@@ -21,6 +21,7 @@ fn main() {
     {
         let s1 = String::from("Hello");
         // copy
+        #[allow(clippy::redundant_clone)]
         let s2 = s1.clone();
         println!("{s1}, {s2}");
     }
