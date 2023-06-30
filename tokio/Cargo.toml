@@ -16,9 +16,9 @@ mini-redis = "0.4.1"
 # https://github.com/Amanieu/parking_lot
 parking_lot = "0.12.1"
 # https://github.com/SchrodingerZhu/snmalloc-rs
-snmalloc-rs = "0.3.3"
+snmalloc-rs = "0.3.4"
 # https://github.com/tokio-rs/tokio
-tokio = { version = "1.28.2", features = ["full"] }
+tokio = { version = "1.29.1", features = ["full"] }
 tokio-stream = "0.1.14"
 # https://github.com/tokio-rs/tracing
 # 用来生成 traces

@@ -11,4 +11,4 @@ proc-macro = true
 # https://github.com/dtolnay/syn
 syn = "2.0.22"
 # https://github.com/dtolnay/quote
-quote = "1.0.28"
+quote = "1.0.29"
