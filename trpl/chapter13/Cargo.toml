@@ -3,3 +3,8 @@ name = "chapter13"
 version = "0.1.0"
 edition = "2021"
 license = "MIT OR Apache-2.0"
+
+[dependencies]
+itertools = { version = "0.11.0", default-features = false, features = [
+    "use_std",
+] }

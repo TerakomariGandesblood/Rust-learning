@@ -1,14 +1,3 @@
-// 不并行运行测试
-// cargo test -- --test-threads=1
-// 显示通过的测试中打印的内容
-// cargo test -- --show-output
-// 运行指定的测试（任何名称匹配这个名称的测试会被运行）
-// cargo test test_name
-// 只运行忽略的测试
-// cargo test -- --ignored
-// 运行全部测试
-// cargo test -- --include-ignored
-
 // 测试私有函数
 fn _add(left: usize, right: usize) -> usize {
     left + right
@@ -26,6 +15,7 @@ mod tests {
     use super::*;
 
     // Rust 中的测试就是带有 test 属性（attribute）注解的函数
+    // 当使用 cargo test 命令运行测试时，Rust 会构建一个测试执行程序用来调用被标注的函数，并报告每一个测试是通过还是失败
     #[test]
     // 忽略测试
     #[ignore]
@@ -38,6 +28,7 @@ mod tests {
 
     #[test]
     // 在 #[test] 之后
+    // 错误信息中包含其提供的文本
     #[should_panic(expected = "a test panic")]
     fn it_will_panic() {
         panic!("a test panic");

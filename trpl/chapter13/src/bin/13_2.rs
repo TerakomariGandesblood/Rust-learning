@@ -1,5 +1,8 @@
+use itertools::Itertools;
+
 fn main() {
     let v = vec![1, 2, 3, 4, 5, 6];
+    // 迭代器（iterator）负责遍历序列中的每一项和决定序列何时结束的逻辑
     // 迭代器是 惰性的（lazy），这意味着在调用方法使用迭代器之前它都不会有效果
     // 迭代器都实现了一个叫做 Iterator 的定义于标准库的 trait
     // 还有 into_iter() / iter_mut()，获取所有权/可变引用
@@ -22,35 +25,8 @@ fn main() {
     let v2: Vec<_> = v.iter().filter(|x| *x % 2 == 0).collect();
     println!("{v2:?}");
 
-    // 注意 zip 只产生四对值，zip 在任一输入迭代器返回 None 时也返回 None
-    let sum: u32 = Counter::new()
-        .zip(Counter::new().skip(1))
-        .map(|(a, b)| a * b)
-        .filter(|x| x % 3 == 0)
-        .sum();
-    assert_eq!(18, sum);
-}
-
-struct Counter {
-    count: u32,
-}
-
-impl Counter {
-    fn new() -> Counter {
-        Counter { count: 0 }
-    }
-}
-
-impl Iterator for Counter {
-    // 关联类型（associated type）
-    type Item = u32;
-
-    fn next(&mut self) -> Option<Self::Item> {
-        if self.count < 5 {
-            self.count += 1;
-            Some(self.count)
-        } else {
-            None
-        }
-    }
+    v.iter()
+        .sorted_unstable()
+        .rev()
+        .for_each(|x| println!("{x}"));
 }

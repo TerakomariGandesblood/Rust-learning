@@ -17,6 +17,5 @@ mod garden;
 fn main() {
     let plant = Asparagus {};
     println!("I'm growing {plant:?}!");
-    // 使用包名引用库 crate 的模块结构，仅在 src/main.rs 及其子模块中可用
     chapter07::eat_at_restaurant();
 }

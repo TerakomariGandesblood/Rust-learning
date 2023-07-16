@@ -61,6 +61,34 @@ where
     }
 }
 
+#[derive(Debug)]
+enum List {
+    Cons(Rc<RefCell<i32>>, Rc<List>),
+    Nil,
+}
+
+use List::{Cons, Nil};
+
+fn main() {
+    let email = Email::new();
+    let mut limit_tracker = LimitTracker::new(&email, 100);
+    limit_tracker.set_value(80);
+    email.send("message");
+
+    let value = Rc::new(RefCell::new(42));
+
+    let a = Rc::new(Cons(Rc::clone(&value), Rc::new(Nil)));
+
+    let b = Rc::new(Cons(Rc::new(RefCell::new(4)), Rc::clone(&a)));
+    let c = Rc::new(Cons(Rc::new(RefCell::new(2)), Rc::clone(&a)));
+
+    *value.borrow_mut() += 10;
+
+    println!("a after = {a:?}");
+    println!("b after = {b:?}");
+    println!("c after = {c:?}");
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -92,32 +120,4 @@ mod tests {
 
         assert_eq!(mock_messenger.sent_messages.borrow().len(), 1);
     }
-}
-
-#[derive(Debug)]
-enum List {
-    Cons(Rc<RefCell<i32>>, Rc<List>),
-    Nil,
-}
-
-use List::{Cons, Nil};
-
-fn main() {
-    let email = Email::new();
-    let mut limit_tracker = LimitTracker::new(&email, 100);
-    limit_tracker.set_value(80);
-    email.send("message");
-
-    let value = Rc::new(RefCell::new(42));
-
-    let a = Rc::new(Cons(Rc::clone(&value), Rc::new(Nil)));
-
-    let b = Rc::new(Cons(Rc::new(RefCell::new(4)), Rc::clone(&a)));
-    let c = Rc::new(Cons(Rc::new(RefCell::new(2)), Rc::clone(&a)));
-
-    *value.borrow_mut() += 10;
-
-    println!("a after = {a:?}");
-    println!("b after = {b:?}");
-    println!("c after = {c:?}");
 }

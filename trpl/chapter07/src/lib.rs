@@ -34,6 +34,7 @@ mod back_of_house {
 }
 
 // 使用 use 将模块引入作用域，按照惯例想引入函数引入其父模块，引入结构体、枚举则直接引入（除非冲突）
+// use 语句只适用于其所在的作用域
 // use front_of_house::hosting;
 // 使用 as 关键字重命名引入作用域的类型
 use std::io::Result as IoResult;
@@ -54,8 +55,9 @@ pub fn eat_at_restaurant() {
     // 绝对路径，更倾向于使用绝对路径
     // crate root 在 crate 模块结构的根组成了一个名为 crate 的模块
     // 整个模块树都植根于名为 crate 的隐式模块下
+    // 对于外部 crate 的代码，是以 crate 名开头的绝对路径，对于对于当前 crate 的代码，则以字面值 crate 开头
     crate::front_of_house::hosting::add_to_waitlist();
-    // 相对路径
+    // 相对路径，从当前模块开始，以 self、super 或当前模块的标识符开头
     front_of_house::hosting::add_to_waitlist();
 
     hosting::add_to_waitlist();
