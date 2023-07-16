@@ -6,15 +6,20 @@
 
 Rust learning notes
 
-## Books and exercises
+## Books
 
-- [x] [trpl](https://kaisery.github.io/trpl-zh-cn/)
-- [x] [rustlings](https://github.com/rust-lang/rustlings)
-- [x] [cli](https://rust-cli.github.io/book/index.html)
-- [x] [async](https://tokio.rs/tokio/tutorial)
-- [ ] [rust-quiz](https://dtolnay.github.io/rust-quiz/)
-- [ ] [api-guidelines](https://rust-lang.github.io/api-guidelines/)
+- [x] [The Rust Programming Language](https://kaisery.github.io/trpl-zh-cn/)
+- [x] [Command Line Applications in Rust](https://rust-cli.github.io/book/index.html)
+- [ ] [pretzelhammer's Rust blog](https://github.com/pretzelhammer/rust-blog)
+- [x] [Tokio Tutorial](https://tokio.rs/tokio/tutorial)
+- [ ] [Rust Atomics and Locks](https://rustcc.github.io/Rust_Atomics_and_Locks/)
 - [ ] [The Rustonomicon](https://doc.rust-lang.org/nomicon/)
+- [ ] [Rust API Guidelines](https://rust-lang.github.io/api-guidelines/)
+
+## exercises
+
+- [x] [rustlings](https://github.com/rust-lang/rustlings)
+- [ ] [rust-quiz](https://dtolnay.github.io/rust-quiz/)
 
 ## Theories
 
