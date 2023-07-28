@@ -17,8 +17,7 @@ fn main() {
             // 使用 lock 方法获取锁，以访问互斥器中的数据。这个调用会阻塞当前线程，直到我们拥有锁为止
             // 如果另一个线程拥有锁，并且那个线程 panic 了，则 lock 调用会失败，在这种情况下，没人能够再获取锁
             // 一旦获取了锁，就可以将返回值视为一个其内部数据的可变引用了
-            let mut num = counter.lock().unwrap();
-            *num += 1;
+            *counter.lock().unwrap() += 1;
         });
         handles.push(handle);
     }

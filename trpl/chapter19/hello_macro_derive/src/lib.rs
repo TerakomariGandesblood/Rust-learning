@@ -1,5 +1,6 @@
 use proc_macro::TokenStream;
 use quote::quote;
+use syn::DeriveInput;
 
 // proc_macro crate 是编译器用来读取和操作我们 Rust 代码的 API
 // syn crate 将字符串中的 Rust 代码解析成为一个可以操作的数据结构
@@ -12,7 +13,7 @@ pub fn hello_macro_derive(input: TokenStream) -> TokenStream {
     impl_hello_macro(&ast)
 }
 
-fn impl_hello_macro(ast: &syn::DeriveInput) -> TokenStream {
+fn impl_hello_macro(ast: &DeriveInput) -> TokenStream {
     let name = &ast.ident;
     // quote! 宏能让我们编写希望返回的 Rust 代码
     let gen = quote! {

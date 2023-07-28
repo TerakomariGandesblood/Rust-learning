@@ -13,8 +13,6 @@ crossbeam = "0.8.2"
 dashmap = "5.5.0"
 # https://github.com/tokio-rs/mini-redis
 mini-redis = "0.4.1"
-# https://github.com/Amanieu/parking_lot
-parking_lot = "0.12.1"
 # https://github.com/SchrodingerZhu/snmalloc-rs
 snmalloc-rs = "0.3.4"
 # https://github.com/tokio-rs/tokio

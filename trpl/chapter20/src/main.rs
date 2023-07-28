@@ -1,9 +1,9 @@
-use std::fs;
-use std::io::prelude::*;
-use std::net::TcpListener;
-use std::net::TcpStream;
-use std::thread;
-use std::time::Duration;
+use std::{
+    io::{BufRead, BufReader, Write},
+    net::{TcpListener, TcpStream},
+    thread,
+    time::Duration,
+};
 
 use chapter20::ThreadPool;
 
@@ -25,37 +25,23 @@ fn main() {
 }
 
 fn handle_connection(mut stream: TcpStream) {
-    let mut buffer = [0; 1024];
-    let n = stream.read(&mut buffer).unwrap();
-    assert!(n <= 1024);
+    // BufReader 增加了缓存来替我们管理 std::io::Read trait 方法的调用
+    let buf_reader = BufReader::new(&mut stream);
+    // 如果数据不是有效的 UTF-8 编码或者读取流遇到问题时，Result 可能是一个错误
+    let request_line = buf_reader.lines().next().unwrap().unwrap();
 
-    // from_utf8_lossy 使用 �，U+FFFD REPLACEMENT CHARACTER，来代替无效序列
-    // println!("Request: {}", String::from_utf8_lossy(&buffer[..]));
-
-    let get = b"GET / HTTP/1.1\r\n";
-    let sleep = b"GET /sleep HTTP/1.1\r\n";
-    let (status_line, filename) = if buffer.starts_with(get) {
-        ("HTTP/1.1 200 OK", "hello.html")
-    } else if buffer.starts_with(sleep) {
-        thread::sleep(Duration::from_secs(100));
-        ("HTTP/1.1 200 OK", "hello.html")
-    } else {
-        ("HTTP/1.1 404 NOT FOUND", "404.html")
+    let (status_line, contents) = match request_line.as_str() {
+        "GET / HTTP/1.1" => ("HTTP/1.1 200 OK", include_str!("hello.html")),
+        "GET /sleep HTTP/1.1" => {
+            thread::sleep(Duration::from_secs(3));
+            ("HTTP/1.1 200 OK", include_str!("hello.html"))
+        }
+        _ => ("HTTP/1.1 404 NOT FOUND", include_str!("404.html")),
     };
 
-    let contents = fs::read_to_string(filename).unwrap();
+    let length = contents.len();
 
-    let response = format!(
-        "{}\r\nContent-Length: {}\r\n\r\n{}",
-        status_line,
-        contents.len(),
-        contents
-    );
+    let response = format!("{status_line}\r\nContent-Length: {length}\r\n\r\n{contents}");
 
-    let n = stream.write(response.as_bytes()).unwrap();
-    assert_eq!(n, response.len());
-
-    // flush 会等待并阻塞程序执行直到所有字节都被写入连接中
-    // TcpStream 包含一个内部缓冲区来最小化对底层操作系统的调用
-    stream.flush().unwrap();
+    stream.write_all(response.as_bytes()).unwrap();
 }

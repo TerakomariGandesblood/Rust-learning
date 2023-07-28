@@ -93,6 +93,7 @@ impl Display for Point {
 impl OutlinePrint for Point {}
 
 // newtype 模式（newtype pattern），绕开孤儿规则（orphan rule）的限制
+// 它涉及到在一个元组结构体中创建一个新类型
 struct Wrapper(Vec<String>);
 
 impl Display for Wrapper {

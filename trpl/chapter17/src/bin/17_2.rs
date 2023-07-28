@@ -3,7 +3,8 @@ trait Draw {
 }
 
 struct Screen {
-    // trait 对象（trait object），代表了实现了 Draw trait 的类型，允许对通用行为进行抽象
+    // trait 对象（trait object），代表了实现了 trait 的类型，允许对通用行为进行抽象
+    // trait 对象指向一个实现了我们指定 trait 的类型的实例，以及一个用于在运行时查找该类型的 trait 方法的表
     // 只有对象安全（object-safe）的 trait 可以实现为 trait 对象
     // 如果一个 trait 中定义的所有方法都符合以下规则，则该 trait 是对象安全的
     // 返回值不是 Self；没有泛型类型的参数

@@ -7,8 +7,6 @@ use bytes::Bytes;
 use dashmap::DashMap;
 use mini_redis::Command::{self, Get, Set};
 use mini_redis::Frame;
-// std::sync::Mutex 更快的替代品
-// use parking_lot::Mutex;
 use tokio::net::{TcpListener, TcpStream};
 
 // 注意这里使用了 std::sync::Mutex 而不是 tokio::sync::Mutex

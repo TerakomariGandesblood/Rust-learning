@@ -10,4 +10,8 @@
 // RefCell<T> 和 Cell<T> 系列类型不是 Sync 的。
 // RefCell<T> 在运行时所进行的借用检查也不是线程安全的
 // Mutex<T> 是 Sync 的
+
+// 手动实现 Send 和 Sync 是 unsafe 的
+
+// See https://www.zhihu.com/question/303273488/answer/568296135
 fn main() {}

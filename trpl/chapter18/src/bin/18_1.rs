@@ -41,6 +41,7 @@ fn main() {
 }
 
 // 也可以在闭包参数列表中使用模式
+// 注意如果没有实现 Copy，则会试图移动
 fn print_coordinates(&(x, y): &(i32, i32)) {
     println!("Current location: ({x}, {y})");
 }
