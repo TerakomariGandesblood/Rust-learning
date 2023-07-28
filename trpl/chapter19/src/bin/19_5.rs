@@ -36,6 +36,7 @@ use hello_macro_derive::HelloMacro;
 struct Pancakes;
 
 fn main() {
+    #[allow(clippy::vec_init_then_push)]
     let v = vec2!(1, 2, 3);
     println!("{v:?}");
 
