@@ -9,8 +9,8 @@ Rust learning notes
 ## Books
 
 - [x] [The Rust Programming Language](https://kaisery.github.io/trpl-zh-cn/)
-- [ ] [pretzelhammer's Rust blog](https://github.com/pretzelhammer/rust-blog)
 - [ ] [The Rustonomicon](https://nomicon.purewhite.io/)
+- [ ] [pretzelhammer's Rust blog](https://github.com/pretzelhammer/rust-blog)
 - [ ] [Rust Atomics and Locks](https://rustcc.github.io/Rust_Atomics_and_Locks/)
 - [x] [Tokio Tutorial](https://tokio.rs/tokio/tutorial)
 - [ ] [Rust API Guidelines](https://rust-lang.github.io/api-guidelines/)
