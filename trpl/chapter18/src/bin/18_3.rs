@@ -121,6 +121,7 @@ fn main() {
 
         match x {
             // 这时匹配守卫将会作用于所有的模式
+            #[allow(clippy::manual_range_patterns)]
             4 | 5 | 6 if y => println!("yes"),
             _ => println!("no"),
         }

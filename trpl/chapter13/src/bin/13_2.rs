@@ -1,7 +1,7 @@
 use itertools::Itertools;
 
 fn main() {
-    let v = vec![1, 2, 3, 4, 5, 6];
+    let v = [1, 2, 3, 4, 5, 6];
     // 迭代器（iterator）负责遍历序列中的每一项和决定序列何时结束的逻辑
     // 迭代器是 惰性的（lazy），这意味着在调用方法使用迭代器之前它都不会有效果
     // 迭代器都实现了一个叫做 Iterator 的定义于标准库的 trait

@@ -22,7 +22,7 @@ fn main() {
     let answer = do_twice(add_one, 5);
     println!("The answer is: {answer}");
 
-    let list_of_numbers = vec![1, 2, 3];
+    let list_of_numbers = [1, 2, 3];
     let _list_of_string: Vec<String> = list_of_numbers.iter().map(|i| i.to_string()).collect();
 
     let _list_of_string: Vec<String> = list_of_numbers.iter().map(ToString::to_string).collect();
