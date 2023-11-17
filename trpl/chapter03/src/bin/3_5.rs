@@ -16,6 +16,7 @@ fn main() {
 fn loop_label() {
     let mut count = 0;
 
+    #[allow(clippy::never_loop)]
     'exit: loop {
         println!("{count}");
 
