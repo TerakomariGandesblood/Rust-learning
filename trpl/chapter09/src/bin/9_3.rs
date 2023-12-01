@@ -30,7 +30,7 @@ impl Guess {
     }
 }
 
-#[nutype(validate(with = |n| (1..=100).contains(n)))]
+#[nutype(validate(predicate = |n| (1..=100).contains(n)))]
 struct Guess2(i32);
 
 fn main() {
