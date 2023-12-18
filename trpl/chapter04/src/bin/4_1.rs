@@ -21,7 +21,6 @@ fn main() {
     {
         let s1 = String::from("Hello");
         // copy
-        #[allow(clippy::redundant_clone)]
         let s2 = s1.clone();
         println!("{s1}, {s2}");
     }
@@ -38,7 +37,7 @@ fn main() {
         println!("{}", arr2[0]);
     }
 
-    // Rust 不允许自身或其任何部分实现了 Drop trait 的类型使用 Copy trait
+    // Rust 不允许自身或其任何部分实现了 Drop trait 的类型实现 Copy trait
     // 类型实现了 Copy trait，默认将不是 move 而是 copy
     // NOTE https://zhuanlan.zhihu.com/p/21730929
 }

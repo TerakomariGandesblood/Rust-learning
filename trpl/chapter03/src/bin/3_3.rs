@@ -15,7 +15,7 @@ fn func(a: i32) -> i32 {
 
     let mut _a = 2;
     let mut _b = 2;
-    // error，赋值表达式值的类型是 '()'
+    // expected integer, found `()`
     // _a = _b = 3;
 
     println!("The value of y is: {y}");
