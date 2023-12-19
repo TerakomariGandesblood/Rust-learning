@@ -22,7 +22,7 @@ mod back_of_house {
     // 注意同一模块可以访问私有字段
     pub struct _Breakfast {
         pub toast: String,
-        // 注意因为无法设置 seasonal_fruit 的直，所有无法直接创建 _Breakfast 类型的变量
+        // 注意因为无法设置 seasonal_fruit 的值，所有无法直接创建 _Breakfast 类型的变量
         seasonal_fruit: String,
     }
 

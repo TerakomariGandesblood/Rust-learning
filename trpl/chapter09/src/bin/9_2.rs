@@ -13,6 +13,16 @@ fn main() {
         },
     };
 
+    let _file = File::open("hello.txt").unwrap_or_else(|error| {
+        if error.kind() == ErrorKind::NotFound {
+            File::create("hello.txt").unwrap_or_else(|error| {
+                panic!("Problem creating the file: {error:?}");
+            })
+        } else {
+            panic!("Problem opening the file: {error:?}");
+        }
+    });
+
     // 如果 Result 值是成员 Ok，unwrap 会返回 Ok 中的值；如果 Result 是成员 Err，unwrap 会调用 panic!
     let _file = File::open("hello.txt").unwrap();
     // 和 unwrap() 类似，可以选择错误信息，unwrap() 使用默认的 panic! 信息

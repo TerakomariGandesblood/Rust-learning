@@ -10,8 +10,7 @@
 // 当代码对值进行操作时，应该首先验证值是有效的，并在其无效时 panic!
 // 这主要是出于安全的原因：尝试操作无效数据会暴露代码漏洞
 
-use nutype::nutype;
-
+// 创建自定义类型进行有效性验证
 struct Guess {
     value: i32,
 }
@@ -30,13 +29,7 @@ impl Guess {
     }
 }
 
-#[nutype(validate(predicate = |n| (1..=100).contains(n)))]
-struct Guess2(i32);
-
 fn main() {
     let guess = Guess::new(100);
     println!("{}", guess.value());
-
-    let guess = Guess2::new(100).unwrap().into_inner();
-    println!("{guess}");
 }

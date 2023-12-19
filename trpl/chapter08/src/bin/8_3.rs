@@ -55,8 +55,9 @@ fn main() {
         let text = "hello world wonderful world";
         let mut map = HashMap::new();
         for word in text.split_whitespace() {
-            let count = map.entry(word).or_insert(0);
-            *count += 1;
+            map.entry(word)
+                .and_modify(|counter| *counter += 1)
+                .or_insert(1);
         }
         println!("{map:#?}");
     }

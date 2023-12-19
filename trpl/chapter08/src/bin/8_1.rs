@@ -11,6 +11,8 @@ fn main() {
 
     let v = vec![1, 2, 3, 4, 5];
     // 越界则 panic
+    // container[index] 是 *container.index(index) 的语法糖
+    // See https://doc.rust-lang.org/std/ops/trait.Index.html
     let third = &v[2];
     println!("{third}");
 
@@ -25,7 +27,8 @@ fn main() {
     // v.push(1);
     // println!("{}", first);
 
-    // 注意使用 v，则 v 会被移动
+    // See https://doc.rust-lang.org/reference/expressions/loop-expr.html#iterator-loops
+    // See https://stackoverflow.com/questions/61907150/is-there-a-difference-between-for-i-in-v-and-for-i-in-v
     for i in &v {
         println!("{i}");
     }

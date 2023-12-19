@@ -2,13 +2,13 @@
 // 单态化是一个通过填充编译时使用的具体类型，将通用代码转换为特定代码的过程。
 
 // 类型参数声明位于函数名称与参数列表中间的尖括号 <> 中
-fn largest<T>(list: &[T]) -> T
+fn largest<T>(list: &[T]) -> &T
 where
-    T: PartialOrd + Copy,
+    T: PartialOrd,
 {
-    let mut largest = list[0];
+    let mut largest = &list[0];
 
-    for &item in list {
+    for item in list {
         if item > largest {
             largest = item;
         }
