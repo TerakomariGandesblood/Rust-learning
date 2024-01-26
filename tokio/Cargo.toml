@@ -8,7 +8,7 @@ license = "MIT OR Apache-2.0"
 # https://github.com/tokio-rs/bytes
 bytes = "1.5.0"
 # https://github.com/crossbeam-rs/crossbeam
-crossbeam = "0.8.2"
+crossbeam = "0.8.4"
 # https://github.com/xacrimon/dashmap
 dashmap = "5.5.3"
 # https://github.com/tokio-rs/mini-redis
@@ -16,7 +16,7 @@ mini-redis = "0.4.1"
 # https://github.com/SchrodingerZhu/snmalloc-rs
 snmalloc-rs = "0.3.4"
 # https://github.com/tokio-rs/tokio
-tokio = { version = "1.35.0", features = ["full"] }
+tokio = { version = "1.35.1", features = ["full"] }
 tokio-stream = "0.1.14"
 # https://github.com/tokio-rs/tracing
 # 用来生成 traces

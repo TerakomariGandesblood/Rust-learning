@@ -13,5 +13,6 @@
 
 // 手动实现 Send 和 Sync 是 unsafe 的
 
-// See https://www.zhihu.com/question/303273488/answer/568296135
+// https://github.com/pretzelhammer/rust-blog/blob/master/posts/translations/zh-hans/tour-of-rusts-standard-library-traits.md#send--sync
+// See https://zhuanlan.zhihu.com/p/24142191
 fn main() {}

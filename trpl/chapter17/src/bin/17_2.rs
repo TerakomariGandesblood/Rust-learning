@@ -6,8 +6,7 @@ struct Screen {
     // trait 对象（trait object），代表了实现了 trait 的类型，允许对通用行为进行抽象
     // trait 对象指向一个实现了我们指定 trait 的类型的实例，以及一个用于在运行时查找该类型的 trait 方法的表
     // 只有对象安全（object-safe）的 trait 可以实现为 trait 对象
-    // 如果一个 trait 中定义的所有方法都符合以下规则，则该 trait 是对象安全的
-    // 返回值不是 Self；没有泛型类型的参数
+    // 见 https://doc.rust-lang.org/reference/items/traits.html#object-safety
     components: Vec<Box<dyn Draw>>,
 }
 
@@ -44,6 +43,7 @@ fn main() {
     // 静态分发发生于编译器在编译时就知晓调用了什么方法的时候
     // 这与动态分发（dynamic dispatch）相对，这时编译器在编译时无法知晓调用了什么方法
     // 当使用 trait 对象时，Rust 必须使用动态分发
+    // Rust 在运行时使用 trait 对象中的指针来知晓需要调用哪个方法
     // 动态分发也阻止编译器有选择的内联方法代码，这会相应的禁用一些优化
     screen.run();
 }

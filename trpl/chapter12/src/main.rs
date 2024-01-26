@@ -13,7 +13,7 @@ use chapter12::Config;
 fn main() {
     // 第一个值是二进制文件名
     // 注意 std::env::args 在其任何参数包含无效 Unicode 字符时会 panic
-    let config = Config::new(env::args()).unwrap_or_else(|err| {
+    let config = Config::build(env::args()).unwrap_or_else(|err| {
         eprintln!("Problem parsing arguments: {err}");
         process::exit(exitcode::USAGE);
     });

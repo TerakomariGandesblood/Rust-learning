@@ -40,5 +40,5 @@ fn main() {
 
     let mut hash_map = HashMap::new();
     hash_map.insert(p1, 2);
-    println!("{hash_map:#?}")
+    println!("{hash_map:#?}");
 }

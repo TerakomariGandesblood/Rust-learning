@@ -1,6 +1,7 @@
 use std::fmt::Display;
 use std::ops::{Add, Deref};
 
+// 不实用范型的原因在于，如果使用范型，则可以实现该 trait 多次
 trait Iterator {
     // 关联类型（associated types）是一个将类型占位符与 trait 相关联的方式
     type Item;
@@ -27,9 +28,19 @@ impl Add for Point {
     }
 }
 
+struct Millimeters(u32);
+struct Meters(u32);
+
 // 默认类型参数（default type parameters）
 // 如果实现 Add trait 时不指定 Rhs 的具体类型，Rhs 的类型将是默认的 Self 类型，也就是在其上实现 Add 的类型
-// trait Add<Rhs = Self> {}
+// 不使用默认类型参数
+impl Add<Meters> for Millimeters {
+    type Output = Millimeters;
+
+    fn add(self, other: Meters) -> Millimeters {
+        Millimeters(self.0 + (other.0 * 1000))
+    }
+}
 
 trait Pilot {
     fn fly(&self);
@@ -116,6 +127,10 @@ fn main() {
         Point { x: 1, y: 0 } + Point { x: 2, y: 3 },
         Point { x: 3, y: 3 }
     );
+
+    let millimeters = Millimeters(50);
+    let meters = Meters(2);
+    let _millimeters = millimeters + meters;
 
     let person = Human;
     // *waving arms furiously*

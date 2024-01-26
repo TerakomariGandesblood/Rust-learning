@@ -78,6 +78,13 @@ fn main() {
         }
     }
 
+    let s = Some(String::from("Hello!"));
+
+    // 注意移动，如果使用 _，则不会发生移动
+    if let Some(_s) = s {
+        println!("found a string");
+    }
+
     {
         struct Point {
             _x: i32,

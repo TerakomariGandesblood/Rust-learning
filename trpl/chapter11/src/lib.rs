@@ -21,16 +21,17 @@ mod tests {
     #[ignore]
     fn it_works() {
         let result = _add(2, 2);
-        // 自定义失败信息
+        // 自定义失败信息，必需参数之后指定的参数都会传递给 format! 宏
         assert_eq!(result, 4, "{result} not equal 4");
         assert!(result == 4);
     }
 
     #[test]
     // 在 #[test] 之后
-    // 错误信息中包含其提供的文本
+    // expected 指定错误信息中包含的文本
     #[should_panic(expected = "a test panic")]
     fn it_will_panic() {
+        // 测试失败
         panic!("a test panic");
     }
 

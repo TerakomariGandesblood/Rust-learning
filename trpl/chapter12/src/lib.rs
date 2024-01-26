@@ -2,12 +2,12 @@ use std::{env, error::Error, fs};
 
 // Box<dyn Error> 意味着函数会返回实现了 Error trait 的类型
 pub fn run(config: &Config) -> Result<(), Box<dyn Error>> {
-    let contents = fs::read_to_string(&config.filename)?;
+    let contents = fs::read_to_string(&config.file_path)?;
 
-    let results = if config.case_sensitive {
-        search(&config.query, &contents)
-    } else {
+    let results = if config.ignore_case {
         search_case_insensitive(&config.query, &contents)
+    } else {
+        search(&config.query, &contents)
     };
 
     for line in results {
@@ -19,12 +19,13 @@ pub fn run(config: &Config) -> Result<(), Box<dyn Error>> {
 
 pub struct Config {
     pub query: String,
-    pub filename: String,
-    pub case_sensitive: bool,
+    pub file_path: String,
+    pub ignore_case: bool,
 }
 
 impl Config {
-    pub fn new(mut args: env::Args) -> Result<Config, &'static str> {
+    // 许多程序员希望 new 函数永远不会失败
+    pub fn build(mut args: impl Iterator<Item = String>) -> Result<Config, &'static str> {
         args.next();
 
         let query = match args.next() {
@@ -32,17 +33,17 @@ impl Config {
             None => return Err("Didn't get a query string"),
         };
 
-        let filename = match args.next() {
+        let file_path = match args.next() {
             Some(arg) => arg,
             None => return Err("Didn't get a file name"),
         };
 
-        let case_sensitive = env::var("CASE_INSENSITIVE").is_err();
+        let ignore_case = env::var("IGNORE_CASE").is_ok();
 
         Ok(Config {
             query,
-            filename,
-            case_sensitive,
+            file_path,
+            ignore_case,
         })
     }
 }

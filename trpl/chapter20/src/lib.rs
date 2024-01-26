@@ -20,7 +20,6 @@ impl ThreadPool {
         let (sender, receiver) = mpsc::channel();
         let receiver = Arc::new(Mutex::new(receiver));
 
-        // 预先分配空间
         let mut workers = Vec::with_capacity(size);
 
         for id in 0..size {
@@ -35,7 +34,6 @@ impl ThreadPool {
 
     pub fn execute<F>(&self, f: F)
     where
-        // 由 'static 限定的类型不能包含非 static 的引用类型
         F: FnOnce() + Send + 'static,
     {
         let job = Box::new(f);

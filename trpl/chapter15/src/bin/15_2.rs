@@ -25,7 +25,6 @@ fn main() {
     let x = 5;
     let y = MyBox::new(x);
     assert_eq!(x, 5);
-    // 没有 Deref trait 的话，编译器只会解引用 & 引用类型
     // Rust 事实上在底层运行了如下代码：*(y.deref())，只会发生一次，不会递归替换
     assert_eq!(*y, 5);
 

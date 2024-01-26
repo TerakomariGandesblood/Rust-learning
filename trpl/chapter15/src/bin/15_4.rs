@@ -11,6 +11,7 @@ fn main() {
     // 引用计数（reference counting）智能指针
     // Rc<T> 允许在程序的多个部分之间只读地共享数据
     // 注意 Rc<T> 只能用于单线程场景
+    // 没有实现 DerefMut
     let a = Rc::new(Cons(5, Rc::new(Cons(10, Rc::new(Nil)))));
     println!("count after creating a = {}", Rc::strong_count(&a));
 
