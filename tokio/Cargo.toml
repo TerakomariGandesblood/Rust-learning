@@ -14,7 +14,7 @@ dashmap = "5.5.3"
 # https://github.com/tokio-rs/mini-redis
 mini-redis = "0.4.1"
 # https://github.com/SchrodingerZhu/snmalloc-rs
-snmalloc-rs = "0.3.4"
+snmalloc-rs = "0.3.5"
 # https://github.com/tokio-rs/tokio
 tokio = { version = "1.36.0", features = ["full"] }
 tokio-stream = "0.1.14"
