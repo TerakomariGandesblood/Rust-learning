@@ -17,7 +17,7 @@ mini-redis = "0.4.1"
 snmalloc-rs = "0.3.5"
 # https://github.com/tokio-rs/tokio
 tokio = { version = "1.36.0", features = ["full"] }
-tokio-stream = "0.1.14"
+tokio-stream = "0.1.15"
 # https://github.com/tokio-rs/tracing
 # 用来生成 traces
 tracing = "0.1.40"
