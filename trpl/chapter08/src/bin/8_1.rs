@@ -44,7 +44,7 @@ fn main() {
         Text(String),
     }
 
-    let _row = vec![
+    let _row = [
         SpreadsheetCell::Int(3),
         SpreadsheetCell::Text(String::from("blue")),
         SpreadsheetCell::Float(10.12),
