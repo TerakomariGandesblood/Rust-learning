@@ -20,11 +20,10 @@ repos:
       - id: forbid-new-submodules
       - id: mixed-line-ending
       - id: trailing-whitespace
-  # https://github.com/rhysd/actionlint/issues/393
-  # - repo: https://github.com/rhysd/actionlint
-  #   rev: v1.6.26
-  #   hooks:
-  #     - id: actionlint
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.6.27
+    hooks:
+      - id: actionlint
   - repo: https://github.com/zricethezav/gitleaks
     rev: v8.18.2
     hooks:
