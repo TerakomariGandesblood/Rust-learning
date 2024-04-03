@@ -23,8 +23,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: ubuntu-latest
           # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
+          - os: ubuntu-latest
           - os: macos-latest
           - os: windows-latest
 
