@@ -38,7 +38,7 @@ fn main() {
     {
         let mut v = vec![1, 2, 3];
 
-        // 可以借用 non-'static 数据，在 scope 返回钱，所有未手动 join 的线程将自动 join
+        // 可以借用 non-'static 数据，在 scope 返回前，所有未手动 join 的线程将自动 join
         thread::scope(|s| {
             s.spawn(|| dbg!(&v));
         });
