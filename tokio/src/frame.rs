@@ -1,5 +1,4 @@
-use std::io::Cursor;
-use std::io::Write;
+use std::io::{Cursor, Write};
 
 use bytes::{Buf, BytesMut};
 use mini_redis::{frame::Error, Frame, Result};

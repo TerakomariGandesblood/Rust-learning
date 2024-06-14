@@ -38,6 +38,7 @@ mod back_of_house {
 // use front_of_house::hosting;
 // 使用 as 关键字重命名引入作用域的类型
 use std::io::Result as IoResult;
+
 // 重导出（re-exporting），使外部代码也可以直接使用 hosting
 // pub use 的另一个常见用法是重导出当前 crate 的依赖的定义使其 crate 定义变成你 crate 公有 API 的一部分
 pub use front_of_house::hosting;

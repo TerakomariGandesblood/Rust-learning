@@ -1,12 +1,14 @@
 use std::sync::Arc;
 
-use snmalloc_rs::SnMalloc;
 // Bytes 相比与 Vec<u8>，调用 clone 时不会拷贝底层数据，类似于 Arc<Vec<u8>>
 use bytes::Bytes;
 // DashMap 是一个线程安全的 HashMap
 use dashmap::DashMap;
-use mini_redis::Command::{self, Get, Set};
-use mini_redis::Frame;
+use mini_redis::{
+    Command::{self, Get, Set},
+    Frame,
+};
+use snmalloc_rs::SnMalloc;
 use tokio::net::{TcpListener, TcpStream};
 
 // 注意这里使用了 std::sync::Mutex 而不是 tokio::sync::Mutex

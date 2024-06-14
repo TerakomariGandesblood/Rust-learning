@@ -1,5 +1,7 @@
-use std::fs::{self, File};
-use std::io::{Error, ErrorKind, Read};
+use std::{
+    fs::{self, File},
+    io::{Error, ErrorKind, Read},
+};
 
 fn main() {
     let _file = match File::open("hello.txt") {

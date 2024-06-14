@@ -1,5 +1,7 @@
-use std::fmt::Display;
-use std::ops::{Add, Deref};
+use std::{
+    fmt::Display,
+    ops::{Add, Deref},
+};
 
 // 不实用范型的原因在于，如果使用范型，则可以实现该 trait 多次
 trait Iterator {
