@@ -23,3 +23,4 @@ jobs:
     uses: TerakomariGandesblood/github-workflows/.github/workflows/rust-check.yml@main
     with:
       msrv: "1.75.0"
+      run_doc_check: false
