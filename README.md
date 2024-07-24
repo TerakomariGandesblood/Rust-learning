@@ -1,6 +1,7 @@
 # Rust-learning
 
-[![Build](https://github.com/TerakomariGandesblood/Rust-learning/actions/workflows/build.yml/badge.svg)](https://github.com/TerakomariGandesblood/Rust-learning/actions/workflows/build.yml)
+[![Check](https://github.com/TerakomariGandesblood/Rust-learning/actions/workflows/check.yml/badge.svg)](https://github.com/TerakomariGandesblood/Rust-learning/actions/workflows/check.yml)
+[![Test](https://github.com/TerakomariGandesblood/Rust-learning/actions/workflows/test.yml/badge.svg)](https://github.com/TerakomariGandesblood/Rust-learning/actions/workflows/test.yml)
 
 ---
 
