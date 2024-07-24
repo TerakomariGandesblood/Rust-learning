@@ -1,0 +1,7 @@
+# 工作空间（workspaces）是一系列共享同样的 Cargo.lock 和输出目录的包
+# 如果你选择向 crates.io 发布工作空间中的 crate，每一个工作空间中的 crate 需要单独发布
+# cargo run / cargo test 可以通过 -p 来运行特定的 crate
+# 工作空间只在根目录有一个 Cargo.lock，这确保了所有的 crate 都使用完全相同版本的依赖
+[workspace]
+resolver = "2"
+members = ["trpl/*"]

@@ -1,0 +1,19 @@
+update:
+    cargo upgrade --incompatible
+    cargo update
+
+fmt:
+    cargo +nightly fmt
+    prettier --write .
+    taplo fmt *toml
+    just --fmt --unstable
+
+check:
+    pre-commit run --all-files
+    cargo deny --workspace --all-features check
+    cargo +nightly udeps --workspace --all-targets --all-features
+    cargo clippy --workspace --all-targets --all-features -- --deny warnings
+    autocorrect --lint
+
+test:
+    cargo nextest run --workspace --all-targets --all-features --locked

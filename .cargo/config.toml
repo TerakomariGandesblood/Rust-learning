@@ -1,0 +1,26 @@
+# https://doc.rust-lang.org/cargo/reference/config.html
+
+# 发布配置（release profiles）是预定义的、可定制的带有不同选项的配置
+# Cargo 有两个主要的配置：dev 和 release
+# 增加 [profile.*] 会覆盖指定的配置
+# [profile.dev]
+
+[profile.release]
+# https://doc.rust-lang.org/cargo/reference/profiles.html#debug
+# debug = true
+# https://doc.rust-lang.org/cargo/reference/profiles.html#strip
+strip = true
+# https://doc.rust-lang.org/cargo/reference/profiles.html#lto
+lto = true
+# https://doc.rust-lang.org/cargo/reference/profiles.html#codegen-units
+codegen-units = 1
+# https://doc.rust-lang.org/cargo/reference/profiles.html#panic
+panic = 'abort'
+
+[build]
+rustflags = ["--deny", "warnings"]
+
+# https://doc.rust-lang.org/rustc/platform-support.html
+# https://doc.rust-lang.org/reference/linkage.html#static-and-dynamic-c-runtimes
+[target.x86_64-pc-windows-msvc]
+rustflags = ["--deny", "warnings", "--codegen", "target-feature=+crt-static"]

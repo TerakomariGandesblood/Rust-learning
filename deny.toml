@@ -1,0 +1,12 @@
+# https://embarkstudios.github.io/cargo-deny/checks/cfg.html
+
+[graph]
+targets = [
+  { triple = "x86_64-unknown-linux-gnu" },
+  { triple = "aarch64-apple-darwin" },
+  { triple = "x86_64-pc-windows-msvc" },
+]
+
+[licenses]
+allow = ["MIT", "Apache-2.0"]
+exceptions = [{ allow = ["Unicode-DFS-2016"], crate = "unicode-ident" }]
