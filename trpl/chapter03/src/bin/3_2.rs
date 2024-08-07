@@ -3,10 +3,14 @@ fn main() {
     // 可以使用分隔符
     let _size: usize = 166_169;
     // 类型后缀
-    let _size = 166_169usize;
+    let size = 166_169usize;
 
     // debug 模式下整型溢出会 panic（程序因为错误而退出）
     // release 模式下进行 two's complement wrapping（e.g. 256 -> 0（u8））
+
+    // 显式处理溢出
+    println!("{}", size.wrapping_add(1));
+    println!("{}", size.saturating_add(1));
 
     // 4 字节，Unicode 标量值（Unicode Scalar Value）
     let _c = 'a';
