@@ -41,7 +41,7 @@ struct ImportantExcerpt<'a> {
 // 2、如果只有一个输入生命周期参数，那么它被赋予所有输出生命周期参数
 // 3、如果方法有多个输入生命周期参数并且其中一个参数是 &self 或 &mut self，那么所有输出生命周期参数被赋予 self 的生命周期
 // 如果编译器检查完这三条规则后仍然存在没有计算出生命周期的引用，编译器将会停止并生成错误
-impl<'a> ImportantExcerpt<'a> {
+impl ImportantExcerpt<'_> {
     fn _announce_and_return_part(&self, announcement: &str) -> &str {
         println!("{announcement}");
         self._part

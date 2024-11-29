@@ -32,7 +32,7 @@ where
     max: usize,
 }
 
-impl<'a, T> LimitTracker<'a, T>
+impl<T> LimitTracker<'_, T>
 where
     T: Messenger,
 {
