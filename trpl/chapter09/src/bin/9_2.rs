@@ -33,6 +33,7 @@ fn main() {
 
 // 传播（propagating）错误
 fn _read_username_from_file() -> Result<String, Error> {
+    #[allow(clippy::question_mark)]
     let mut file = match File::open("hello.txt") {
         Ok(file) => file,
         Err(error) => return Err(error),

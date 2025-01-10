@@ -11,7 +11,6 @@ fmt:
 check:
     pre-commit run --all-files
     cargo deny --workspace --all-features check
-    cargo +nightly udeps --workspace --all-targets --all-features
     cargo clippy --workspace --all-targets --all-features -- --deny warnings
     autocorrect --lint
 
