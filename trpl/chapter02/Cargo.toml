@@ -15,7 +15,7 @@ license = "MIT OR Apache-2.0"
 # cargo update 忽略 Cargo.lock，并计算出所有符合 Cargo.toml 声明的最新版本并写入 Cargo.lock
 
 # https://github.com/rust-random/rand
-rand = { version = "0.8.5", default-features = false, features = [
+rand = { version = "0.9.0", default-features = false, features = [
     "std",
     "std_rng",
 ] }
