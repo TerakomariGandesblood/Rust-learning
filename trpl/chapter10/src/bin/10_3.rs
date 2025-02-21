@@ -23,11 +23,7 @@ fn main() {
 
 // 被 'a 所替代的具体生命周期是 x 的作用域与 y 的作用域相重叠的那一部分
 fn longest<'a>(str1: &'a str, str2: &'a str) -> &'a str {
-    if str1.len() > str2.len() {
-        str1
-    } else {
-        str2
-    }
+    if str1.len() > str2.len() { str1 } else { str2 }
 }
 
 // 这个注解意味着 ImportantExcerpt 的实例不能比其 part 字段中的引用存在的更久
@@ -53,9 +49,5 @@ where
     T: Display,
 {
     println!("Announcement! {ann}");
-    if x.len() > y.len() {
-        x
-    } else {
-        y
-    }
+    if x.len() > y.len() { x } else { y }
 }

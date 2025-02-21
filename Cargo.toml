@@ -3,5 +3,5 @@
 # cargo run / cargo test 可以通过 -p 来运行特定的 crate
 # 工作空间只在根目录有一个 Cargo.lock，这确保了所有的 crate 都使用完全相同版本的依赖
 [workspace]
-resolver = "2"
+resolver = "3"
 members = ["trpl/*"]

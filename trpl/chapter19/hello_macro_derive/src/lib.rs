@@ -16,7 +16,7 @@ pub fn hello_macro_derive(input: TokenStream) -> TokenStream {
 fn impl_hello_macro(ast: &DeriveInput) -> TokenStream {
     let name = &ast.ident;
     // quote! 宏能让我们编写希望返回的 Rust 代码
-    let gen = quote! {
+    let code = quote! {
         // 使用 #name，quote! 会以名为 name 的变量值来替换它
         impl HelloMacro for #name {
             fn hello_macro() {
@@ -26,5 +26,5 @@ fn impl_hello_macro(ast: &DeriveInput) -> TokenStream {
         }
     };
     // 转换类型
-    gen.into()
+    code.into()
 }

@@ -73,7 +73,7 @@ fn split_at_mut(slice: &mut [i32], mid: usize) -> (&mut [i32], &mut [i32]) {
 // extern 块中声明的函数在 Rust 代码中总是不安全的
 // "C" 部分定义了外部函数所使用的应用二进制接口（application binary interface，ABI）
 // ABI 定义了如何在汇编语言层面调用此函数。"C" ABI 是最常见的，并遵循 C 编程语言的 ABI
-extern "C" {
+unsafe extern "C" {
     fn abs(input: i32) -> i32;
 }
 
