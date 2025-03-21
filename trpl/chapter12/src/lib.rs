@@ -1,4 +1,5 @@
-use std::{env, error::Error, fs};
+use std::error::Error;
+use std::{env, fs};
 
 // Box<dyn Error> 意味着函数会返回实现了 Error trait 的类型
 pub fn run(config: &Config) -> Result<(), Box<dyn Error>> {

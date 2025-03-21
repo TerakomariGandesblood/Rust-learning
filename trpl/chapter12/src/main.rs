@@ -1,7 +1,5 @@
-use std::{
-    env,
-    process::{self},
-};
+use std::env;
+use std::process::{self};
 
 use chapter12::Config;
 

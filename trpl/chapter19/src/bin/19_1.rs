@@ -83,8 +83,9 @@ fn add_to_count(inc: u32) {
     }
 }
 
-// 比如，如果实现了一个包含一些不是 Send 或 Sync 的类型，比如裸指针，并希望将此类型标记为 Send 或 Sync，则必须使用 unsafe
-// Rust 不能验证我们的类型保证可以安全的跨线程发送或在多线程间访问，所以需要我们自己进行检查并通过 unsafe 表明
+// 比如，如果实现了一个包含一些不是 Send 或 Sync 的类型，比如裸指针，并希望将此类型标记为 Send 或
+// Sync，则必须使用 unsafe Rust 不能验证我们的类型保证可以安全的跨线程发送或在多线程间访问，
+// 所以需要我们自己进行检查并通过 unsafe 表明
 #[allow(clippy::missing_safety_doc)]
 unsafe trait Foo {}
 unsafe impl Foo for i32 {}

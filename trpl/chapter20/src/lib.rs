@@ -1,10 +1,6 @@
-use std::{
-    sync::{
-        Arc, Mutex,
-        mpsc::{self, Sender},
-    },
-    thread,
-};
+use std::sync::mpsc::{self, Sender};
+use std::sync::{Arc, Mutex};
+use std::thread;
 
 pub struct ThreadPool {
     workers: Vec<Worker>,
@@ -67,7 +63,8 @@ impl Worker {
         // 可以使用 std::thread::Builder 和其 spawn 方法来返回一个 Result
         let thread = thread::spawn(move || {
             loop {
-                // 如果互斥器处于一种叫做被污染（poisoned）的状态时获取锁可能会失败，这可能发生于其他线程在持有锁时 panic 了且没有释放锁
+                // 如果互斥器处于一种叫做被污染（poisoned）的状态时获取锁可能会失败，
+                // 这可能发生于其他线程在持有锁时 panic 了且没有释放锁
                 let message = receiver.lock().unwrap().recv();
 
                 match message {

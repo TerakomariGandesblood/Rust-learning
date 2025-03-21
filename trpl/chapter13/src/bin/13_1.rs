@@ -84,14 +84,16 @@ fn main() {
         let list = vec![1, 2, 3];
         println!("Before defining closure: {:?}", list);
 
-        // 强制闭包获取其使用的环境值的所有权，可以在参数列表前使用 move 关键字，如将数据移动到新线程
+        // 强制闭包获取其使用的环境值的所有权，可以在参数列表前使用 move
+        // 关键字，如将数据移动到新线程
         let move_closure = move || println!("From thread: {:?}", list);
         thread::spawn(move_closure).join().unwrap();
     }
 
     // 闭包自动、渐进地实现一个、两个或三个 Fn trait（函数都实现了这三个 trait）
-    // 如果我们要做的事情不需要从环境中捕获值，则可以在需要某种实现了 Fn trait 的东西时使用函数而不是闭包
-    // 可以在 Option<Vec<T>> 的值上调用 unwrap_or_else(Vec::new) 以便在值为 None 时获取一个新的空的 vector
+    // 如果我们要做的事情不需要从环境中捕获值，则可以在需要某种实现了 Fn trait
+    // 的东西时使用函数而不是闭包 可以在 Option<Vec<T>> 的值上调用 unwrap_or_else(Vec::new)
+    // 以便在值为 None 时获取一个新的空的 vector
 
     {
         // 由于所有闭包都可以被调用至少一次，所以所有闭包都实现了 FnOnce
@@ -110,8 +112,9 @@ fn main() {
     }
 
     {
-        // Fn 适用于既不将被捕获的值移出闭包体也不修改被捕获的值的闭包，当然也包括不从环境中捕获值的闭包
-        // 这类闭包可以被调用多次而不改变它们的环境，这在会多次并发调用闭包的场景中十分重要
+        // Fn 适用于既不将被捕获的值移出闭包体也不修改被捕获的值的闭包，
+        // 当然也包括不从环境中捕获值的闭包 这类闭包可以被调用多次而不改变它们的环境，
+        // 这在会多次并发调用闭包的场景中十分重要
         let list = [1, 2, 3];
         let closure = || list.len();
         println!("{}", closure());

@@ -1,6 +1,8 @@
-// 内部可变性（Interior mutability）是 Rust 中的一个设计模式，它允许你即使在有不可变引用时也可以改变数据
+// 内部可变性（Interior mutability）是 Rust
+// 中的一个设计模式，它允许你即使在有不可变引用时也可以改变数据
 
-use std::{cell::RefCell, rc::Rc};
+use std::cell::RefCell;
+use std::rc::Rc;
 
 // borrow 方法返回 Ref<T> 类型的智能指针，borrow_mut 方法返回 RefMut<T> 类型的智能指针
 // RefCell<T> 记录当前有多少个活动的 Ref<T> 和 RefMut<T> 智能指针

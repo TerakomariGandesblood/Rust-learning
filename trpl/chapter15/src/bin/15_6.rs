@@ -1,9 +1,7 @@
 // Rust 并不保证完全地避免内存泄漏（memory leak）
 
-use std::{
-    cell::RefCell,
-    rc::{Rc, Weak},
-};
+use std::cell::RefCell;
+use std::rc::{Rc, Weak};
 
 use List::{Cons, Nil};
 

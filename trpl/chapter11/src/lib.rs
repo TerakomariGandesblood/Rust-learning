@@ -15,7 +15,8 @@ mod tests {
     use super::*;
 
     // Rust 中的测试就是带有 test 属性（attribute）注解的函数
-    // 当使用 cargo test 命令运行测试时，Rust 会构建一个测试执行程序用来调用被标注的函数，并报告每一个测试是通过还是失败
+    // 当使用 cargo test 命令运行测试时，Rust
+    // 会构建一个测试执行程序用来调用被标注的函数，并报告每一个测试是通过还是失败
     #[test]
     // 忽略测试
     #[ignore]

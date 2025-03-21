@@ -1,7 +1,5 @@
-use std::{
-    fs::{self, File},
-    io::{Error, ErrorKind, Read},
-};
+use std::fs::{self, File};
+use std::io::{Error, ErrorKind, Read};
 
 fn main() {
     let _file = match File::open("hello.txt") {
@@ -25,7 +23,8 @@ fn main() {
         }
     });
 
-    // 如果 Result 值是成员 Ok，unwrap 会返回 Ok 中的值；如果 Result 是成员 Err，unwrap 会调用 panic!
+    // 如果 Result 值是成员 Ok，unwrap 会返回 Ok 中的值；如果 Result 是成员 Err，unwrap 会调用
+    // panic!
     let _file = File::open("hello.txt").unwrap();
     // 和 unwrap() 类似，可以选择错误信息，unwrap() 使用默认的 panic! 信息
     let _file = File::open("hello.txt").expect("Failed to open hello.txt");

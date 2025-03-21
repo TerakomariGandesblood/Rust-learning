@@ -1,9 +1,7 @@
-use std::{
-    io::{BufRead, BufReader, Write},
-    net::{TcpListener, TcpStream},
-    thread,
-    time::Duration,
-};
+use std::io::{BufRead, BufReader, Write};
+use std::net::{TcpListener, TcpStream};
+use std::thread;
+use std::time::Duration;
 
 use chapter20::ThreadPool;
 

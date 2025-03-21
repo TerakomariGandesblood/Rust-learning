@@ -1,5 +1,6 @@
 // Rust 标准库使用 1:1 线程实现，这代表程序的每一个语言级线程使用一个系统线程
-use std::{thread, time::Duration};
+use std::thread;
+use std::time::Duration;
 
 fn main() {
     // 创建一个新线程

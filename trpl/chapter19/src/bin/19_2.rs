@@ -1,7 +1,5 @@
-use std::{
-    fmt::Display,
-    ops::{Add, Deref},
-};
+use std::fmt::Display;
+use std::ops::{Add, Deref};
 
 // 不实用范型的原因在于，如果使用范型，则可以实现该 trait 多次
 trait Iterator {
@@ -18,7 +16,8 @@ struct Point {
 }
 
 // 运算符重载（Operator overloading）
-// Rust 并不允许创建自定义运算符或重载任意运算符，不过 std::ops 中所列出的运算符和相应的 trait 可以通过实现运算符相关 trait 来重载
+// Rust 并不允许创建自定义运算符或重载任意运算符，不过 std::ops 中所列出的运算符和相应的 trait
+// 可以通过实现运算符相关 trait 来重载
 impl Add for Point {
     type Output = Point;
 
@@ -34,8 +33,8 @@ struct Millimeters(u32);
 struct Meters(u32);
 
 // 默认类型参数（default type parameters）
-// 如果实现 Add trait 时不指定 Rhs 的具体类型，Rhs 的类型将是默认的 Self 类型，也就是在其上实现 Add 的类型
-// 不使用默认类型参数
+// 如果实现 Add trait 时不指定 Rhs 的具体类型，Rhs 的类型将是默认的 Self 类型，也就是在其上实现 Add
+// 的类型 不使用默认类型参数
 impl Add<Meters> for Millimeters {
     type Output = Millimeters;
 

@@ -23,8 +23,8 @@ fn main() {
     // println!("{}, {}", r1, r2);
 
     // ok，因为其使用范围没有重叠
-    // 编译器在作用域结束之前判断不再使用的引用的能力被称为非词法作用域生命周期（Non-Lexical Lifetimes）
-    // NOTE https://blog.rust-lang.org/2018/12/06/Rust-1.31-and-rust-2018.html#non-lexical-lifetimes
+    // 编译器在作用域结束之前判断不再使用的引用的能力被称为非词法作用域生命周期（Non-Lexical
+    // Lifetimes） NOTE https://blog.rust-lang.org/2018/12/06/Rust-1.31-and-rust-2018.html#non-lexical-lifetimes
     let r1 = &s;
     println!("{r1}");
     let r2 = &mut s;

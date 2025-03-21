@@ -114,7 +114,8 @@ fn main() {
         let num = Some(4);
 
         match num {
-            // 匹配守卫（match guard）是一个指定于 match 分支模式之后的额外 if 条件，它也必须被满足才能选择此分支
+            // 匹配守卫（match guard）是一个指定于 match 分支模式之后的额外 if
+            // 条件，它也必须被满足才能选择此分支
             // 当涉及匹配守卫表达式时编译器不会尝试检查穷尽性
             Some(x) if x < 5 => println!("less than five: {x}"),
             Some(x) => println!("{x}"),

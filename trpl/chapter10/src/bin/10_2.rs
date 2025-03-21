@@ -3,7 +3,8 @@ use std::fmt::Display;
 // trait 必须和类型一起引入作用域以便使用额外的 trait 方法
 // 不能为外部类型实现外部 trait
 // 这条规则确保了其他人编写的代码不会破坏你代码
-// 没有这条规则的话，两个 crate 可以分别对相同类型实现相同的 trait，而 Rust 将无从得知应该使用哪一个实现
+// 没有这条规则的话，两个 crate 可以分别对相同类型实现相同的 trait，而 Rust
+// 将无从得知应该使用哪一个实现
 trait Summary {
     fn summarize_author(&self) -> String;
 

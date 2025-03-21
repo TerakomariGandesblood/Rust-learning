@@ -8,7 +8,8 @@ use syn::DeriveInput;
 // 当用户在一个类型上指定 #[derive(HelloMacro)] 时，hello_macro_derive 函数将会被调用
 #[proc_macro_derive(HelloMacro)]
 pub fn hello_macro_derive(input: TokenStream) -> TokenStream {
-    // 在错误时 panic 对过程宏来说是必须的，因为 proc_macro_derive 函数必须返回 TokenStream 而不是 Result
+    // 在错误时 panic 对过程宏来说是必须的，因为 proc_macro_derive 函数必须返回 TokenStream 而不是
+    // Result
     let ast = syn::parse(input).unwrap();
     impl_hello_macro(&ast)
 }

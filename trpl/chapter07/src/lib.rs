@@ -40,7 +40,8 @@ mod back_of_house {
 use std::io::Result as IoResult;
 
 // 重导出（re-exporting），使外部代码也可以直接使用 hosting
-// pub use 的另一个常见用法是重导出当前 crate 的依赖的定义使其 crate 定义变成你 crate 公有 API 的一部分
+// pub use 的另一个常见用法是重导出当前 crate 的依赖的定义使其 crate 定义变成你 crate 公有 API
+// 的一部分
 pub use front_of_house::hosting;
 
 // 嵌套路径
@@ -57,7 +58,8 @@ pub fn eat_at_restaurant() {
     // 绝对路径，更倾向于使用绝对路径
     // crate root 在 crate 模块结构的根组成了一个名为 crate 的模块
     // 整个模块树都植根于名为 crate 的隐式模块下
-    // 对于外部 crate 的代码，是以 crate 名开头的绝对路径，对于对于当前 crate 的代码，则以字面值 crate 开头
+    // 对于外部 crate 的代码，是以 crate 名开头的绝对路径，对于对于当前 crate 的代码，则以字面值
+    // crate 开头
     crate::front_of_house::hosting::add_to_waitlist();
     // 相对路径，从当前模块开始，以 self、super 或当前模块的标识符开头
     front_of_house::hosting::add_to_waitlist();
