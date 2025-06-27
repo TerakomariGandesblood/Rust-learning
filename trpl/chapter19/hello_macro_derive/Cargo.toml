@@ -2,7 +2,7 @@
 name = "hello_macro_derive"
 version = "0.1.0"
 edition = "2024"
-rust-version = "1.85"
+rust-version = "1.88"
 license = "MIT OR Apache-2.0"
 
 [lib]
@@ -10,6 +10,6 @@ proc-macro = true
 
 [dependencies]
 # https://github.com/dtolnay/syn
-syn = "2.0.101"
+syn = "2.0.104"
 # https://github.com/dtolnay/quote
 quote = "1.0.40"

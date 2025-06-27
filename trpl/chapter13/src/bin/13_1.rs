@@ -82,11 +82,11 @@ fn main() {
 
     {
         let list = vec![1, 2, 3];
-        println!("Before defining closure: {:?}", list);
+        println!("Before defining closure: {list:?}");
 
         // 强制闭包获取其使用的环境值的所有权，可以在参数列表前使用 move
         // 关键字，如将数据移动到新线程
-        let move_closure = move || println!("From thread: {:?}", list);
+        let move_closure = move || println!("From thread: {list:?}");
         thread::spawn(move_closure).join().unwrap();
     }
 
