@@ -18,6 +18,14 @@ fn main() {
         // println!("{}, {}", s1, s2);
     }
 
+    #[allow(unused_assignments)]
+    {
+        let mut s = String::from("hello");
+        // 立即调用 drop 并释放原始值的内存
+        s = String::from("ahoy");
+        println!("{s}, world!");
+    }
+
     {
         let s1 = String::from("Hello");
         // copy

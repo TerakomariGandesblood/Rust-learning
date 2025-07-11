@@ -29,10 +29,11 @@ fn main() {
     assert_eq!(*y, 5);
 
     // Deref 强制转换（deref coercions）
-    // Deref 强制转换只能作用于实现了 Deref trait 的类型。Deref
-    // 强制转换将这样一个类型的引用转换为另一个类型的引用 使用任意多次 Deref::deref
-    // 调用以获得匹配参数的类型 Rust 在发现类型和 trait 实现满足三种情况时会进行 Deref
-    // 强制转换：当 T: Deref<Target=U> 时从 &T 到 &U。
+    // Deref 强制转换只能作用于实现了 Deref trait 的类型。
+    // Deref 强制转换将这样一个类型的引用转换为另一个类型的引用
+    // 使用任意多次 Deref::deref 调用以获得匹配参数的类型
+    // Rust 在发现类型和 trait 实现满足三种情况时会进行 Deref 强制转换
+    // 当 T: Deref<Target=U> 时从 &T 到 &U。
     // 当 T: DerefMut<Target=U> 时从 &mut T 到 &mut U。
     // 当 T: Deref<Target=U> 时从 &mut T 到 &U。
     hello(&MyBox::new(String::from("World")));

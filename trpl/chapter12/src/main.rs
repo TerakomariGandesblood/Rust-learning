@@ -1,5 +1,4 @@
-use std::env;
-use std::process::{self};
+use std::{env, process};
 
 use chapter12::Config;
 
@@ -11,13 +10,14 @@ use chapter12::Config;
 fn main() {
     // 第一个值是二进制文件名
     // 注意 std::env::args 在其任何参数包含无效 Unicode 字符时会 panic
+    // 如果需要接受包含无效 Unicode 字符的参数，使用 std::env::args_os 代替
     let config = Config::build(env::args()).unwrap_or_else(|err| {
         eprintln!("Problem parsing arguments: {err}");
-        process::exit(exitcode::USAGE);
+        process::exit(1);
     });
 
     if let Err(err) = chapter12::run(&config) {
         eprintln!("Application error: {err}");
-        process::exit(exitcode::UNAVAILABLE);
+        process::exit(1);
     }
 }

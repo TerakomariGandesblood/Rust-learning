@@ -39,5 +39,6 @@ mod tests {
 // cargo publish 发布
 // 发布是永久性的（permanent），对应版本不可能被覆盖，其代码也不可能被删除
 // cargo yank 撤回版本，撤回意味着所有带有 Cargo.lock 的项目的依赖不会被破坏，同时任何新生成的
-// Cargo.lock 将不能使用被撤回的版本 如果 $PATH 中有类似 cargo-something 的二进制文件，就可以通过
+// Cargo.lock 将不能使用被撤回的版本
+// 如果 $PATH 中有类似 cargo-something 的二进制文件，就可以通过
 // cargo something 来像 Cargo 子命令一样运行它 cargo --list 列出子命令

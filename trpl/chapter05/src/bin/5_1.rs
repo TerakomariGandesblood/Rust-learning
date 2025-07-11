@@ -21,12 +21,18 @@ fn main() {
         ..user1
     };
 
+    // 仍可使用
+    println!("{}", user1._email);
+
     // 元组结构体（tuple structs）
     // 两者类型不同，其他和元组一致
     struct Color(i32, i32, i32);
     struct Point(i32, i32, i32);
     let _black = Color(0, 0, 0);
     let _origin = Point(0, 0, 0);
+
+    // 必须写明类型
+    let Point(_x, _y, _z) = _origin;
 
     // 类单元结构体（unit-like structs）
     // 和 '()' 类似

@@ -1,3 +1,6 @@
+// 闭包（closures）是可以保存在变量中或作为参数传递给其他函数的匿名函数
+// 不同于函数，闭包允许捕获其被定义时所在作用域中的值
+
 use std::thread;
 
 #[derive(Debug, PartialEq, Copy, Clone)]
@@ -92,7 +95,7 @@ fn main() {
 
     // 闭包自动、渐进地实现一个、两个或三个 Fn trait（函数都实现了这三个 trait）
     // 如果我们要做的事情不需要从环境中捕获值，则可以在需要某种实现了 Fn trait
-    // 的东西时使用函数而不是闭包 可以在 Option<Vec<T>> 的值上调用 unwrap_or_else(Vec::new)
+    // 的东西时使用函数而不是闭包，可以在 Option<Vec<T>> 的值上调用 unwrap_or_else(Vec::new)
     // 以便在值为 None 时获取一个新的空的 vector
 
     {
@@ -113,7 +116,7 @@ fn main() {
 
     {
         // Fn 适用于既不将被捕获的值移出闭包体也不修改被捕获的值的闭包，
-        // 当然也包括不从环境中捕获值的闭包 这类闭包可以被调用多次而不改变它们的环境，
+        // 当然也包括不从环境中捕获值的闭包，这类闭包可以被调用多次而不改变它们的环境，
         // 这在会多次并发调用闭包的场景中十分重要
         let list = [1, 2, 3];
         let closure = || list.len();
@@ -139,5 +142,12 @@ fn main() {
         // 会调用多次
         list.sort_by_key(|r| r.width);
         println!("{list:?}");
+
+        let mut num_sort_operations = 0;
+        list.sort_by_key(|r| {
+            num_sort_operations += 1;
+            r.width
+        });
+        println!("{list:#?}, sorted in {num_sort_operations} operations");
     }
 }

@@ -7,6 +7,7 @@
 
 // 包（package）是提供一系列功能的一个或者多个 crate
 // 包中可以包含至多一个库 crate，可以包含任意多个二进制 crate
+// crate 默认以包名来命名
 //（每个 src/bin 下的文件都会被编译成一个独立的二进制 crate），但是必须至少包含一个 crate
 
 use crate::garden::vegetables::Asparagus;

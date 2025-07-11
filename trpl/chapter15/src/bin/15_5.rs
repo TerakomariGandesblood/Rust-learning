@@ -1,28 +1,11 @@
-// 内部可变性（Interior mutability）是 Rust
-// 中的一个设计模式，它允许你即使在有不可变引用时也可以改变数据
+// 内部可变性（Interior mutability）
+// 是 Rust 中的一个设计模式，它允许你即使在有不可变引用时也可以改变数据
 
 use std::cell::RefCell;
 use std::rc::Rc;
 
-// borrow 方法返回 Ref<T> 类型的智能指针，borrow_mut 方法返回 RefMut<T> 类型的智能指针
-// RefCell<T> 记录当前有多少个活动的 Ref<T> 和 RefMut<T> 智能指针
-// 在运行时检查借用规则，违反则 panic
 trait Messenger {
     fn send(&self, msg: &str);
-}
-
-struct Email {}
-
-impl Email {
-    fn new() -> Email {
-        Email {}
-    }
-}
-
-impl Messenger for Email {
-    fn send(&self, msg: &str) {
-        println!("sent email: {msg}");
-    }
 }
 
 struct LimitTracker<'a, T>
@@ -34,11 +17,11 @@ where
     max: usize,
 }
 
-impl<T> LimitTracker<'_, T>
+impl<'a, T> LimitTracker<'a, T>
 where
     T: Messenger,
 {
-    fn new(messenger: &T, max: usize) -> LimitTracker<T> {
+    fn new(messenger: &'a T, max: usize) -> LimitTracker<'a, T> {
         LimitTracker {
             messenger,
             value: 0,
@@ -72,11 +55,6 @@ enum List {
 use List::{Cons, Nil};
 
 fn main() {
-    let email = Email::new();
-    let mut limit_tracker = LimitTracker::new(&email, 100);
-    limit_tracker.set_value(80);
-    email.send("message");
-
     let value = Rc::new(RefCell::new(42));
 
     let a = Rc::new(Cons(Rc::clone(&value), Rc::new(Nil)));
@@ -109,6 +87,9 @@ mod tests {
 
     impl Messenger for MockMessenger {
         fn send(&self, msg: &str) {
+            // borrow 方法返回 Ref<T> 类型的智能指针，borrow_mut 方法返回 RefMut<T> 类型的智能指针
+            // RefCell<T> 记录当前有多少个活动的 Ref<T> 和 RefMut<T> 智能指针
+            // 在运行时检查借用规则，违反则 panic
             self.sent_messages.borrow_mut().push(String::from(msg));
         }
     }

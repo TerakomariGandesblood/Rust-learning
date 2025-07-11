@@ -10,15 +10,15 @@ fn func(config_max: Option<u8>) {
     let max = if let Some(max) = config_max {
         max
     } else {
-        panic!("No maximum");
+        return;
     };
     println!("{max}");
 
-    // 同上
-    // NOTE https://blog.rust-lang.org/2022/11/03/Rust-1.65.0.html#let-else-statements
+    // 当某个值存在时进行一些操作否则返回一个默认
+    // 同上，如果模式匹配，它会将匹配到的值绑定到外层作用域。如果模式不匹配，程序流会指向 else
+    // 分支，它必须从函数返回
     let Some(max) = config_max else {
-        // 只能是 panic!、return、break 等
-        panic!("No maximum");
+        return;
     };
     println!("{max}");
 }

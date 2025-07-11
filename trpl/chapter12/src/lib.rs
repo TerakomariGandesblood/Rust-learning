@@ -25,7 +25,7 @@ pub struct Config {
 }
 
 impl Config {
-    // 许多程序员希望 new 函数永远不会失败
+    // 通常不会失败的构造函数命名为 new，会失败的命名为 build
     pub fn build(mut args: impl Iterator<Item = String>) -> Result<Config, &'static str> {
         args.next();
 

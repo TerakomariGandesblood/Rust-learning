@@ -5,5 +5,6 @@
 fn main() {
     // 默认展开（unwinding），回溯栈并清理它遇到的每一个函数的数据
     // 也可以选择终止（abort），直接退出
+    // 可以设置 RUST_BACKTRACE 环境变量来得到一个 backtrace
     panic!("Error");
 }

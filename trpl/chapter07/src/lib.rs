@@ -23,6 +23,7 @@ mod back_of_house {
     pub struct _Breakfast {
         pub toast: String,
         // 注意因为无法设置 seasonal_fruit 的值，所有无法直接创建 _Breakfast 类型的变量
+        // 需要定义一个关联函数创建实例
         seasonal_fruit: String,
     }
 
@@ -58,8 +59,8 @@ pub fn eat_at_restaurant() {
     // 绝对路径，更倾向于使用绝对路径
     // crate root 在 crate 模块结构的根组成了一个名为 crate 的模块
     // 整个模块树都植根于名为 crate 的隐式模块下
-    // 对于外部 crate 的代码，是以 crate 名开头的绝对路径，对于对于当前 crate 的代码，则以字面值
-    // crate 开头
+    // 对于外部（库）crate 的代码，是以 crate 名开头的绝对路径，对于对于当前 crate
+    // 的代码，则以字面值 crate 开头
     crate::front_of_house::hosting::add_to_waitlist();
     // 相对路径，从当前模块开始，以 self、super 或当前模块的标识符开头
     front_of_house::hosting::add_to_waitlist();

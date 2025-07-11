@@ -14,22 +14,9 @@ trait Summary {
     }
 }
 
-struct Tweet {
-    username: String,
-    content: String,
-}
-
-impl Summary for Tweet {
-    fn summarize_author(&self) -> String {
-        format!("@{}", self.username)
-    }
-
-    fn summarize(&self) -> String {
-        format!("{}: {}", self.username, self.content)
-    }
-}
-
-struct NewsArticle {
+pub struct NewsArticle {
+    pub headline: String,
+    pub location: String,
     pub author: String,
     pub content: String,
 }
@@ -40,7 +27,24 @@ impl Summary for NewsArticle {
     }
 
     fn summarize(&self) -> String {
-        format!("{}: {}", self.author, self.content)
+        format!("{}, by {} ({})", self.headline, self.author, self.location)
+    }
+}
+
+pub struct SocialPost {
+    pub username: String,
+    pub content: String,
+    pub reply: bool,
+    pub repost: bool,
+}
+
+impl Summary for SocialPost {
+    fn summarize_author(&self) -> String {
+        format!("@{}", self.username)
+    }
+
+    fn summarize(&self) -> String {
+        format!("{}: {}", self.username, self.content)
     }
 }
 
@@ -63,11 +67,13 @@ where
 }
 
 // 返回实现了 trait 的类型
-// 注意只能返回单一类型
+// 注意只能返回单一类型，返回 SocialPost 或 NewsArticle 是不行的
 fn _returns_summarizable() -> impl Summary {
-    Tweet {
+    SocialPost {
         username: String::from("horse_ebooks"),
         content: String::from("of course, as you probably already know, people"),
+        reply: false,
+        repost: false,
     }
 }
 
@@ -96,18 +102,27 @@ impl<T: Display + PartialOrd> Pair<T> {
 
 // blanket implementations
 // 对实现了特定 trait 的类型有条件地实现 trait
-trait MyTrait {}
+trait MyTrait {
+    fn test(&self) {
+        println!("test");
+    }
+}
 
-impl<T> MyTrait for T where T: Display {}
+impl<T: Display> MyTrait for T {}
 
 fn main() {
-    let tweet = Tweet {
+    let post = SocialPost {
         username: String::from("horse_ebooks"),
         content: String::from("of course, as you probably already know, people"),
+        reply: false,
+        repost: false,
     };
 
-    println!("1 new tweet: {}", tweet.summarize());
+    println!("1 new social post: {}", post.summarize());
 
     let pair = Pair::new(1, 2);
     pair.cmp_display();
+
+    let s = String::from("str");
+    s.test();
 }

@@ -13,7 +13,7 @@ fn main() {
     // 越界则 panic
     // container[index] 是 *container.index(index) 的语法糖
     // See https://doc.rust-lang.org/std/ops/trait.Index.html
-    let third = &v[2];
+    let third = v[2];
     println!("{third}");
 
     match v.get(2) {
@@ -35,6 +35,7 @@ fn main() {
 
     let mut v = vec![1, 2, 3];
     for i in &mut v {
+        // 为了修改可变引用所指向的值，必须使用解引用运算符（*）获取 i 中的值
         *i *= 50;
     }
 

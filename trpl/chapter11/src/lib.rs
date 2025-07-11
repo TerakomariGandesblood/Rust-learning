@@ -1,3 +1,14 @@
+// 不并行运行测试
+// cargo test -- --test-threads=1
+// 显示成功测试的输出
+// cargo test -- --show-output
+// 运行单个或者名称匹配的测试
+// cargo test it_works
+// 只运行忽略的测试
+// cargo test -- --ignored
+// 运行包括忽略的测试
+// cargo test -- --include-ignored
+
 // 测试私有函数
 fn _add(left: usize, right: usize) -> usize {
     left + right
@@ -22,6 +33,7 @@ mod tests {
     #[ignore]
     fn it_works() {
         let result = _add(2, 2);
+        // 被比较的值必须实现 PartialEq 和 Debug trait
         // 自定义失败信息，必需参数之后指定的参数都会传递给 format! 宏
         assert_eq!(result, 4, "{result} not equal 4");
         assert!(result == 4);

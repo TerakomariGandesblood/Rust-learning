@@ -23,11 +23,12 @@ fn main() {
         }
     });
 
-    // 如果 Result 值是成员 Ok，unwrap 会返回 Ok 中的值；如果 Result 是成员 Err，unwrap 会调用
-    // panic!
     let _file = File::open("hello.txt").unwrap();
     // 和 unwrap() 类似，可以选择错误信息，unwrap() 使用默认的 panic! 信息
     let _file = File::open("hello.txt").expect("Failed to open hello.txt");
+    // 在生产级别的代码中，大部分 Rustaceans 选择 expect 而不是 unwrap
+    // 并提供更多关于为何操作期望是一直成功的上下文。如此如果该假设真的被证明是错的，
+    // 你也有更多的信息来用于调试
 }
 
 // 传播（propagating）错误
@@ -58,6 +59,7 @@ impl From<Error> for OurError {
 // 如果 Result 的值是 Ok，这个表达式将会返回 Ok 中的值而程序将继续执行
 // 如果值是 Err，Err 中的值将作为整个函数的返回值
 // ? 会调用 from()，定义于标准库的 From trait 中，用于转换错误类型
+// 这在当函数返回单个错误类型来代表所有可能失败的方式时很有用
 fn _read_username_from_file2() -> Result<String, OurError> {
     let mut file = File::open("hello.txt")?;
     let mut username = String::new();

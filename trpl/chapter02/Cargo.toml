@@ -1,21 +1,9 @@
-# 一个 section
 [package]
 name = "chapter02"
 version = "0.1.0"
-# 见 https://doc.rust-lang.org/edition-guide/introduction.html
-edition = "2024"
-rust-version = "1.88"
-license = "MIT OR Apache-2.0"
+license.workspace = true
+edition.workspace = true
+rust-version.workspace = true
 
 [dependencies]
-# 是 ^0.8.5 的简写，它表示任何至少是 0.8.5 但小于 0.9.0 的版本
-# 如果是 2.x.x，则表示至少是 2.x.x 但不超过 3.0.0 的版本
-# cargo add 添加 crate
-# cargo doc 构建文档（包括依赖）
-# cargo update 忽略 Cargo.lock，并计算出所有符合 Cargo.toml 声明的最新版本并写入 Cargo.lock
-
-# https://github.com/rust-random/rand
-rand = { version = "0.9.1", default-features = false, features = [
-    "std",
-    "thread_rng",
-] }
+rand.workspace = true
