@@ -8,5 +8,4 @@ targets = [
 ]
 
 [licenses]
-allow = ["MIT", "Apache-2.0"]
-exceptions = [{ allow = ["Unicode-3.0"], crate = "unicode-ident" }]
+allow = ["MIT", "Apache-2.0", "MPL-2.0", "Unicode-3.0", "ISC", "BSD-3-Clause"]

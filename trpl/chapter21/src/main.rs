@@ -3,7 +3,7 @@ use std::net::{TcpListener, TcpStream};
 use std::thread;
 use std::time::Duration;
 
-use chapter20::ThreadPool;
+use chapter21::ThreadPool;
 
 fn main() {
     // 连接到监听端口被称为“绑定到一个端口”（“binding to a port”）

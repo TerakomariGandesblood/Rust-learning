@@ -44,8 +44,9 @@ fn main() {
 
     // recv 会阻塞主线程执行直到从信道中接收一个值
     // 当信道发送端关闭，recv 会返回一个错误表明不会再有新的值到来了
-    // try_recv 不会阻塞，相反它立刻返回一个 Result<T, E>：Ok 值包含可用的信息，而 Err
-    // 值代表此时没有任何消息 let received = rx.recv().unwrap();
+    // try_recv 不会阻塞，相反它立刻返回一个 Result<T, E>：Ok 值包含可用的信息，
+    // 而 Err 值代表此时没有任何消息
+    // let received = rx.recv().unwrap();
     // println!("Got: {}", received);
 
     // 当信道被关闭时，迭代器也将结束

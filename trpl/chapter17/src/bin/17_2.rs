@@ -1,49 +1,71 @@
-trait Draw {
-    fn draw(&self);
-}
-
-struct Screen {
-    // trait 对象（trait object），代表了实现了 trait 的类型，允许对通用行为进行抽象
-    // trait 对象指向一个实现了我们指定 trait 的类型的实例，以及一个用于在运行时查找该类型的 trait
-    // 方法的表 只有对象安全（object-safe）的 trait 可以实现为 trait 对象
-    // 见 https://doc.rust-lang.org/reference/items/traits.html#object-safety
-    components: Vec<Box<dyn Draw>>,
-}
-
-impl Screen {
-    fn run(&self) {
-        for component in &self.components {
-            component.draw();
-        }
-    }
-}
-
-pub struct Button {
-    pub width: u32,
-    pub height: u32,
-    pub label: String,
-}
-
-impl Draw for Button {
-    fn draw(&self) {
-        println!("Draw button");
-    }
-}
+use std::time::Duration;
 
 fn main() {
-    let screen = Screen {
-        components: vec![Box::new(Button {
-            width: 50,
-            height: 10,
-            label: String::from("OK"),
-        })],
-    };
+    {
+        // 外面的代码会阻塞到 run 函数返回
+        trpl::run(async {
+            let handle = trpl::spawn_task(async {
+                for i in 1..10 {
+                    println!("hi number {i} from the first task!");
+                    trpl::sleep(Duration::from_millis(500)).await;
+                }
+            });
 
-    // 单态化产生的代码在执行静态分发（static dispatch）
-    // 静态分发发生于编译器在编译时就知晓调用了什么方法的时候
-    // 这与动态分发（dynamic dispatch）相对，这时编译器在编译时无法知晓调用了什么方法
-    // 当使用 trait 对象时，Rust 必须使用动态分发
-    // Rust 在运行时使用 trait 对象中的指针来知晓需要调用哪个方法
-    // 动态分发也阻止编译器有选择的内联方法代码，这会相应的禁用一些优化
-    screen.run();
+            for i in 1..5 {
+                println!("hi number {i} from the second task!");
+                trpl::sleep(Duration::from_millis(500)).await;
+            }
+
+            // 等待执行结束
+            handle.await.unwrap();
+
+            let fut1 = async {
+                for i in 1..10 {
+                    println!("hi number {i} from the first task!");
+                    trpl::sleep(Duration::from_millis(500)).await;
+                }
+            };
+
+            let fut2 = async {
+                for i in 1..5 {
+                    println!("hi number {i} from the second task!");
+                    trpl::sleep(Duration::from_millis(500)).await;
+                }
+            };
+
+            // 等待二者执行结束
+            // trpl::join 函数是公平的（fair），这意味着它以相同的频率检查每一个
+            // future，使它们交替执行
+            trpl::join(fut1, fut2).await;
+        });
+    }
+
+    {
+        trpl::run(async {
+            let (tx, mut rx) = trpl::channel();
+
+            let tx_fut = async move {
+                let vals = vec![
+                    String::from("hi"),
+                    String::from("from"),
+                    String::from("the"),
+                    String::from("future"),
+                ];
+
+                for val in vals {
+                    tx.send(val).unwrap();
+                    trpl::sleep(Duration::from_millis(500)).await;
+                }
+            };
+
+            let rx_fut = async {
+                // recv 不会阻塞
+                while let Some(value) = rx.recv().await {
+                    println!("received '{value}'");
+                }
+            };
+
+            trpl::join(tx_fut, rx_fut).await;
+        });
+    }
 }
