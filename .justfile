@@ -1,4 +1,5 @@
 update:
+    prek auto-update
     cargo upgrade --incompatible
     cargo update
 
@@ -9,7 +10,7 @@ fmt:
     just --fmt --unstable
 
 check:
-    pre-commit run --all-files
+    prek run --all-files
     cargo deny --workspace --all-features check
     cargo clippy --workspace --all-targets --all-features -- --deny warnings
     autocorrect --lint
