@@ -28,4 +28,4 @@ rand = { version = "0.9.2", default-features = false, features = [
   "thread_rng",
 ] }
 # https://github.com/rust-lang/book
-trpl = "0.2.0"
+trpl = "0.3.0"

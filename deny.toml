@@ -9,3 +9,8 @@ targets = [
 
 [licenses]
 allow = ["MIT", "Apache-2.0", "MPL-2.0", "Unicode-3.0", "ISC", "BSD-3-Clause"]
+
+exceptions = [{ allow = ["CDLA-Permissive-2.0"], crate = "webpki-roots" }]
+
+[advisories]
+ignore = ["RUSTSEC-2025-0057"]
