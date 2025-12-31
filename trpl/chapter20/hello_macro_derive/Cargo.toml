@@ -10,6 +10,6 @@ proc-macro = true
 
 [dependencies]
 # https://github.com/dtolnay/syn
-syn = "2.0.111"
+syn = "2.0.112"
 # https://github.com/dtolnay/quote
 quote = "1.0.42"
