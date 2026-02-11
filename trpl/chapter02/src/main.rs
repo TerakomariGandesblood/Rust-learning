@@ -1,10 +1,12 @@
-// Rng 是一个 trait，它定义了随机数生成器应实现的方法，想使用这些方法的话，此 trait 必须在作用域中
-use std::cmp::Ordering;
 // 默认情况下，Rust 设定了若干会自动导入到每个程序作用域中的标准库内容
 // 这组内容被称为预导入内容（preclude），如果需要的类型不在预导入内容中则需要使用 use
 // 显式引入（也可以写全称）
+
+use std::cmp::Ordering;
 use std::io;
 
+// Rng 是一个 trait，它定义了随机数生成器应实现的方法，想使用这些方法的话，此 trait
+// 必须在作用域中
 use rand::Rng;
 
 fn main() {
