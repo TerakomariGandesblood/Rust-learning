@@ -5,9 +5,9 @@
 use std::cmp::Ordering;
 use std::io;
 
-// Rng 是一个 trait，它定义了随机数生成器应实现的方法，想使用这些方法的话，此 trait
+// RngExt 是一个 trait，它定义了随机数生成器应实现的方法，想使用这些方法的话，此 trait
 // 必须在作用域中
-use rand::Rng;
+use rand::RngExt;
 
 fn main() {
     println!("Guess the number!");
