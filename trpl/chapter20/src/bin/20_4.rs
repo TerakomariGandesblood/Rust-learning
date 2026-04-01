@@ -4,13 +4,16 @@ fn add_one(x: i32) -> i32 {
 
 // 函数指针（function pointer）
 // 函数指针实现了所有三个闭包 trait（Fn、FnMut 和
-// FnOnce），所以总是可以在调用期望闭包的函数时传递函数指针作为参数 倾向于编写使用泛型和闭包 trait
-// 的函数，这样它就能接受函数或闭包作为参数
+// FnOnce），所以总是可以在调用期望闭包的函数时传递函数指针作为参数
+// 倾向于编写使用泛型和闭包 trait 的函数，这样它就能接受函数或闭包作为参数
 fn do_twice(f: fn(i32) -> i32, arg: i32) -> i32 {
     f(arg) + f(arg)
 }
 
 // 返回闭包
+// 每当返回一个 impl Trait Rust 会创建一个独特的不透明类型（opaque type）
+// 这是一个无法看清 Rust 为我们构建了什么细节的类型
+// 即使返回了实现了相同 trait，Rust 为我们生成的不透明类型也是不同的
 fn _returns_closure() -> Box<dyn Fn(i32) -> i32> {
     Box::new(|x| x + 1)
 }

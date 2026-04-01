@@ -1,9 +1,8 @@
 use std::collections::HashMap;
 
+use foldhash::fast::RandomState;
+
 fn main() {
-    // HashMap 默认使用一种叫做 SipHash 的哈希函数，它可以抵御涉及哈希表（hash
-    // table）的拒绝服务（Denial of Service, DoS）攻击
-    // NOTE https://en.wikipedia.org/wiki/SipHash
     {
         let mut scores = HashMap::new();
 
@@ -54,7 +53,9 @@ fn main() {
 
     {
         let text = "hello world wonderful world";
-        let mut map = HashMap::new();
+        // HashMap 默认使用一种叫做 SipHash 的哈希函数，它可以抵御涉及哈希表（hash
+        // table）的拒绝服务（Denial of Service, DoS）攻击
+        let mut map = HashMap::with_hasher(RandomState::default());
         for word in text.split_whitespace() {
             map.entry(word)
                 .and_modify(|counter| *counter += 1)

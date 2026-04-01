@@ -1,6 +1,6 @@
-use std::sync::mpsc::{self, Sender};
-use std::sync::{Arc, Mutex};
-use std::thread;
+use std::sync::mpsc::Sender;
+use std::sync::{Arc, Mutex, mpsc};
+use std::thread::{self, JoinHandle};
 
 pub struct ThreadPool {
     workers: Vec<Worker>,
@@ -39,22 +39,18 @@ impl ThreadPool {
 
 impl Drop for ThreadPool {
     fn drop(&mut self) {
-        // take 会获取所有权
         drop(self.sender.take());
 
-        for worker in &mut self.workers {
+        for worker in self.workers.drain(..) {
             println!("Shutting down worker {}", worker.id);
-
-            if let Some(thread) = worker.thread.take() {
-                thread.join().unwrap();
-            }
+            worker.thread.join().unwrap();
         }
     }
 }
 
 struct Worker {
     id: usize,
-    thread: Option<thread::JoinHandle<()>>,
+    thread: JoinHandle<()>,
 }
 
 impl Worker {
@@ -80,9 +76,6 @@ impl Worker {
             }
         });
 
-        Worker {
-            id,
-            thread: Some(thread),
-        }
+        Worker { id, thread }
     }
 }

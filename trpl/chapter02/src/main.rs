@@ -1,7 +1,6 @@
 // 默认情况下，Rust 设定了若干会自动导入到每个程序作用域中的标准库内容
-// 这组内容被称为预导入内容（preclude），如果需要的类型不在预导入内容中则需要使用 use
-// 显式引入（也可以写全称）
-
+// 这组内容被称为预导入内容（preclude），见：https://doc.rust-lang.org/std/prelude/index.html
+// 如果需要的类型不在预导入内容中则需要使用 use 显式引入（也可以写全称）
 use std::cmp::Ordering;
 use std::io;
 
@@ -23,7 +22,7 @@ fn main() {
 
         // 变量默认不可变
         // String 是一个标准库提供的字符串类型，它是 UTF-8 编码的可增长文本块
-        // new()：关联函数（associated function）
+        // new()：关联函数（associated function），针对某个类型实现的函数
         let mut guess = String::new();
 
         // stdin 函数返回一个 std::io::Stdin 的实例，这代表终端标准输入句柄的类型

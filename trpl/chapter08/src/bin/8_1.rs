@@ -9,12 +9,17 @@ fn main() {
     println!("{v:#?}");
     // 当 vector 被丢弃时，所有其内容也会被丢弃
 
+    #[allow(clippy::useless_vec)]
     let v = vec![1, 2, 3, 4, 5];
     // 越界则 panic
     // container[index] 是 *container.index(index) 的语法糖
     // See https://doc.rust-lang.org/std/ops/trait.Index.html
     let third = v[2];
     println!("{third}");
+
+    // 将元素移出 vector
+    let mut v = vec![String::from("!23")];
+    let _first = v.swap_remove(0);
 
     match v.get(2) {
         Some(num) => println!("{num}"),

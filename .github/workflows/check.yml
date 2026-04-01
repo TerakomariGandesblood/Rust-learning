@@ -1,5 +1,8 @@
 name: Check
 
+permissions:
+  contents: read
+
 on:
   push:
     branches:
@@ -14,14 +17,9 @@ on:
     paths-ignore:
       - "**.md"
 
-permissions:
-  contents: read
-  checks: write
-  pull-requests: read
-
 jobs:
   check:
     uses: TerakomariGandesblood/github-workflows/.github/workflows/rust-check.yml@main
     with:
-      msrv: "1.88.0"
+      msrv: "1.94.0"
       run_doc_check: false

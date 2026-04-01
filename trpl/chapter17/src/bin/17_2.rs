@@ -1,71 +1,49 @@
 use std::time::Duration;
 
 fn main() {
-    {
-        // 外面的代码会阻塞到 run 函数返回
-        trpl::run(async {
-            let handle = trpl::spawn_task(async {
-                for i in 1..10 {
-                    println!("hi number {i} from the first task!");
-                    trpl::sleep(Duration::from_millis(500)).await;
-                }
-            });
+    trpl::block_on(async {
+        let fut1 = async {
+            for i in 1..10 {
+                println!("hi number {i} from the first task!");
+                trpl::sleep(Duration::from_millis(100)).await;
+            }
+        };
 
+        let fut2 = async {
             for i in 1..5 {
                 println!("hi number {i} from the second task!");
+                trpl::sleep(Duration::from_millis(100)).await;
+            }
+        };
+
+        // join 会生成一个新的 future
+        // trpl::join 是 fair 的，也就是它会以同样的频率检查每一个 future，在它们之间交替进行
+        trpl::join(fut1, fut2).await;
+
+        let (tx, mut rx) = trpl::channel();
+
+        // 将所有权移入 async 代码块
+        let tx_fut = async move {
+            let vals = vec![
+                String::from("hi"),
+                String::from("from"),
+                String::from("the"),
+                String::from("future"),
+            ];
+
+            for val in vals {
+                tx.send(val).unwrap();
                 trpl::sleep(Duration::from_millis(500)).await;
             }
+        };
 
-            // 等待执行结束
-            handle.await.unwrap();
+        let rx_fut = async {
+            while let Some(value) = rx.recv().await {
+                println!("received '{value}'");
+            }
+        };
 
-            let fut1 = async {
-                for i in 1..10 {
-                    println!("hi number {i} from the first task!");
-                    trpl::sleep(Duration::from_millis(500)).await;
-                }
-            };
-
-            let fut2 = async {
-                for i in 1..5 {
-                    println!("hi number {i} from the second task!");
-                    trpl::sleep(Duration::from_millis(500)).await;
-                }
-            };
-
-            // 等待二者执行结束
-            // trpl::join 函数是公平的（fair），这意味着它以相同的频率检查每一个
-            // future，使它们交替执行
-            trpl::join(fut1, fut2).await;
-        });
-    }
-
-    {
-        trpl::run(async {
-            let (tx, mut rx) = trpl::channel();
-
-            let tx_fut = async move {
-                let vals = vec![
-                    String::from("hi"),
-                    String::from("from"),
-                    String::from("the"),
-                    String::from("future"),
-                ];
-
-                for val in vals {
-                    tx.send(val).unwrap();
-                    trpl::sleep(Duration::from_millis(500)).await;
-                }
-            };
-
-            let rx_fut = async {
-                // recv 不会阻塞
-                while let Some(value) = rx.recv().await {
-                    println!("received '{value}'");
-                }
-            };
-
-            trpl::join(tx_fut, rx_fut).await;
-        });
-    }
+        // trpl::join!() 可以 await 多个 future
+        trpl::join(tx_fut, rx_fut).await;
+    });
 }

@@ -12,7 +12,7 @@ members = ["trpl/*"]
 [workspace.package]
 # 见 https://doc.rust-lang.org/edition-guide/introduction.html
 edition = "2024"
-rust-version = "1.88"
+rust-version = "1.94"
 license = "MIT OR Apache-2.0"
 
 [workspace.dependencies]
@@ -27,5 +27,7 @@ rand = { version = "0.10.0", default-features = false, features = [
   "std",
   "thread_rng",
 ] }
-# https://github.com/rust-lang/book
-trpl = "0.3.0"
+# https://github.com/orlp/foldhash
+foldhash = { version = "0.2.0", default-features = false, features = ["std"] }
+# https://github.com/rust-lang/book/tree/main/packages/trpl
+trpl = { version = "0.3.0", default-features = false }

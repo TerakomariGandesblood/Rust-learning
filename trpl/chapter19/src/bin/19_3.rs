@@ -28,10 +28,9 @@ fn main() {
         let x = 5;
 
         match x {
-            // 匹配 [1,5]
+            // 匹配 [1,5)
             // 只允许数字和 char
-            // 目前仅支持闭区间
-            1..=5 => println!("one through five"),
+            1..5 => println!("one through five"),
             _ => println!("something else"),
         }
     }
@@ -39,7 +38,6 @@ fn main() {
     {
         let p = Point { x: 0, y: 7 };
 
-        // let Point { x: x, y: y } = p;
         let Point { x: a, y: b } = p;
         assert_eq!(0, a);
         assert_eq!(7, b);
@@ -148,6 +146,7 @@ fn main() {
                 // 同样只能是闭区间
                 id: id_variable @ 3..=7,
             } => println!("Found an id in range: {id_variable}"),
+            // 这里没有创建 id 这个变量
             Message::Hello { id: 10..=12 } => {
                 println!("Found an id in another range")
             }

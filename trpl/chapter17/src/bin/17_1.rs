@@ -18,10 +18,10 @@
 use trpl::{Either, Html};
 
 async fn page_title(url: &str) -> (&str, Option<String>) {
-    let text = trpl::get(url).await.text().await;
-    let title = Html::parse(&text)
+    let response_text = trpl::get(url).await.text().await;
+    let title = Html::parse(&response_text)
         .select_first("title")
-        .map(|title| title.inner_html());
+        .map(|title| title.inner_html().trim().to_string());
     (url, title)
 }
 
@@ -41,26 +41,21 @@ async fn page_title(url: &str) -> (&str, Option<String>) {
 // 并在准备好时回来继续推进当前的任务
 // Rust 编译器自动创建并管理异步代码的状态机数据结构，由运行时执行这个状态机
 fn main() {
-    let args = [
-        "17_1",
-        "https://www.rust-lang.org",
-        "https://www.rust-lang.org",
-    ];
+    let args = ["https://www.rust-lang.org", "https://www.rust-lang.org"];
 
-    trpl::run(async {
-        let title_fut_1 = page_title(args[1]);
-        let title_fut_2 = page_title(args[2]);
+    trpl::block_on(async {
+        let title_fut_1 = page_title(args[0]);
+        let title_fut_2 = page_title(args[1]);
 
-        // 任意一个完成即返回，并取消另一个的执行
-        let (url, maybe_title) = match trpl::race(title_fut_1, title_fut_2).await {
+        let (url, maybe_title) = match trpl::select(title_fut_1, title_fut_2).await {
             Either::Left(left) => left,
             Either::Right(right) => right,
         };
 
         println!("{url} returned first");
         match maybe_title {
-            Some(title) => println!("Its page title is: '{title}'"),
-            None => println!("Its title could not be parsed."),
+            Some(title) => println!("Its page title was: '{title}'"),
+            None => println!("It had no title."),
         }
-    })
+    });
 }

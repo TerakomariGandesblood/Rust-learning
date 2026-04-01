@@ -15,7 +15,7 @@ lto = true
 # https://doc.rust-lang.org/cargo/reference/profiles.html#codegen-units
 codegen-units = 1
 # https://doc.rust-lang.org/cargo/reference/profiles.html#panic
-panic = 'abort'
+# panic = 'abort'
 
 [build]
 rustflags = ["--deny", "warnings"]

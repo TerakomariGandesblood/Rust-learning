@@ -1,9 +1,11 @@
 use std::fmt::Display;
 use std::ops::{Add, Deref};
 
-// 不实用范型的原因在于，如果使用范型，则可以实现该 trait 多次
+// 不使用范型的原因在于，如果使用范型，则可以实现该 trait 多次
+// 调用 next 时，要使用类型注解来指明要使用哪一个 Iterator 的实现
 trait Iterator {
-    // 关联类型（associated types）是一个将类型占位符与 trait 相关联的方式
+    // 关联类型（associated types）将一个类型占位符与 trait 相关联
+    // 使得该 trait 的方法定义可以在签名中使用这些占位符类型
     type Item;
 
     fn next(&mut self) -> Option<Self::Item>;
@@ -33,8 +35,8 @@ struct Millimeters(u32);
 struct Meters(u32);
 
 // 默认类型参数（default type parameters）
-// 如果实现 Add trait 时不指定 Rhs 的具体类型，Rhs 的类型将是默认的 Self 类型，也就是在其上实现 Add
-// 的类型 不使用默认类型参数
+// 如果实现 Add trait 时不指定 Rhs 的具体类型，Rhs 的类型将是默认的 Self 类型
+// 也就是在其上实现 Add 的类型
 impl Add<Meters> for Millimeters {
     type Output = Millimeters;
 
@@ -134,16 +136,15 @@ fn main() {
     let _millimeters = millimeters + meters;
 
     let person = Human;
-    // *waving arms furiously*
+    // 默认调用直接实现在该类型上的方法
     person.fly();
 
     // 显式
     Pilot::fly(&person);
     Wizard::fly(&person);
 
-    // A baby dog is called a Spot
     println!("A baby dog is called a {}", Dog::baby_name());
-    // A baby dog is called a puppy
+    // 完全限定语法
     println!("A baby dog is called a {}", <Dog as Animal>::baby_name());
 
     let w = Wrapper(vec![String::from("hello"), String::from("world")]);
