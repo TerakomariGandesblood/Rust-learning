@@ -12,4 +12,4 @@ proc-macro = true
 # https://github.com/dtolnay/syn
 syn = "2.0.118"
 # https://github.com/dtolnay/quote
-quote = "1.0.45"
+quote = "1.0.46"
