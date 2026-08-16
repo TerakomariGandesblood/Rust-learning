@@ -56,7 +56,7 @@ fn _func() -> IoResult<()> {
 }
 
 pub fn eat_at_restaurant() {
-    // 绝对路径，更倾向于使用绝对路径
+    // 绝对路径
     // crate root 在 crate 模块结构的根组成了一个名为 crate 的模块
     // 整个模块树都植根于名为 crate 的隐式模块下
     // 对于外部（库）crate 的代码，是以 crate 名开头的绝对路径，对于对于当前 crate

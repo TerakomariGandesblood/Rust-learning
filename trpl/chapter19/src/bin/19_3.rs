@@ -28,7 +28,6 @@ fn main() {
         let x = 5;
 
         match x {
-            // 匹配 [1,5)
             // 只允许数字和 char
             1..5 => println!("one through five"),
             _ => println!("something else"),
@@ -143,8 +142,7 @@ fn main() {
         match msg {
             Message::Hello {
                 // at 运算符（@）允许我们在创建一个存放值的变量的同时测试其值是否匹配模式
-                // 同样只能是闭区间
-                id: id_variable @ 3..=7,
+                id: id_variable @ 3..7,
             } => println!("Found an id in range: {id_variable}"),
             // 这里没有创建 id 这个变量
             Message::Hello { id: 10..=12 } => {

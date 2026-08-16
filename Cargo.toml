@@ -27,7 +27,5 @@ rand = { version = "0.10.2", default-features = false, features = [
   "std",
   "thread_rng",
 ] }
-# https://github.com/orlp/foldhash
-foldhash = { version = "0.2.0", default-features = false, features = ["std"] }
 # https://github.com/rust-lang/book/tree/main/packages/trpl
 trpl = { version = "0.3.0", default-features = false }

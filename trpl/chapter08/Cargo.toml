@@ -7,6 +7,3 @@ license.workspace = true
 
 [lints.rust]
 dead_code = "allow"
-
-[dependencies]
-foldhash.workspace = true

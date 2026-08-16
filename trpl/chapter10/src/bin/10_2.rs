@@ -100,14 +100,14 @@ impl<T: Display + PartialOrd> Pair<T> {
     }
 }
 
-// blanket implementations
-// 对实现了特定 trait 的类型有条件地实现 trait
 trait MyTrait {
     fn test(&self) {
         println!("test");
     }
 }
 
+// blanket implementations
+// 对实现了特定 trait 的类型有条件地实现 trait
 impl<T: Display> MyTrait for T {}
 
 fn main() {

@@ -18,6 +18,7 @@ fn main() {
 
     // 裸指针（raw pointers）
     // 不可变意味着指针解引用之后不能直接赋值
+    // https://blog.rust-lang.org/2024/10/17/Rust-1.82.0/#native-syntax-for-creating-a-raw-pointer
     let r1 = &raw const num;
     let r2 = &raw mut num;
 
@@ -43,9 +44,8 @@ fn main() {
     println!("name is: {HELLO_WORLD}");
 
     // 不允许创建一个可变静态变量的引用
-    // 只能通过裸指针访问它
     // unsafe {
-    //     let a = &COUNTER;
+    //     println!("COUNTER: {COUNTER}");
     // }
 
     add_to_count(3);
@@ -73,10 +73,10 @@ fn split_at_mut(slice: &mut [i32], mid: usize) -> (&mut [i32], &mut [i32]) {
 }
 
 // extern，创建和使用外部函数接口（Foreign Function Interface，FFI）
-// extern 块中声明的函数在 Rust 代码中总是不安全的
 // "C" 部分定义了外部函数所使用的应用二进制接口（application binary interface，ABI）
 // ABI 定义了如何在汇编语言层面调用此函数。"C" ABI 是最常见的，并遵循 C 编程语言的 ABI
 unsafe extern "C" {
+    // unsafe extern 中声明的任何项都隐式地是 unsafe 的
     // safe 关键字来表明这个特定的函数即便是在 unsafe extern 块中也是可以安全调用的
     safe fn abs(input: i32) -> i32;
 }

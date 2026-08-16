@@ -36,7 +36,7 @@ fn loop_return() {
     let result = loop {
         count += 1;
         if count == 10 {
-            // 从循环返回值
+            // 从循环返回值，仅适用于 loop
             break count * 2;
         }
     };

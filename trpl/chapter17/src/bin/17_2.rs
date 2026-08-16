@@ -44,6 +44,6 @@ fn main() {
         };
 
         // trpl::join!() 可以 await 多个 future
-        trpl::join(tx_fut, rx_fut).await;
+        trpl::join!(tx_fut, rx_fut);
     });
 }

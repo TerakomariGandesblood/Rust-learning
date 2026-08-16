@@ -1,6 +1,5 @@
 //! # My Crate
-//! 该类型的注释这通常用于 crate 根文件（通常是 src/lib.rs）或模块的根文件为 crate
-//! 或模块整体提供文档
+//! 该类型的注释这通常用于 crate 根文件（通常是 src/lib.rs）或模块的根文件为 crate 或模块整体提供文档
 
 // 文档注释（documentation comments）
 // 支持 Markdown 注解来格式化文本
@@ -9,8 +8,7 @@
 // Examples：示例
 // Panics：描述函数可能会 panic! 的场景
 // Errors：该函数返回 Result，描述可能会出现何种错误以及什么情况会造成这些错误
-// Safety：这个函数使用 unsafe 代码，描述期望函数调用者支持的确保 unsafe
-// 块中代码正常工作的不变条件（invariants）
+// Safety：这个函数使用 unsafe 代码，描述期望函数调用者支持的确保 unsafe 块中代码正常工作的不变条件（invariants）
 
 /// Adds one to the number given.
 ///

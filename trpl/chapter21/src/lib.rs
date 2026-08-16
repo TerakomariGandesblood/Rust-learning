@@ -1,4 +1,4 @@
-use std::sync::mpsc::Sender;
+use std::sync::mpsc::{Receiver, Sender};
 use std::sync::{Arc, Mutex, mpsc};
 use std::thread::{self, JoinHandle};
 
@@ -54,7 +54,7 @@ struct Worker {
 }
 
 impl Worker {
-    fn new(id: usize, receiver: Arc<Mutex<mpsc::Receiver<Job>>>) -> Worker {
+    fn new(id: usize, receiver: Arc<Mutex<Receiver<Job>>>) -> Worker {
         // 如果操作系统因为没有足够的系统资源而无法创建线程时，thread::spawn 会 panic
         // 可以使用 std::thread::Builder 和其 spawn 方法来返回一个 Result
         let thread = thread::spawn(move || {
